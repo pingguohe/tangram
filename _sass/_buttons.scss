@@ -11,19 +11,18 @@
   display: inline-block;
   margin-bottom: 0.25em;
   padding: 0.5em 1em;
-  color: #fff !important;
+  color: #dd2727 !important;
   font-family: $sans-serif;
   font-size: $type-size-6;
-  font-weight: bold;
   text-align: center;
   text-decoration: none;
-  background-color: $primary-color;
-  border: 0 !important;
+  background-color: transparent;
+  border: 1px solid #dd2727; /* override*/
   border-radius: $border-radius;
   cursor: pointer;
 
   &:hover {
-    background-color: mix(white, #000, 20%);
+      text-decoration: underline;
   }
 
   .icon {
@@ -51,18 +50,18 @@
     color: $gray !important;
     border: 1px solid $light-gray !important; /* override*/
     background-color: #fff;
-
-    &:hover {
-      color: #fff !important;
-      border-color: $gray;
-    }
   }
 
   /* light outline */
 
   &--light-outline {
     border: 1px solid #fff !important; /* override*/
-    background-color: transparent;
+    background-color: #dd2727;
+    color: #fff !important;
+  }
+
+  &:--light-outline, hover {
+    background-color: #dd2727;
   }
 
   /* information */

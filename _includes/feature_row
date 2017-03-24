@@ -16,18 +16,6 @@
 
     <div class="feature__item{% if include.type %}--{{ include.type }}{% endif %}">
       <div class="archive__item">
-        {% if f.image_path %}
-          <div class="archive__item-teaser">
-            <img src=
-              {% if f.image_path contains "://" %}
-                "{{ f.image_path }}"
-              {% else %}
-                "{{ f.image_path | absolute_url }}"
-              {% endif %}
-            alt="{% if f.alt %}{{ f.alt }}{% endif %}">
-          </div>
-        {% endif %}
-
         <div class="archive__item-body">
           {% if f.title %}
             <h2 class="archive__item-title">{{ f.title }}</h2>

@@ -47,7 +47,7 @@
 
 .page__lead {
   font-family: $global-font-family;
-  font-size: $type-size-4;
+  font-size: $type-size-6;
 }
 
 .page__content {
@@ -78,7 +78,7 @@
     text-decoration: none;
 
     &:hover {
-      text-decoration: underline;
+      text-decoration: none;
 
       img {
         box-shadow: 0 0 10px rgba(#000, 0.25);
@@ -144,12 +144,17 @@
       }
     }
 
-    .page__title,
+    .page__title {
+      color: #666666;
+    }
+
     .page__meta,
-    .page__lead,
+    .page__lead {
+      color: #7a8288;
+    }
+
     .btn {
-      color: #fff;
-      text-shadow: 1px 1px 4px rgba(#000, 0.5);
+      color: #ffffff;
     }
 
     .page__lead {
@@ -160,7 +165,7 @@
       font-size: $type-size-2;
 
       @include breakpoint($small) {
-        font-size: $type-size-1;
+        font-size: $type-size-2;
       }
     }
   }

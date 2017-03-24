@@ -8,18 +8,18 @@ html {
   /* apply a natural box layout model to all elements */
   box-sizing: border-box;
   background-color: $background-color;
-  font-size: 16px;
+  font-size: 10px;
 
   @include breakpoint($medium) {
-    font-size: 18px;
+    font-size: 12px;
   }
 
   @include breakpoint($large) {
-    font-size: 20px;
+    font-size: 13px;
   }
 
   @include breakpoint($x-large) {
-    font-size: 22px;
+    font-size: 15px;
   }
 
   -webkit-text-size-adjust: 100%;
@@ -34,12 +34,12 @@ body { margin: 0; }
 
 ::-moz-selection {
   color: #fff;
-  background: #000;
+  background: #dd2727;
 }
 
 ::selection {
   color: #fff;
-  background: #000;
+  background: #dd2727;
 }
 
 /* Display HTML5 elements in IE6-9 and FF3 */

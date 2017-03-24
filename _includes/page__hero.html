@@ -26,7 +26,13 @@
   style="{% if page.header.overlay_color %}background-color: {{ page.header.overlay_color | default: 'transparent' }};{% endif %} {% if overlay_img_path %}background-image: {% if overlay_filter %}linear-gradient({{ overlay_filter }}, {{ overlay_filter }}), {% endif %}url('{{ overlay_img_path }}');{% endif %}"
 >
   {% if page.header.overlay_color or page.header.overlay_image %}
-    <div class="wrapper">
+    {% if page.header.logo_image %}
+    <div style="margin: 0 auto; max-width: 750px;">
+    <div class="wrapper" style="display: inline-block;">
+        <img src="{{ page.header.logo_image }}" style="width: 22em;margin-bottom: 5em;"/>
+    </div>
+      {% endif %}
+    <div class="wrapper" style="display: inline-block;">
       <h1 class="page__title" itemprop="headline">
         {% if paginator and site.paginate_show_page_num %}
           {{ site.title }}{% unless paginator.page == 1 %} {{ site.data.ui-text[site.locale].page | default: "Page" }} {{ paginator.page }}{% endunless %}
@@ -41,8 +47,17 @@
         <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> {% include read-time.html %}</p>
       {% endif %}
       {% if page.header.cta_url %}
-        <p><a href="{{ cta_path }}" class="btn btn--light-outline btn--large">{{ page.header.cta_label | default: site.data.ui-text[site.locale].more_label | default: "Learn More" }}</a></p>
+        <p>
+          <a href="{{ page.header.cta_url }}" class="btn btn--light-outline btn--large">{{ page.header.cta_label | default: site.data.ui-text[site.locale].more_label | default: "Learn More" }}</a>
+          {% if page.header.cta_url_b and page.header.cta_label_b %}
+          <a href="{{ page.header.cta_url_b }}" class="btn btn--large">{{ page.header.cta_label_b }}</a>
+          {% endif %}
+          {% if page.header.cta_url_c and page.header.cta_label_c %}
+          <a href="{{ page.header.cta_url_c }}" class="btn btn--large">{{ page.header.cta_label_c }}</a>
+          {% endif %}
+        </p>
       {% endif %}
+    </div>
     </div>
   {% else %}
     <img src="{{ img_path }}" alt="{{ page.title }}" class="page__hero-image">
