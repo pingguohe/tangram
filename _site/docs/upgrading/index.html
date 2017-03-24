@@ -1,0 +1,586 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.2.2 by Michael Rose
+  Copyright 2017 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+-->
+<html lang="zh" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Upgrading - Tangram</title>
+
+
+
+
+<meta name="description" content="Instructions and suggestions for upgrading the theme.">
+
+
+
+
+<meta name="author" content="">
+
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="Tangram">
+<meta property="og:title" content="Upgrading">
+
+
+  <link rel="canonical" href="http://localhost:4000/docs/upgrading/">
+  <meta property="og:url" content="http://localhost:4000/docs/upgrading/">
+
+
+
+  <meta property="og:description" content="Instructions and suggestions for upgrading the theme.">
+
+
+
+
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/site-logo.png">
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2017-03-23T23:40:36-04:00">
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "http://localhost:4000",
+      "logo": "http://localhost:4000/assets/images/site-logo.png"
+    }
+  </script>
+
+
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Tangram Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="http://localhost:4000/">Tangram</a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/docs/quick-start-guide/">介绍</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/about/">详细用法</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/year-archive/">Show Case</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/terms/">Github</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/collection-archive/">关于我们</a></li>
+          
+        </ul>
+        <button><div class="navicon"></div></button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">切换菜单</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">Getting Started</span>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            <li><a href="http://localhost:4000/docs/quick-start-guide/" class="">Quick-Start Guide</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="http://localhost:4000/docs/structure/" class="">Structure</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="http://localhost:4000/docs/installation/" class="">Installation</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="http://localhost:4000/docs/upgrading/" class="active">Upgrading</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">Customization</span>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            <li><a href="http://localhost:4000/docs/configuration/" class="">Configuration</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="http://localhost:4000/docs/overriding-theme-defaults/" class="">Overriding Theme Defaults</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="http://localhost:4000/docs/navigation/" class="">Navigation</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="http://localhost:4000/docs/ui-text/" class="">UI Text</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="http://localhost:4000/docs/authors/" class="">Authors</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="http://localhost:4000/docs/layouts/" class="">Layouts</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">Content</span>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            <li><a href="http://localhost:4000/docs/posts/" class="">Working with Posts</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="http://localhost:4000/docs/pages/" class="">Working with Pages</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="http://localhost:4000/docs/collections/" class="">Working with Collections</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="http://localhost:4000/docs/helpers/" class="">Helpers</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="http://localhost:4000/docs/utility-classes/" class="">Utility Classes</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">Extras</span>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            <li><a href="http://localhost:4000/docs/stylesheets/" class="">Stylesheets</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="http://localhost:4000/docs/javascript/" class="">JavaScript</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          <span class="nav__sub-title">Meta</span>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            <li><a href="http://localhost:4000/docs/history/" class="">History</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="http://localhost:4000/docs/contributing/" class="">Contributing</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="http://localhost:4000/docs/docs-2-2/" class="">Old 2.2 Docs</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="http://localhost:4000/docs/license/" class="">License</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="http://localhost:4000/terms/" class="">Terms &amp; Privacy Policy</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+    
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Upgrading">
+    <meta itemprop="description" content="Instructions and suggestions for upgrading the theme.">
+    <meta itemprop="datePublished" content="March 23, 2017">
+    <meta itemprop="dateModified" content="November 03, 2016">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Upgrading
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>If you’re using the Ruby Gem version of the theme upgrading is fairly painless.</p>
+
+<p>Simply run <code class="highlighter-rouge">bundle update</code> if you’re using Bundler (have a <code class="highlighter-rouge">Gemfile</code>) or <code class="highlighter-rouge">gem update minimal-mistakes-jekyll</code> if you’re not.</p>
+
+<h2 id="use-git">Use Git</h2>
+
+<p>If you want to get the most out of the Jekyll + GitHub Pages workflow, then you’ll need to utilize Git. To pull down theme updates you must first ensure there’s an upstream remote. If you forked the theme’s repo then you’re likely good to go.</p>
+
+<p>To double check, run <code class="highlighter-rouge">git remote -v</code> and verify that you can fetch from <code class="highlighter-rouge">origin https://github.com/pingguohe/tangram.git</code>.</p>
+
+<p>To add it you can do the following:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git remote add upstream https://github.com/pingguohe/tangram.git
+</code></pre>
+</div>
+
+<h3 id="pull-down-updates">Pull Down Updates</h3>
+
+<p>Now you can pull any commits made to theme’s <code class="highlighter-rouge">master</code> branch with:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git pull upstream master
+</code></pre>
+</div>
+
+<p>Depending on the amount of customizations you’ve made after forking, there’s likely to be merge conflicts. Work through any conflicting files Git flags, staging the changes you wish to keep, and then commit them.</p>
+
+<h2 id="update-files-manually">Update Files Manually</h2>
+
+<p>Another way of dealing with updates is <a href="https://github.com/pingguohe/tangram/archive/master.zip">downloading the theme</a> — replacing your layouts, includes, and assets with the newer ones manually. To be sure that you don’t miss any changes it’s probably a good idea to review the theme’s <a href="https://github.com/pingguohe/tangram/commits/master">commit history</a> to see what’s changed since.</p>
+
+<p>Here’s a quick checklist of the important folders/files you’ll want to be mindful of:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">_layouts</code></td>
+      <td>Replace all. Apply edits if you customized any layouts.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">_includes</code></td>
+      <td>Replace all. Apply edits if you customized any includes.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">assets</code></td>
+      <td>Replace all. Apply edits if you customized stylesheets or scripts.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">_sass</code></td>
+      <td>Replace all. Apply edits if you customized Sass partials.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">_data/navigation.yml</code></td>
+      <td>Safe to keep. Verify that there were no major structural changes or additions.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">_data/ui-text.yml</code></td>
+      <td>Safe to keep. Verify that there were no major structural changes or additions.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">_config.yml</code></td>
+      <td>Safe to keep. Verify that there were no major structural changes or additions.</td>
+    </tr>
+  </tbody>
+</table>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> 最新的:</strong> <time datetime="2016-11-03">November 03, 2016</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/docs/installation/" class="pagination--pager" title="Installation
+">向前</a>
+    
+    
+      <a href="http://localhost:4000/docs/configuration/" class="pagination--pager" title="Configuration
+">向后</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <div align="center" style="margin: 1em 0;">
+    <ins class="adsbygoogle"
+         style="display:block; border-bottom: initial;"
+         data-ad-client="ca-pub-7328585512091257"
+         data-ad-slot="3049671934"
+         data-ad-format="auto"></ins>
+    </div>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>关注:</strong></li>
+    
+    
+    
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2017 Tangram. 技术来自于 <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+
+  </body>
+</html>
