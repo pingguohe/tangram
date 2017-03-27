@@ -7,147 +7,91 @@ redirect_from:
   - /theme-setup/
 ---
 
-Minimal Mistakes has been developed as a [Jekyll theme gem](http://jekyllrb.com/docs/themes/) for easier use. It is also 100% compatible with GitHub Pages --- just with a more involved installation process.
+## 1.引入依赖
 
-{% include toc %}
-
-## Installing the Theme
-
-If you're running Jekyll v3.3+ and self-hosting you can quickly install the theme as Ruby gem.
-If you're hosting with GitHub Pages you'll have to use the old "repo fork" method or directly copy all of the theme files[^structure] into your site.
-
-[^structure]: See [**Structure** page]({{ "/docs/structure/" | absolute_url }}) for a list of theme files and what they do.
-
-**ProTip:** Be sure to remove `/docs` and `/test` if you forked Minimal Mistakes. These folders contain documentation and test pages for the theme and you probably don't littering up in your repo.
-{: .notice--info}
-
-### Ruby Gem Method
-
-Add this line to your Jekyll site's `Gemfile`:
-
-```ruby
-gem "minimal-mistakes-jekyll"
+```
+// gradle
+compile 'com.tmall.android:tangram:1.0.0@aar'
 ```
 
-Add this line to your Jekyll site's `_config.yml` file:
+或者
 
-```yaml
-theme: minimal-mistakes-jekyll
+```
+// maven
+<dependency>
+  <groupId>com.tmall.android</groupId>
+  <artifactId>tangram</artifactId>
+  <version>1.0.0</version>
+  <type>aar</type>
+</dependency>
 ```
 
-Then run Bundler to install the theme gem and dependencies:
+## 2.初始化 Tangram 环境
 
-```bash
-bundle install
+应用全局只需要初始化一次，提供一个通用的图片加载器，一个应用内通用的ImageView类型（通常情况下每个应用都有自定义的 ImageView，如果没有的话就提供系统的 ImageView 类）。
+
+```
+TangramBuilder.init(context, new IInnerImageSetter() {
+	@Override
+	public <IMAGE extends ImageView> void doLoadImageUrl(@NonNull IMAGE view,
+                    @Nullable String url) {
+		//假设你使用 Picasso 加载图片                		Picasso.with(context).load(url).into(view);
+	}
+}, ImageView.class);
 ```
 
-### GitHub Pages Compatible Method
+## 3.初始化 ```TangramBuilder```
 
-Fork the [Minimal Mistakes theme](https://github.com/mmistakes/minimal-mistakes/fork), then rename the repo to **USERNAME.github.io** --- replacing **USERNAME** with your GitHub username.
+在 Activity 中初始化```TangramBuilder```，假设你的 Activity 是```TangramActivity```。
 
-<figure>
-  <img src="{{ '/assets/images/mm-theme-fork-repo.png' | absolute_url }}" alt="fork Minimal Mistakes">
-</figure>
-
-**Note:** Your Jekyll site should be viewable immediately at <http://USERNAME.github.io>. If it's not, you can force a rebuild by **Customizing Your Site** (see below for more details).
-{: .notice--warning}
-
-If you're hosting several Jekyll based sites under the same GitHub username you will have to use Project Pages instead of User Pages. Essentially you rename the repo to something other than **USERNAME.github.io** and create a `gh-pages` branch off of `master`. For more details on how to set things up check [GitHub's documentation](https://help.github.com/articles/user-organization-and-project-pages/).
-
-<figure>
-  <img src="{{ '/assets/images/mm-gh-pages.gif' | absolute_url }}" alt="creating a new branch on GitHub">
-</figure>
-
-Replace the contents of `Gemfile` found in the root of your Jekyll site with the following:
-
-```ruby
-source "https://rubygems.org"
-
-gem "github-pages", group: :jekyll_plugins
-
-group :jekyll_plugins do
-  gem "jekyll-paginate"
-  gem "jekyll-sitemap"
-  gem "jekyll-gist"
-  gem "jekyll-feed"
-  gem "jemoji"
-end
+```
+TangramBuilder.InnerBuilder builder = TangramBuilder.newInnerBuilder(TangramActivity.this);
 ```
 
-Then run `bundle update` and verify that all gems install properly.
+这一步 builder 对象生成的时候，内部已经注册了框架所支持的所有组件和卡片，以及默认的```IAdapterBuilder```（它被用来创建 绑定到 RecyclerView 的Adapter）。
 
-### Remove the Unnecessary
+## 4.注册自定义的卡片和组件
 
-If you forked or downloaded the `minimal-mistakes-jekyll` repo you can safely remove the following folders and files:
+一般情况下，内置卡片的类型已经满足大部分场景了，业务方主要是注册一下自定义组件。
 
-- `.editorconfig`
-- `.gitattributes`
-- `.github`
-- `/docs`
-- `/test`
-- `CHANGELOG.md`
-- `minimal-mistakes-jekyll.gemspec`
-- `README.md`
-- `screenshot-layouts.png`
-- `screenshot.png`
-
-## Setup Your Site
-
-Depending on the path you took installing Minimal Mistakes you'll setup things a little differently.
-
-### Starting Fresh
-
-Starting with an empty folder and `Gemfile` you'll need to copy or re-create this [default `_config.yml`](https://github.com/mmistakes/minimal-mistakes/blob/master/_config.yml) file. For a full explanation of every setting be sure to read the [**Configuration**]({{ "/docs/configuration/" | absolute_url }}) section.
-
-After taking care of Jekyll's configuration file, you'll need to create and edit the following data files.
-
-- [`_data/ui-text.yml`](https://github.com/mmistakes/minimal-mistakes/blob/master/_data/ui-text.yml) - UI text [documentation]({{ "/docs/ui-text/" | absolute_url }})
-- [`_data/navigation.yml`](https://github.com/mmistakes/minimal-mistakes/blob/master/_data/navigation.yml) - navigation [documentation]({{ "/docs/navigation/" | absolute_url }})
-
-### Starting from `jekyll new`
-
-Scaffolding out a site with the `jekyll new` command requires you to modify a few files that it creates.
-
-Edit `_config.yml` and create `_data/ui-text.yml` and `_data/navigation.yml` same as above. Then:
-
-- Replace `<site root>/index.md` with a modified [Minimal Mistakes `index.html`](https://github.com/mmistakes/minimal-mistakes/blob/master/index.html). Be sure to enable pagination if using the [`home` layout]({{ "/docs/layouts/#home-page" | absolute_url }}) by adding the necessary lines to **_config.yml**.
-- Change `layout: post` in `_posts/0000-00-00-welcome-to-jekyll.markdown` to `layout: single`.
-- Remove `about.md`, or at the very least change `layout: page` to `layout: single` and remove references to `icon-github.html` (or [copy to your `_includes`](https://github.com/jekyll/minima/tree/master/_includes) if using it).
-
-### Migrating to Gem Version
-
-If you're migrating a site already using Minimal Mistakes and haven't customized any of the theme files things upgrading will be easier for you.
-
-Start by removing `_includes`, `_layouts`, `_sass`, `assets` folders and all files within. You won't need these anymore as they're bundled with the theme gem.
-
-If you customized any of these files leave them alone, and only remove the untouched ones. If done correctly your modified versions should [override](http://jekyllrb.com/docs/themes/#overriding-theme-defaults) the versions bundled with the theme and be used by Jekyll instead.
-
-#### Update Gemfile
-
-Replace `gem "github-pages` or `gem "jekyll"` with `gem "jekyll", "~> 3.3.0"`. You'll need the latest version of Jekyll[^update-jekyll] for Minimal Mistakes to work and load all of the theme's assets properly, this line forces Bundler to do that.
-
-[^update-jekyll]: You could also run `bundle update jekyll` to update Jekyll.
-
-Add the Minimal Mistakes theme gem: 
-
-```ruby
-gem "minimal-mistakes-jekyll"
+```
+builder.registerCell(1, TestView.class);
 ```
 
-When finished your `Gemfile` should look something like this:
+意思是类型为1的组件渲染时会被绑定到```TestView```的实例上。
 
-```ruby
-source "https://rubygems.org"
+更多组件信息请参考[组件开发](/docs/android/develop-component)。
 
-gem "jekyll", "~> 3.3.0"
-gem "minimal-mistakes-jekyll"
+## 5.生成```TangramEngine```实例
+
+在上述基础上调用：
+
+```
+TangramEngine engine = builder.build();
 ```
 
-Then run `bundle update` and add `theme: minimal-mistakes-jekyll` to your `_config.yml`.
+## 6.绑定 recyclerView
 
-**v4 Breaking Change:** Paths for image headers, overlays, teasers, [galleries]({{ "/docs/helpers/#gallery" | absolute_url }}), and [feature rows]({{ "/docs/helpers/#feature-row" | absolute_url }}) have changed and now require a full path. Instead of just `image: filename.jpg` you'll need to use the full path eg: `image: /assets/images/filename.jpg`. The preferred location is now `/assets/images/` but can be placed elsewhere or external hosted. This all applies for image references in `_config.yml` and `author.yml` as well.
-{: .notice--danger}
+```
+setContentView(R.layout.main_activity);
+RecyclerView recyclerView = (RecyclerView) findViewById(R.id.main_view);
+...
+engine.bindView(recyclerView);
+```
 
----
+# 7.加载数据并传递给 engine
 
-That's it! If all goes well running `bundle exec jekyll serve` should spin-up your site.
+数据一般是调用接口加载远程数据，这里演示的是 mock 加载本地的数据：
+
+```
+String json = new String(getAssertsFile(this, "data.json"));
+        JSONArray data = null;
+        try {
+            data = new JSONArray(json);
+            engine.setData(data);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+```
+
+完整页面的数据结构可参考 [Demo]() 里。
