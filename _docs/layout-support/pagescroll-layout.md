@@ -7,147 +7,120 @@ redirect_from:
   - /theme-setup/
 ---
 
-Minimal Mistakes has been developed as a [Jekyll theme gem](http://jekyllrb.com/docs/themes/) for easier use. It is also 100% compatible with GitHub Pages --- just with a more involved installation process.
+适用于Banner的场景，可自动滚动，循环滚动，也可以做线性的滚动，而不是Banner一页一页的滚动。
 
-{% include toc %}
+示意图
 
-## Installing the Theme
+<img src="https://gw.alicdn.com/tfs/TB1vP0fQXXXXXaHapXXXXXXXXXX-720-1280.gif" width = "360" height = "640"/>
 
-If you're running Jekyll v3.3+ and self-hosting you can quickly install the theme as Ruby gem.
-If you're hosting with GitHub Pages you'll have to use the old "repo fork" method or directly copy all of the theme files[^structure] into your site.
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-yw4l{vertical-align:top}
+</style>
+<table class="tg" style="undefined;table-layout: fixed; width: 770px">
+<colgroup>
+<col style="width: 96px">
+<col style="width: 302px">
+<col style="width: 170px">
+<col style="width: 202px">
+</colgroup>
+  <tr>
+    <th class="tg-yw4l">字段</th>
+    <th class="tg-yw4l">意义</th>
+    <th class="tg-yw4l">类型</th>
+    <th class="tg-yw4l">样例</th>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">margin</td>
+    <td class="tg-yw4l">卡片的外间距，顺序是上右下左</td>
+    <td class="tg-yw4l">Array(内部是Number或者String)/String</td>
+    <td class="tg-yw4l">[9,9,9,9],"[9,9,9,9]",["9","9","9","9"]均可，建议使用第一种</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">padding</td>
+    <td class="tg-yw4l">卡片的内间距，顺序是上右下左</td>
+    <td class="tg-yw4l">Array(内部是Number或者String)/String</td>
+    <td class="tg-yw4l">[9,9,9,9],"[9,9,9,9]",["9","9","9","9"]均可，建议使用第一种</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">autoScroll</td>
+    <td class="tg-yw4l">自动滚动的间隔，单位毫秒，填写数字大于0就开始自动滚动</td>
+    <td class="tg-yw4l">String/Number</td>
+    <td class="tg-yw4l">"3000",3000</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">infinite</td>
+    <td class="tg-yw4l">是否无限滚动</td>
+    <td class="tg-yw4l">String/Bool</td>
+    <td class="tg-yw4l">"true","false"</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">indicatorImg1</td>
+    <td class="tg-yw4l">指示器选中状态的图片，必须带图片宽高比后缀</td>
+    <td class="tg-yw4l">String</td>
+    <td class="tg-yw4l">https://img.alicdn.com/tps/TB16i4qNXXXXXbBXFXXXXXXXXXX-32-4.png</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">indicatorImg2</td>
+    <td class="tg-yw4l">指示器未被选中状态的图片，必须带图片宽高比后缀</td>
+    <td class="tg-yw4l">String</td>
+    <td class="tg-yw4l">https://img.alicdn.com/tps/TB1XRNFNXXXXXXKXXXXXXXXXXXX-32-4.png</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">indicatorGravity</td>
+    <td class="tg-yw4l">指示器位置，居中居左还是居右</td>
+    <td class="tg-yw4l">String</td>
+    <td class="tg-yw4l">"left"/"right"/"center"</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">indicatorPosition</td>
+    <td class="tg-yw4l">指示器位置，在内部还是在外部</td>
+    <td class="tg-yw4l">String</td>
+    <td class="tg-yw4l">"inside"/"outside"</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">indicatorGap</td>
+    <td class="tg-yw4l">每个之间的指示器间距</td>
+    <td class="tg-yw4l">String/Number</td>
+    <td class="tg-yw4l">"9"</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">indicatorMargin</td>
+    <td class="tg-yw4l">指示器相对于布局底端的间距</td>
+    <td class="tg-yw4l">String/Number</td>
+    <td class="tg-yw4l">"9"</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">indicatorHeight</td>
+    <td class="tg-yw4l">指示器高度</td>
+    <td class="tg-yw4l">String/Number</td>
+    <td class="tg-yw4l">"9"</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">pageWidth</td>
+    <td class="tg-yw4l">页面宽度，配置了此参数，轮播布局的滚动会变为线性,不配置的话，就是一页一页的滚动</td>
+    <td class="tg-yw4l">String/Number</td>
+    <td class="tg-yw4l">"100"</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">scrollMarginLeft</td>
+    <td class="tg-yw4l">最左边一帧距离布局左边的间距</td>
+    <td class="tg-yw4l">String/Number</td>
+    <td class="tg-yw4l">"100"</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">scrollMarginRight</td>
+    <td class="tg-yw4l">最右边一帧距离布局右边的间距</td>
+    <td class="tg-yw4l">String/Number</td>
+    <td class="tg-yw4l">"100"</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">hGap</td>
+    <td class="tg-yw4l">横向每一帧之间的间距</td>
+    <td class="tg-yw4l">String/Number</td>
+    <td class="tg-yw4l">"100"</td>
+  </tr>
+</table>
 
-[^structure]: See [**Structure** page]({{ "/docs/structure/" | absolute_url }}) for a list of theme files and what they do.
-
-**ProTip:** Be sure to remove `/docs` and `/test` if you forked Minimal Mistakes. These folders contain documentation and test pages for the theme and you probably don't littering up in your repo.
-{: .notice--info}
-
-### Ruby Gem Method
-
-Add this line to your Jekyll site's `Gemfile`:
-
-```ruby
-gem "minimal-mistakes-jekyll"
-```
-
-Add this line to your Jekyll site's `_config.yml` file:
-
-```yaml
-theme: minimal-mistakes-jekyll
-```
-
-Then run Bundler to install the theme gem and dependencies:
-
-```bash
-bundle install
-```
-
-### GitHub Pages Compatible Method
-
-Fork the [Minimal Mistakes theme](https://github.com/mmistakes/minimal-mistakes/fork), then rename the repo to **USERNAME.github.io** --- replacing **USERNAME** with your GitHub username.
-
-<figure>
-  <img src="{{ '/assets/images/mm-theme-fork-repo.png' | absolute_url }}" alt="fork Minimal Mistakes">
-</figure>
-
-**Note:** Your Jekyll site should be viewable immediately at <http://USERNAME.github.io>. If it's not, you can force a rebuild by **Customizing Your Site** (see below for more details).
-{: .notice--warning}
-
-If you're hosting several Jekyll based sites under the same GitHub username you will have to use Project Pages instead of User Pages. Essentially you rename the repo to something other than **USERNAME.github.io** and create a `gh-pages` branch off of `master`. For more details on how to set things up check [GitHub's documentation](https://help.github.com/articles/user-organization-and-project-pages/).
-
-<figure>
-  <img src="{{ '/assets/images/mm-gh-pages.gif' | absolute_url }}" alt="creating a new branch on GitHub">
-</figure>
-
-Replace the contents of `Gemfile` found in the root of your Jekyll site with the following:
-
-```ruby
-source "https://rubygems.org"
-
-gem "github-pages", group: :jekyll_plugins
-
-group :jekyll_plugins do
-  gem "jekyll-paginate"
-  gem "jekyll-sitemap"
-  gem "jekyll-gist"
-  gem "jekyll-feed"
-  gem "jemoji"
-end
-```
-
-Then run `bundle update` and verify that all gems install properly.
-
-### Remove the Unnecessary
-
-If you forked or downloaded the `minimal-mistakes-jekyll` repo you can safely remove the following folders and files:
-
-- `.editorconfig`
-- `.gitattributes`
-- `.github`
-- `/docs`
-- `/test`
-- `CHANGELOG.md`
-- `minimal-mistakes-jekyll.gemspec`
-- `README.md`
-- `screenshot-layouts.png`
-- `screenshot.png`
-
-## Setup Your Site
-
-Depending on the path you took installing Minimal Mistakes you'll setup things a little differently.
-
-### Starting Fresh
-
-Starting with an empty folder and `Gemfile` you'll need to copy or re-create this [default `_config.yml`](https://github.com/mmistakes/minimal-mistakes/blob/master/_config.yml) file. For a full explanation of every setting be sure to read the [**Configuration**]({{ "/docs/configuration/" | absolute_url }}) section.
-
-After taking care of Jekyll's configuration file, you'll need to create and edit the following data files.
-
-- [`_data/ui-text.yml`](https://github.com/mmistakes/minimal-mistakes/blob/master/_data/ui-text.yml) - UI text [documentation]({{ "/docs/ui-text/" | absolute_url }})
-- [`_data/navigation.yml`](https://github.com/mmistakes/minimal-mistakes/blob/master/_data/navigation.yml) - navigation [documentation]({{ "/docs/navigation/" | absolute_url }})
-
-### Starting from `jekyll new`
-
-Scaffolding out a site with the `jekyll new` command requires you to modify a few files that it creates.
-
-Edit `_config.yml` and create `_data/ui-text.yml` and `_data/navigation.yml` same as above. Then:
-
-- Replace `<site root>/index.md` with a modified [Minimal Mistakes `index.html`](https://github.com/mmistakes/minimal-mistakes/blob/master/index.html). Be sure to enable pagination if using the [`home` layout]({{ "/docs/layouts/#home-page" | absolute_url }}) by adding the necessary lines to **_config.yml**.
-- Change `layout: post` in `_posts/0000-00-00-welcome-to-jekyll.markdown` to `layout: single`.
-- Remove `about.md`, or at the very least change `layout: page` to `layout: single` and remove references to `icon-github.html` (or [copy to your `_includes`](https://github.com/jekyll/minima/tree/master/_includes) if using it).
-
-### Migrating to Gem Version
-
-If you're migrating a site already using Minimal Mistakes and haven't customized any of the theme files things upgrading will be easier for you.
-
-Start by removing `_includes`, `_layouts`, `_sass`, `assets` folders and all files within. You won't need these anymore as they're bundled with the theme gem.
-
-If you customized any of these files leave them alone, and only remove the untouched ones. If done correctly your modified versions should [override](http://jekyllrb.com/docs/themes/#overriding-theme-defaults) the versions bundled with the theme and be used by Jekyll instead.
-
-#### Update Gemfile
-
-Replace `gem "github-pages` or `gem "jekyll"` with `gem "jekyll", "~> 3.3.0"`. You'll need the latest version of Jekyll[^update-jekyll] for Minimal Mistakes to work and load all of the theme's assets properly, this line forces Bundler to do that.
-
-[^update-jekyll]: You could also run `bundle update jekyll` to update Jekyll.
-
-Add the Minimal Mistakes theme gem: 
-
-```ruby
-gem "minimal-mistakes-jekyll"
-```
-
-When finished your `Gemfile` should look something like this:
-
-```ruby
-source "https://rubygems.org"
-
-gem "jekyll", "~> 3.3.0"
-gem "minimal-mistakes-jekyll"
-```
-
-Then run `bundle update` and add `theme: minimal-mistakes-jekyll` to your `_config.yml`.
-
-**v4 Breaking Change:** Paths for image headers, overlays, teasers, [galleries]({{ "/docs/helpers/#gallery" | absolute_url }}), and [feature rows]({{ "/docs/helpers/#feature-row" | absolute_url }}) have changed and now require a full path. Instead of just `image: filename.jpg` you'll need to use the full path eg: `image: /assets/images/filename.jpg`. The preferred location is now `/assets/images/` but can be placed elsewhere or external hosted. This all applies for image references in `_config.yml` and `author.yml` as well.
-{: .notice--danger}
-
----
-
-That's it! If all goes well running `bundle exec jekyll serve` should spin-up your site.
