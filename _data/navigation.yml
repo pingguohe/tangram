@@ -87,12 +87,12 @@ docs:
         url: /docs/android/use-timer
       - title: "使用组件辅助模块"
         url: /docs/android/use-cell-support
-      - title: "使用卡片辅助模块"
+      - title: "使用布局辅助模块"
         url: /docs/android/use-card-support
-      - title: "使用自定义服务"
-        url: /docs/android/use-service-manager
       - title: "事件总线"
         url: /docs/android/eventbus
+      - title: "使用自定义服务"
+        url: /docs/android/use-service-manager
       - title: "使用布局"
         url: /docs/android/use-card
   - title: "布局详细说明"
