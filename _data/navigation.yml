@@ -35,13 +35,13 @@ main:
 
 # documentation links
 docs:
-  - title: 快速开始
+  - title: "快速开始"
     children:
       - title: "iOS"
         url: /docs/quick-start-guide/ios-quick-start-guide/
       - title: "Android"
         url: /docs/quick-start-guide/android-quick-start-guide/
-  - title: 原理介绍
+  - title: "介绍"
     children:
       - title: "基本概念"
         url: /docs/basic-concept/concept
@@ -49,36 +49,61 @@ docs:
         url: /docs/basic-concept/structure
       - title: "设计原则"
         url: /docs/basic-concept/principle
-  - title: Content
+  - title: "iOS 使用指南"
     children:
-      - title: "Working with Posts"
-        url: /docs/posts/
-      - title: "Working with Pages"
-        url: /docs/pages/
-      - title: "Working with Collections"
-        url: /docs/collections/
-      - title: "Helpers"
-        url: /docs/helpers/
-      - title: "Utility Classes"
-        url: /docs/utility-classes/
-  - title: Extras
+      - title: "接入Tangram代码"
+        url: /docs/ios/access-tangram
+      - title: "TangramView核心方法"
+        url: /docs/ios/tangram-core
+      - title: "组件开发"
+        url: /docs/ios/develop-component
+      - title: "自定义布局"
+        url: /docs/ios/custom-card
+      - title: "事件总线"
+        url: /docs/ios/eventbus
+      - title: "TangramHelper的使用"
+        url: /docs/ios/tangramhelper_usage
+      - title: "Tangram各类Factory说明"
+        url: /docs/ios/tangramhelper_factory
+      - title: "Best Practice - 组件构建"
+        url: /docs/ios/element-best_practice
+      - title: "Best Practice - 页面构建"
+        url: /docs/ios/page-best_practice
+  - title: "Android 使用指南"
     children:
-      - title: "Stylesheets"
-        url: /docs/stylesheets/
-      - title: "JavaScript"
-        url: /docs/javascript/
-  - title: Meta
+      - title: "接入Tangram代码"
+        url: /docs/android/access-tangram
+      - title: "TangramView核心方法"
+        url: /docs/android/tangram-core
+      - title: "组件开发"
+        url: /docs/android/develop-component
+      - title: "事件总线"
+        url: /docs/android/eventbus
+      - title: "使用布局"
+        url: /docs/android/use-card
+  - title: "布局详细说明"
     children:
-      - title: "History"
-        url: /docs/history/
-      - title: "Contributing"
-        url: /docs/contributing/
-      - title: "Old 2.2 Docs"
-        url: /docs/docs-2-2/
+      - title: "内置布局支持索引"
+        url: /docs/layout-support/inner-support
+      - title: "流式(网格)布局"
+        url: /docs/layout-support/flow-layout
+      - title: "一拖N布局"
+        url: /docs/layout-support/oneplusn-layout
+      - title: "浮动布局"
+        url: /docs/layout-support/float-layout
+      - title: "固定布局"
+        url: /docs/layout-support/fix-layout
+      - title: "吸顶布局"
+        url: /docs/layout-support/sticky-layout
+      - title: "瀑布流布局"
+        url: /docs/layout-support/waterflow-layout
+      - title: "轮播/横向滚动布局"
+        url: /docs/layout-support/pagescroll-layout
+  - title: "其他"
+    children:
       - title: "License"
         url: /docs/license/
-      - title: "Terms &amp; Privacy Policy"
-        url: /terms/
+ #     - title: "关于我们"
 
 # sidebar navigation list sample
 sidebar-sample:

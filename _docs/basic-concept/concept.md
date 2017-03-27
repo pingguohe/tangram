@@ -1,7 +1,7 @@
 ---
-title: "iOS 快速开始指南"
-permalink: /docs/quick-start-guide/ios-quick-start-guide/
-excerpt: "iOS 快速开始指南"
+title: "基本概念"
+permalink: /docs/basic-concept/concept
+excerpt: "基本概念"
 modified: 2016-11-03T10:01:43-04:00
 redirect_from:
   - /theme-setup/

@@ -1,7 +1,7 @@
 ---
-title: "Quick-Start Guide"
-permalink: /docs/quick-start-guide/
-excerpt: "How to quickly install and setup Minimal Mistakes for use with GitHub Pages."
+title: "流式(网格)布局"
+permalink: /docs/layout-support/flow-layout
+excerpt: "流式(网格)布局"
 modified: 2016-11-03T10:01:43-04:00
 redirect_from:
   - /theme-setup/

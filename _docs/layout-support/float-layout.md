@@ -1,7 +1,7 @@
 ---
-title: "iOS 快速开始指南"
-permalink: /docs/quick-start-guide/ios-quick-start-guide/
-excerpt: "iOS 快速开始指南"
+title: "浮动布局"
+permalink: /docs/layout-support/float-layout
+excerpt: "浮动布局"
 modified: 2016-11-03T10:01:43-04:00
 redirect_from:
   - /theme-setup/
