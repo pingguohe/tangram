@@ -35,30 +35,20 @@ main:
 
 # documentation links
 docs:
-  - title: Getting Started
+  - title: 快速开始
     children:
-      - title: "Quick-Start Guide"
-        url: /docs/quick-start-guide/
-      - title: "Structure"
-        url: /docs/structure/
-      - title: "Installation"
-        url: /docs/installation/
-      - title: "Upgrading"
-        url: /docs/upgrading/
-  - title: Customization
+      - title: "iOS"
+        url: /docs/quick-start-guide/ios-quick-start-guide/
+      - title: "Android"
+        url: /docs/quick-start-guide/android-quick-start-guide/
+  - title: 原理介绍
     children:
-      - title: "Configuration"
-        url: /docs/configuration/
-      - title: "Overriding Theme Defaults"
-        url: /docs/overriding-theme-defaults/
-      - title: "Navigation"
-        url: /docs/navigation/
-      - title: "UI Text"
-        url: /docs/ui-text/
-      - title: "Authors"
-        url: /docs/authors/
-      - title: "Layouts"
-        url: /docs/layouts/
+      - title: "基本概念"
+        url: /docs/basic-concept/concept
+      - title: "基础架构"
+        url: /docs/basic-concept/structure
+      - title: "设计原则"
+        url: /docs/basic-concept/principle
   - title: Content
     children:
       - title: "Working with Posts"
