@@ -7,147 +7,128 @@ redirect_from:
   - /theme-setup/
 ---
 
-Minimal Mistakes has been developed as a [Jekyll theme gem](http://jekyllrb.com/docs/themes/) for easier use. It is also 100% compatible with GitHub Pages --- just with a more involved installation process.
+## 1.引入依赖
 
-{% include toc %}
-
-## Installing the Theme
-
-If you're running Jekyll v3.3+ and self-hosting you can quickly install the theme as Ruby gem.
-If you're hosting with GitHub Pages you'll have to use the old "repo fork" method or directly copy all of the theme files[^structure] into your site.
-
-[^structure]: See [**Structure** page]({{ "/docs/structure/" | absolute_url }}) for a list of theme files and what they do.
-
-**ProTip:** Be sure to remove `/docs` and `/test` if you forked Minimal Mistakes. These folders contain documentation and test pages for the theme and you probably don't littering up in your repo.
-{: .notice--info}
-
-### Ruby Gem Method
-
-Add this line to your Jekyll site's `Gemfile`:
-
-```ruby
-gem "minimal-mistakes-jekyll"
+```
+// gradle
+compile 'com.tmall.android:tangram:1.0.0@aar'
 ```
 
-Add this line to your Jekyll site's `_config.yml` file:
+或者
 
-```yaml
-theme: minimal-mistakes-jekyll
+```
+// maven
+<dependency>
+  <groupId>com.tmall.android</groupId>
+  <artifactId>tangram</artifactId>
+  <version>1.0.0</version>
+  <type>aar</type>
+</dependency>
 ```
 
-Then run Bundler to install the theme gem and dependencies:
+## 2.初始化 Tangram 环境
 
-```bash
-bundle install
+应用全局只需要初始化一次，提供一个通用的图片加载器，一个应用内通用的ImageView类型（通常情况下每个应用都有自定义的 ImageView，如果没有的话就提供系统的 ImageView 类）。
+
+```
+TangramBuilder.init(context, new IInnerImageSetter() {
+	@Override
+	public <IMAGE extends ImageView> void doLoadImageUrl(@NonNull IMAGE view,
+                    @Nullable String url) {
+		//假设你使用 Picasso 加载图片                		Picasso.with(context).load(url).into(view);
+	}
+}, ImageView.class);
 ```
 
-### GitHub Pages Compatible Method
+## 3.初始化 ```TangramBuilder```
 
-Fork the [Minimal Mistakes theme](https://github.com/mmistakes/minimal-mistakes/fork), then rename the repo to **USERNAME.github.io** --- replacing **USERNAME** with your GitHub username.
+在 Activity 中初始化```TangramBuilder```，假设你的 Activity 是```TangramActivity```。
 
-<figure>
-  <img src="{{ '/assets/images/mm-theme-fork-repo.png' | absolute_url }}" alt="fork Minimal Mistakes">
-</figure>
-
-**Note:** Your Jekyll site should be viewable immediately at <http://USERNAME.github.io>. If it's not, you can force a rebuild by **Customizing Your Site** (see below for more details).
-{: .notice--warning}
-
-If you're hosting several Jekyll based sites under the same GitHub username you will have to use Project Pages instead of User Pages. Essentially you rename the repo to something other than **USERNAME.github.io** and create a `gh-pages` branch off of `master`. For more details on how to set things up check [GitHub's documentation](https://help.github.com/articles/user-organization-and-project-pages/).
-
-<figure>
-  <img src="{{ '/assets/images/mm-gh-pages.gif' | absolute_url }}" alt="creating a new branch on GitHub">
-</figure>
-
-Replace the contents of `Gemfile` found in the root of your Jekyll site with the following:
-
-```ruby
-source "https://rubygems.org"
-
-gem "github-pages", group: :jekyll_plugins
-
-group :jekyll_plugins do
-  gem "jekyll-paginate"
-  gem "jekyll-sitemap"
-  gem "jekyll-gist"
-  gem "jekyll-feed"
-  gem "jemoji"
-end
+```
+TangramBuilder.InnerBuilder builder = TangramBuilder.newInnerBuilder(TangramActivity.this);
 ```
 
-Then run `bundle update` and verify that all gems install properly.
+这一步 builder 对象生成的时候，内部已经注册了框架所支持的所有组件和卡片，以及默认的```IAdapterBuilder```（它被用来创建 绑定到 RecyclerView 的Adapter）。
 
-### Remove the Unnecessary
+## 4.注册自定义的卡片和组件
 
-If you forked or downloaded the `minimal-mistakes-jekyll` repo you can safely remove the following folders and files:
+一般情况下，内置卡片的类型已经满足大部分场景了，业务方主要是注册一下自定义组件。注册组件有3种方式：
 
-- `.editorconfig`
-- `.gitattributes`
-- `.github`
-- `/docs`
-- `/test`
-- `CHANGELOG.md`
-- `minimal-mistakes-jekyll.gemspec`
-- `README.md`
-- `screenshot-layouts.png`
-- `screenshot.png`
++ 注册绑定组件类型和自定义```View```，比如```builder.registerCell(1, TestView.class);```。意思是类型为1的组件渲染时会被绑定到```TestView```的实例上，这种方式注册的组件使用通用的组件模型```BaseCell```。
++ 注册绑定组件类型、自定义 model、自定义```View```，比如```builder.registerCell(1, TestCell.class, TestView.class);```。意思是类型为1的组件使用自定义的组件模型```TestCell```，它应当继承于```BaseCell```，在渲染时会被绑定到```TestView```的实例上。
++ 注册绑定组件类型、自定义model、自定义```ViewHolder```，比如```builder.registerCell(1, TestCell.class, new ViewHolderCreator<>(R.layout.item_holder, TestViewHolder.class, TestView.class));```。意思是类型为1的组件使用自定义的组件模型```TestCell```，它应当继承于```BaseCell```，在渲染时以```R.layout.item_holder```为布局创建类型为```TestView ```的 view，并绑定到类型为```TestViewHolder```的 viewHolder 上，组件数据被绑定到定到```TestView```的实例上。
 
-## Setup Your Site
+一般情况下，使用前两种方式注册组件即可。至于组件开发规范，请参考[组件开发](/docs/android/develop-component)。
 
-Depending on the path you took installing Minimal Mistakes you'll setup things a little differently.
+## 5.生成```TangramEngine```实例
 
-### Starting Fresh
+在上述基础上调用：
 
-Starting with an empty folder and `Gemfile` you'll need to copy or re-create this [default `_config.yml`](https://github.com/mmistakes/minimal-mistakes/blob/master/_config.yml) file. For a full explanation of every setting be sure to read the [**Configuration**]({{ "/docs/configuration/" | absolute_url }}) section.
-
-After taking care of Jekyll's configuration file, you'll need to create and edit the following data files.
-
-- [`_data/ui-text.yml`](https://github.com/mmistakes/minimal-mistakes/blob/master/_data/ui-text.yml) - UI text [documentation]({{ "/docs/ui-text/" | absolute_url }})
-- [`_data/navigation.yml`](https://github.com/mmistakes/minimal-mistakes/blob/master/_data/navigation.yml) - navigation [documentation]({{ "/docs/navigation/" | absolute_url }})
-
-### Starting from `jekyll new`
-
-Scaffolding out a site with the `jekyll new` command requires you to modify a few files that it creates.
-
-Edit `_config.yml` and create `_data/ui-text.yml` and `_data/navigation.yml` same as above. Then:
-
-- Replace `<site root>/index.md` with a modified [Minimal Mistakes `index.html`](https://github.com/mmistakes/minimal-mistakes/blob/master/index.html). Be sure to enable pagination if using the [`home` layout]({{ "/docs/layouts/#home-page" | absolute_url }}) by adding the necessary lines to **_config.yml**.
-- Change `layout: post` in `_posts/0000-00-00-welcome-to-jekyll.markdown` to `layout: single`.
-- Remove `about.md`, or at the very least change `layout: page` to `layout: single` and remove references to `icon-github.html` (or [copy to your `_includes`](https://github.com/jekyll/minima/tree/master/_includes) if using it).
-
-### Migrating to Gem Version
-
-If you're migrating a site already using Minimal Mistakes and haven't customized any of the theme files things upgrading will be easier for you.
-
-Start by removing `_includes`, `_layouts`, `_sass`, `assets` folders and all files within. You won't need these anymore as they're bundled with the theme gem.
-
-If you customized any of these files leave them alone, and only remove the untouched ones. If done correctly your modified versions should [override](http://jekyllrb.com/docs/themes/#overriding-theme-defaults) the versions bundled with the theme and be used by Jekyll instead.
-
-#### Update Gemfile
-
-Replace `gem "github-pages` or `gem "jekyll"` with `gem "jekyll", "~> 3.3.0"`. You'll need the latest version of Jekyll[^update-jekyll] for Minimal Mistakes to work and load all of the theme's assets properly, this line forces Bundler to do that.
-
-[^update-jekyll]: You could also run `bundle update jekyll` to update Jekyll.
-
-Add the Minimal Mistakes theme gem: 
-
-```ruby
-gem "minimal-mistakes-jekyll"
+```
+TangramEngine engine = builder.build();
 ```
 
-When finished your `Gemfile` should look something like this:
+## 6.绑定业务 support 类到 engine
 
-```ruby
-source "https://rubygems.org"
+Tangram 内部提供了一些常用的 support 类辅助业务开发，业务方也可以自定义所需要的功能模块注册进去。以下常用三个常用的support，分别处理点击、卡片数据加载、曝光逻辑，详情请参考[文档]()。
 
-gem "jekyll", "~> 3.3.0"
-gem "minimal-mistakes-jekyll"
+```
+engine.register(SimpleClickSupport.class, new XXClickSupport());
+engine.register(CardLoadSupport.class, new XXCardLoadSupport());
+engine.register(ExposureSupport.class, new XXExposureSuport());
 ```
 
-Then run `bundle update` and add `theme: minimal-mistakes-jekyll` to your `_config.yml`.
+## 7.绑定 recyclerView
 
-**v4 Breaking Change:** Paths for image headers, overlays, teasers, [galleries]({{ "/docs/helpers/#gallery" | absolute_url }}), and [feature rows]({{ "/docs/helpers/#feature-row" | absolute_url }}) have changed and now require a full path. Instead of just `image: filename.jpg` you'll need to use the full path eg: `image: /assets/images/filename.jpg`. The preferred location is now `/assets/images/` but can be placed elsewhere or external hosted. This all applies for image references in `_config.yml` and `author.yml` as well.
-{: .notice--danger}
+```
+setContentView(R.layout.main_activity);
+RecyclerView recyclerView = (RecyclerView) findViewById(R.id.main_view);
+...
+engine.bindView(recyclerView);
+```
 
----
+## 8.监听 recyclerView 的滚动事件
 
-That's it! If all goes well running `bundle exec jekyll serve` should spin-up your site.
+```
+recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+	@Override
+	public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+		super.onScrolled(recyclerView, dx, dy);
+		//在 scroll 事件中触发 engine 的 onScroll，内部会触发需要异步加载的卡片去提前加载数据
+		engine.onScrolled();
+	}
+});
+```
+
+## 9.设置悬浮类型布局的偏移（可选）
+
+如果你的 recyclerView 上方还覆盖有其他 view，比如底部的 tabbar 或者顶部的 actionbar，为了防止悬浮类 view 和这些外部 view 重叠，可以设置一个偏移量。
+
+```
+engine.getLayoutManager().setFixOffset(0, 40, 0, 0);
+```
+
+## 10.设置卡片预加载的偏移量（可选）
+
+在页面滚动过程中触发```engine.onScrolled()```方法，会去寻找屏幕外需要异步加载数据的卡片，默认往下寻找5个，让数据预加载出来，可以修改这个偏移量。
+
+```
+engine.setPreLoadNumber(3)
+```
+
+# 11.加载数据并传递给 engine
+
+数据一般是调用接口加载远程数据，这里演示的是 mock 加载本地的数据：
+
+```
+String json = new String(getAssertsFile(this, "data.json"));
+        JSONArray data = null;
+        try {
+            data = new JSONArray(json);
+            engine.setData(data);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+```
+
+完整页面的数据结构可参考 [Demo]() 里。

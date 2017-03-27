@@ -9,6 +9,13 @@ redirect_from:
 
 支持属性列表\(单列、双列...到五列，支持的属性都是一样的\)
 
+## 示意图
+
+![](https://gw.alicdn.com/tfs/TB1DE0xQXXXXXatXpXXXXXXXXXX-520-401.png)
+![](https://gw.alicdn.com/tfs/TB1gDkPPVXXXXbiaFXXXXXXXXXX-598-399.png)
+![](https://gw.alicdn.com/tfs/TB1keXpQXXXXXXCXFXXXXXXXXXX-468-400.png)
+
+
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
@@ -77,38 +84,3 @@ redirect_from:
     <td class="tg-yw4l">["30","30"] 或  [30",30]</td>
   </tr>
 </table>
-
-
-## 示意图
-
-![](https://gw.alicdn.com/tfs/TB1DE0xQXXXXXatXpXXXXXXXXXX-520-401.png)
-![](https://gw.alicdn.com/tfs/TB1gDkPPVXXXXbiaFXXXXXXXXXX-598-399.png)
-![](https://gw.alicdn.com/tfs/TB1keXpQXXXXXXCXFXXXXXXXXXX-468-400.png)
-
-### 数据格式
-
-```
-{
-
-    "type": 1,
-
-    "style": {
-
-        "margin": [10, 0, 0, 10],
-
-        "aspectRatio":3.5,
-
-        "padding" : [10, 0, 0, 10],
-
-        "bgColor": "#ff0a0a",
-
-        "bgImgUrl": "http://g.alicdn.com/image_background_data",
-
-        "vGap" : "123",
-
-        "hGap" : "123",
-
-        "cols" : ["30","30","30"],
-
-     }
-```

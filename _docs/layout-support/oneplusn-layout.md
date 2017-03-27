@@ -7,7 +7,7 @@ redirect_from:
   - /theme-setup/
 ---
 
-示意图
+## 示意图
 
 * 二个组件／三个组件
 
@@ -17,7 +17,6 @@ redirect_from:
 
 ![](https://gw.alicdn.com/tfs/TB1njpvQXXXXXarXpXXXXXXXXXX-440-399.png)
 
-支持属性：
 
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}

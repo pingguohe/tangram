@@ -7,6 +7,8 @@ redirect_from:
   - /theme-setup/
 ---
 
+## 示意图
+
 ![](https://gw.alicdn.com/tfs/TB1_e4hQXXXXXcSXVXXXXXXXXXX-444-510.png)
 
 

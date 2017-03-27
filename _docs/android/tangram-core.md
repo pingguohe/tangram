@@ -7,147 +7,117 @@ redirect_from:
   - /theme-setup/
 ---
 
-Minimal Mistakes has been developed as a [Jekyll theme gem](http://jekyllrb.com/docs/themes/) for easier use. It is also 100% compatible with GitHub Pages --- just with a more involved installation process.
+## TangramBuilder 核心方法
 
-{% include toc %}
-
-## Installing the Theme
-
-If you're running Jekyll v3.3+ and self-hosting you can quickly install the theme as Ruby gem.
-If you're hosting with GitHub Pages you'll have to use the old "repo fork" method or directly copy all of the theme files[^structure] into your site.
-
-[^structure]: See [**Structure** page]({{ "/docs/structure/" | absolute_url }}) for a list of theme files and what they do.
-
-**ProTip:** Be sure to remove `/docs` and `/test` if you forked Minimal Mistakes. These folders contain documentation and test pages for the theme and you probably don't littering up in your repo.
-{: .notice--info}
-
-### Ruby Gem Method
-
-Add this line to your Jekyll site's `Gemfile`:
-
-```ruby
-gem "minimal-mistakes-jekyll"
-```
-
-Add this line to your Jekyll site's `_config.yml` file:
-
-```yaml
-theme: minimal-mistakes-jekyll
-```
-
-Then run Bundler to install the theme gem and dependencies:
-
-```bash
-bundle install
-```
-
-### GitHub Pages Compatible Method
-
-Fork the [Minimal Mistakes theme](https://github.com/mmistakes/minimal-mistakes/fork), then rename the repo to **USERNAME.github.io** --- replacing **USERNAME** with your GitHub username.
-
-<figure>
-  <img src="{{ '/assets/images/mm-theme-fork-repo.png' | absolute_url }}" alt="fork Minimal Mistakes">
-</figure>
-
-**Note:** Your Jekyll site should be viewable immediately at <http://USERNAME.github.io>. If it's not, you can force a rebuild by **Customizing Your Site** (see below for more details).
-{: .notice--warning}
-
-If you're hosting several Jekyll based sites under the same GitHub username you will have to use Project Pages instead of User Pages. Essentially you rename the repo to something other than **USERNAME.github.io** and create a `gh-pages` branch off of `master`. For more details on how to set things up check [GitHub's documentation](https://help.github.com/articles/user-organization-and-project-pages/).
-
-<figure>
-  <img src="{{ '/assets/images/mm-gh-pages.gif' | absolute_url }}" alt="creating a new branch on GitHub">
-</figure>
-
-Replace the contents of `Gemfile` found in the root of your Jekyll site with the following:
-
-```ruby
-source "https://rubygems.org"
-
-gem "github-pages", group: :jekyll_plugins
-
-group :jekyll_plugins do
-  gem "jekyll-paginate"
-  gem "jekyll-sitemap"
-  gem "jekyll-gist"
-  gem "jekyll-feed"
-  gem "jemoji"
-end
-```
-
-Then run `bundle update` and verify that all gems install properly.
-
-### Remove the Unnecessary
-
-If you forked or downloaded the `minimal-mistakes-jekyll` repo you can safely remove the following folders and files:
-
-- `.editorconfig`
-- `.gitattributes`
-- `.github`
-- `/docs`
-- `/test`
-- `CHANGELOG.md`
-- `minimal-mistakes-jekyll.gemspec`
-- `README.md`
-- `screenshot-layouts.png`
-- `screenshot.png`
-
-## Setup Your Site
-
-Depending on the path you took installing Minimal Mistakes you'll setup things a little differently.
-
-### Starting Fresh
-
-Starting with an empty folder and `Gemfile` you'll need to copy or re-create this [default `_config.yml`](https://github.com/mmistakes/minimal-mistakes/blob/master/_config.yml) file. For a full explanation of every setting be sure to read the [**Configuration**]({{ "/docs/configuration/" | absolute_url }}) section.
-
-After taking care of Jekyll's configuration file, you'll need to create and edit the following data files.
-
-- [`_data/ui-text.yml`](https://github.com/mmistakes/minimal-mistakes/blob/master/_data/ui-text.yml) - UI text [documentation]({{ "/docs/ui-text/" | absolute_url }})
-- [`_data/navigation.yml`](https://github.com/mmistakes/minimal-mistakes/blob/master/_data/navigation.yml) - navigation [documentation]({{ "/docs/navigation/" | absolute_url }})
-
-### Starting from `jekyll new`
-
-Scaffolding out a site with the `jekyll new` command requires you to modify a few files that it creates.
-
-Edit `_config.yml` and create `_data/ui-text.yml` and `_data/navigation.yml` same as above. Then:
-
-- Replace `<site root>/index.md` with a modified [Minimal Mistakes `index.html`](https://github.com/mmistakes/minimal-mistakes/blob/master/index.html). Be sure to enable pagination if using the [`home` layout]({{ "/docs/layouts/#home-page" | absolute_url }}) by adding the necessary lines to **_config.yml**.
-- Change `layout: post` in `_posts/0000-00-00-welcome-to-jekyll.markdown` to `layout: single`.
-- Remove `about.md`, or at the very least change `layout: page` to `layout: single` and remove references to `icon-github.html` (or [copy to your `_includes`](https://github.com/jekyll/minima/tree/master/_includes) if using it).
-
-### Migrating to Gem Version
-
-If you're migrating a site already using Minimal Mistakes and haven't customized any of the theme files things upgrading will be easier for you.
-
-Start by removing `_includes`, `_layouts`, `_sass`, `assets` folders and all files within. You won't need these anymore as they're bundled with the theme gem.
-
-If you customized any of these files leave them alone, and only remove the untouched ones. If done correctly your modified versions should [override](http://jekyllrb.com/docs/themes/#overriding-theme-defaults) the versions bundled with the theme and be used by Jekyll instead.
-
-#### Update Gemfile
-
-Replace `gem "github-pages` or `gem "jekyll"` with `gem "jekyll", "~> 3.3.0"`. You'll need the latest version of Jekyll[^update-jekyll] for Minimal Mistakes to work and load all of the theme's assets properly, this line forces Bundler to do that.
-
-[^update-jekyll]: You could also run `bundle update jekyll` to update Jekyll.
-
-Add the Minimal Mistakes theme gem: 
-
-```ruby
-gem "minimal-mistakes-jekyll"
-```
-
-When finished your `Gemfile` should look something like this:
-
-```ruby
-source "https://rubygems.org"
-
-gem "jekyll", "~> 3.3.0"
-gem "minimal-mistakes-jekyll"
-```
-
-Then run `bundle update` and add `theme: minimal-mistakes-jekyll` to your `_config.yml`.
-
-**v4 Breaking Change:** Paths for image headers, overlays, teasers, [galleries]({{ "/docs/helpers/#gallery" | absolute_url }}), and [feature rows]({{ "/docs/helpers/#feature-row" | absolute_url }}) have changed and now require a full path. Instead of just `image: filename.jpg` you'll need to use the full path eg: `image: /assets/images/filename.jpg`. The preferred location is now `/assets/images/` but can be placed elsewhere or external hosted. This all applies for image references in `_config.yml` and `author.yml` as well.
-{: .notice--danger}
+```TangramBuilder```是初始化 Tangram 运行环境，初始化```TangramEngine```的模块，它有一些核心方法，必须重点介绍。
 
 ---
 
-That's it! If all goes well running `bundle exec jekyll serve` should spin-up your site.
+```
+public static void init(@NonNull final Context context, IInnerImageSetter innerImageSetter, Class<? extends ImageView> imageClazz)
+```
+
+初始化 Tangram，初始化在应用全局只需要调用一次即可。主要提供一个[```InnerImageSetter```]()，它是加载图片的通用接口，用来在框架内部加载图片时调用。还要提供一个图片基类，通常一个应用会自定义一个 ImageView，为了让 Tangram 内部也能使用业务方自定义的 ```ImageView```，在初始化的时侯也将该类传给 Tangram。
+
+---
+
+```
+public static InnerBuilder newInnerBuilder(@NonNull final Context context)
+```
+
+构造真正的 builder 对象，返回的```InnerBuilder```对象里已经注册了 Tangram 内置的卡片，业务方拿到这个 buidler 对象主要是去注册自定义的卡片和组件。最后调用```public TangramEngine build()```生成```TangramEngine```。
+
+---
+
+## TangramEngine 核心方法
+
+```TangramEngine```是绑定 Tangram 数据，绑定 RecyclerView 的核心模块，也是操作页面数据的核心模块，它的一些核心方法，也必须重点介绍。
+
+---
+
+```
+public void bindView(@NonNull final RecyclerView view)
+```
+
+绑定 recyclerView 对象。
+
+```
+public void unbindView()
+```
+
+清空所绑定的 recyclerView 对象、adapter对象等。
+
+```
+public RecyclerView getContentView()
+```
+
+获取所绑定的 recyclerView 对象，这一步应当在调用 bindView 之后调用。
+
+---
+
+```
+public void destroy()
+```
+
+页面退出时调用，释放内部资源。
+
+---
+
+```
+public List<C> parseData(@Nullable T data)
+```
+解析卡片json数据
+
+```
+public List<L> parseComponent(@Nullable T data)
+```
+解析组件json数据
+
+---
+
+```
+public void setData(@Nullable T data)
+```
+绑定整个页面的数据
+
+```
+public void appendData(@Nullable T data)
+```
+添加卡片数据
+
+```
+public void insertData(int position, @Nullable T data)
+```
+插入卡片数据
+
+```
+public void replaceData(int position, @Nullable T data)
+```
+替换卡片数据
+
+上述几个方法都有原始json 数据类型和解析过的卡片 model 数据类型的版本。
+
+---
+
+```
+public <S> void register(@NonNull Class<S> type, @NonNull S service)
+```
+
+注册自定义的辅助模块
+
+```
+public <S> S getService(@NonNull Class<S> type)
+```
+获取注册的辅助模块
+
+---
+
+```
+public void refresh()
+```
+刷新页面
+
+```
+public void onScrolled()
+```
+触发页面懒加载数据的逻辑

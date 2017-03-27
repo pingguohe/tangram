@@ -9,6 +9,8 @@ redirect_from:
 
 可拖动，自动吸边。示意图
 
+## 示意图
+
 <img src="https://gw.alicdn.com/tfs/TB1PPJFQXXXXXauXFXXXXXXXXXX-720-1280.gif" width = "360" height = "640"/>
 
 | 字段 | 意义 | 类型 | 样例 |

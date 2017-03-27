@@ -9,7 +9,7 @@ redirect_from:
 
 适用于Banner的场景，可自动滚动，循环滚动，也可以做线性的滚动，而不是Banner一页一页的滚动。
 
-示意图
+## 示意图
 
 <img src="https://gw.alicdn.com/tfs/TB1vP0fQXXXXXaHapXXXXXXXXXX-720-1280.gif" width = "360" height = "640"/>
 

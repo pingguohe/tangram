@@ -9,7 +9,7 @@ redirect_from:
 
 碰到Tangram的顶端或底端就吸住
 
-示意图
+## 示意图
 
 <img src="https://gw.alicdn.com/tfs/TB1ABVdQXXXXXahapXXXXXXXXXX-720-1280.gif" width = "360" height = "640"/>
 
