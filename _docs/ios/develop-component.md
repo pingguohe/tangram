@@ -7,147 +7,122 @@ redirect_from:
   - /theme-setup/
 ---
 
-Minimal Mistakes has been developed as a [Jekyll theme gem](http://jekyllrb.com/docs/themes/) for easier use. It is also 100% compatible with GitHub Pages --- just with a more involved installation process.
 
-{% include toc %}
+## 概述
 
-## Installing the Theme
+组件开发仅需创建element(View)，在element(View)中返回高度即可。Tangram提供组件生命周期调用代码的时机，需要element(View)中实现对应的Protocol。
 
-If you're running Jekyll v3.3+ and self-hosting you can quickly install the theme as Ruby gem.
-If you're hosting with GitHub Pages you'll have to use the old "repo fork" method or directly copy all of the theme files[^structure] into your site.
+使用TangramDefaultDataSourceHelper的话，JSONObject的字段会用KVC直接映射到View中，需要property的名字和下发JSON中对应字段的名字一致。
 
-[^structure]: See [**Structure** page]({{ "/docs/structure/" | absolute_url }}) for a list of theme files and what they do.
+TangramDefaultDataSourceHelper会在ViewModel映射到View的过程中做字段保护，当数据类型与实际property类型不符合，会不进行赋值。为做保护，从JSON映射到的property仅支持NSString,NSArray,NSDictionary,NSNumebr,NSData类型。
 
-**ProTip:** Be sure to remove `/docs` and `/test` if you forked Minimal Mistakes. These folders contain documentation and test pages for the theme and you probably don't littering up in your repo.
-{: .notice--info}
+在Tangram中，json映射到view的流程是： JSONObject --> ViewModel(TangramDefaultItemModel) --> View
 
-### Ruby Gem Method
+## 注册
 
-Add this line to your Jekyll site's `Gemfile`:
+只有注册了组件，才可以使用TangramDefaultDatasourceHelper 快速实现从ViewModel到View的转化。
 
-```ruby
-gem "minimal-mistakes-jekyll"
+类似快速开始中Demo的写法
+
+```objc
+ [TangramDefaultItemModelFactory registElementType:@"1" className:@"TangramSingleImageElement"];
+ [TangramDefaultItemModelFactory registElementType:@"2" className:@"TangramSimpleTextElement"];
 ```
 
-Add this line to your Jekyll site's `_config.yml` file:
+## element实现
 
-```yaml
-theme: minimal-mistakes-jekyll
+element是UIView的子类即可。需要实现`TangramEasyElementProtocol`和`TangramElementHeightProtocol`，这两个是必选的，同时推荐实现`TMMuiLazyScrollViewCellProtocol`
+
+![](https://img.alicdn.com/tfs/TB1BWNgQpXXXXaoXVXXXXXXXXXX-739-619.png)
+
+### [必选]TangramEasyElementProtocol
+
+这个Protocol做一些绑定的动作，让element和model，layout，tangrambus做关联。
+
+`TangramEasyElementProtocol`包含以下方法
+
+```objc
+
+@protocol TangramEasyElementProtocol <NSObject>
+
+@required
+//Get itemModel
+- (TangramDefaultItemModel *)tangramItemModel;
+//Set itemModel
+- (void)setTangramItemModel: (TangramDefaultItemModel *)tangramItemModel;
+
+@optional
+
+// Bind layout
+- (void)setAtLayout: (UIView<TangramLayoutProtocol> *)layout;
+- (UIView<TangramLayoutProtocol> *)atLayout;
+
+// Bind TangramBus
+- (void)setTangramBus:(TangramBus *)tangramBus;
+
+@end
+
 ```
 
-Then run Bundler to install the theme gem and dependencies:
+其实这就是两个get&set方法加一个事件总线绑定，所以实际上是需要在element上声明两个变量tangramItemModel,atLayout，内部加一个weak的TangramBus
 
-```bash
-bundle install
+atLayout是绑定的layout,让组件可以找到layout
+
+这些方法的调用时机是在element被init之后被调用，被调用的时候，element的frame还没有被赋值。
+
+element需要的数据可以通过`itemModel`的`bizValueForkey`获取，拿到的就是服务端原始下发的json(除style)中的数据，style中的数据使用`styleValueForKey`方法获取
+
+TangramBus用于组件之间，组件和Controller之前的事件通信，可以替代繁杂的Delegate，使用方法在后面进行说明
+
+### [必选]实现TangramElementHeightProtocol
+
+ element中需要实现一个静态方法`+ (CGFloat)heightByModel:(TangramDefaultItemModel *)itemModel;`
+根据itemModel中的数据，返回对应该View的高度
+
+在这里，可以使用`itemModel`的`bizValueForKey`或者`styleValueForKey`的方法在这里获取参数值，这里的itemModel已经获取了宽度
+
+**不实现这个delegate的View将没有高度!**
+
+### [强烈推荐]element复用/曝光/渲染时机
+
+在MUILazyScrollView中，提供几个AOP方法
+
+element可以实现`TMMuiLazyScrollViewCellProtocol`
+
+```objc
+
+@protocol  TMMuiLazyScrollViewCellProtocol<NSObject>
+
+@optional
+//准备复用的时候，做的动作 调用时机是在dequeueReusableItemWithIdentifier返回View之前
+//调用dequeueReusableItemWithIdentifier一定会调用到这个方法
+- (void)mui_prepareForReuse;
+//当View进入视图范围内，调用这个方法，传入enter的次数，曝光埋点打在这里是精确的点
+//注意：并非是在视图init的时候，视图init会受缓冲区的影响，生成View的范围比视图实际区域会大一些
+//times 次数的意思,从0开始 0的意思是第一次，1第二次，以此类推
+- (void)mui_didEnterWithTimes:(NSUInteger)times;
+//提供一个渲染View的时机，生成View后执行
+//在View从delegate中返回之后执行，推荐把布局视图等方法放在这个方法内
+//如果是在Tangram的组件中使用，在这个方法执行的时候会带frame
+- (void)mui_afterGetView;
+
+@end
 ```
 
-### GitHub Pages Compatible Method
+在渲染、复用前的准备这些时机需要插入代码时，强烈推荐使用Protocol的这些方法
 
-Fork the [Minimal Mistakes theme](https://github.com/mmistakes/minimal-mistakes/fork), then rename the repo to **USERNAME.github.io** --- replacing **USERNAME** with your GitHub username.
+请注意一定要在刷新的时候调用`TangramView`的`resetViewEnterTimes`方法，清空组件进入屏幕的次数
 
-<figure>
-  <img src="{{ '/assets/images/mm-theme-fork-repo.png' | absolute_url }}" alt="fork Minimal Mistakes">
-</figure>
+### 关于复用标记Protocol TangramElementReuseIdentifierProtocol
 
-**Note:** Your Jekyll site should be viewable immediately at <http://USERNAME.github.io>. If it's not, you can force a rebuild by **Customizing Your Site** (see below for more details).
-{: .notice--warning}
+````objc
+@protocol TangramElementReuseIdentifierProtocol <NSObject>
 
-If you're hosting several Jekyll based sites under the same GitHub username you will have to use Project Pages instead of User Pages. Essentially you rename the repo to something other than **USERNAME.github.io** and create a `gh-pages` branch off of `master`. For more details on how to set things up check [GitHub's documentation](https://help.github.com/articles/user-organization-and-project-pages/).
++ (NSString *)reuseIdByModel:(TangramDefaultItemModel *)itemModel;
 
-<figure>
-  <img src="{{ '/assets/images/mm-gh-pages.gif' | absolute_url }}" alt="creating a new branch on GitHub">
-</figure>
+````
+如果没有实现这个protocol，Tangram会把组件的type号作为复用id，同类组件可以复用。
 
-Replace the contents of `Gemfile` found in the root of your Jekyll site with the following:
+但是有些组件不能遵循这个规则，比如有些组件要求不被复用，有些组件的复用id不是type(比如动态组件)，那么实现这个protocol，返回对应的reuseIdentifier
 
-```ruby
-source "https://rubygems.org"
 
-gem "github-pages", group: :jekyll_plugins
-
-group :jekyll_plugins do
-  gem "jekyll-paginate"
-  gem "jekyll-sitemap"
-  gem "jekyll-gist"
-  gem "jekyll-feed"
-  gem "jemoji"
-end
-```
-
-Then run `bundle update` and verify that all gems install properly.
-
-### Remove the Unnecessary
-
-If you forked or downloaded the `minimal-mistakes-jekyll` repo you can safely remove the following folders and files:
-
-- `.editorconfig`
-- `.gitattributes`
-- `.github`
-- `/docs`
-- `/test`
-- `CHANGELOG.md`
-- `minimal-mistakes-jekyll.gemspec`
-- `README.md`
-- `screenshot-layouts.png`
-- `screenshot.png`
-
-## Setup Your Site
-
-Depending on the path you took installing Minimal Mistakes you'll setup things a little differently.
-
-### Starting Fresh
-
-Starting with an empty folder and `Gemfile` you'll need to copy or re-create this [default `_config.yml`](https://github.com/mmistakes/minimal-mistakes/blob/master/_config.yml) file. For a full explanation of every setting be sure to read the [**Configuration**]({{ "/docs/configuration/" | absolute_url }}) section.
-
-After taking care of Jekyll's configuration file, you'll need to create and edit the following data files.
-
-- [`_data/ui-text.yml`](https://github.com/mmistakes/minimal-mistakes/blob/master/_data/ui-text.yml) - UI text [documentation]({{ "/docs/ui-text/" | absolute_url }})
-- [`_data/navigation.yml`](https://github.com/mmistakes/minimal-mistakes/blob/master/_data/navigation.yml) - navigation [documentation]({{ "/docs/navigation/" | absolute_url }})
-
-### Starting from `jekyll new`
-
-Scaffolding out a site with the `jekyll new` command requires you to modify a few files that it creates.
-
-Edit `_config.yml` and create `_data/ui-text.yml` and `_data/navigation.yml` same as above. Then:
-
-- Replace `<site root>/index.md` with a modified [Minimal Mistakes `index.html`](https://github.com/mmistakes/minimal-mistakes/blob/master/index.html). Be sure to enable pagination if using the [`home` layout]({{ "/docs/layouts/#home-page" | absolute_url }}) by adding the necessary lines to **_config.yml**.
-- Change `layout: post` in `_posts/0000-00-00-welcome-to-jekyll.markdown` to `layout: single`.
-- Remove `about.md`, or at the very least change `layout: page` to `layout: single` and remove references to `icon-github.html` (or [copy to your `_includes`](https://github.com/jekyll/minima/tree/master/_includes) if using it).
-
-### Migrating to Gem Version
-
-If you're migrating a site already using Minimal Mistakes and haven't customized any of the theme files things upgrading will be easier for you.
-
-Start by removing `_includes`, `_layouts`, `_sass`, `assets` folders and all files within. You won't need these anymore as they're bundled with the theme gem.
-
-If you customized any of these files leave them alone, and only remove the untouched ones. If done correctly your modified versions should [override](http://jekyllrb.com/docs/themes/#overriding-theme-defaults) the versions bundled with the theme and be used by Jekyll instead.
-
-#### Update Gemfile
-
-Replace `gem "github-pages` or `gem "jekyll"` with `gem "jekyll", "~> 3.3.0"`. You'll need the latest version of Jekyll[^update-jekyll] for Minimal Mistakes to work and load all of the theme's assets properly, this line forces Bundler to do that.
-
-[^update-jekyll]: You could also run `bundle update jekyll` to update Jekyll.
-
-Add the Minimal Mistakes theme gem: 
-
-```ruby
-gem "minimal-mistakes-jekyll"
-```
-
-When finished your `Gemfile` should look something like this:
-
-```ruby
-source "https://rubygems.org"
-
-gem "jekyll", "~> 3.3.0"
-gem "minimal-mistakes-jekyll"
-```
-
-Then run `bundle update` and add `theme: minimal-mistakes-jekyll` to your `_config.yml`.
-
-**v4 Breaking Change:** Paths for image headers, overlays, teasers, [galleries]({{ "/docs/helpers/#gallery" | absolute_url }}), and [feature rows]({{ "/docs/helpers/#feature-row" | absolute_url }}) have changed and now require a full path. Instead of just `image: filename.jpg` you'll need to use the full path eg: `image: /assets/images/filename.jpg`. The preferred location is now `/assets/images/` but can be placed elsewhere or external hosted. This all applies for image references in `_config.yml` and `author.yml` as well.
-{: .notice--danger}
-
----
-
-That's it! If all goes well running `bundle exec jekyll serve` should spin-up your site.
