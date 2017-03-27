@@ -7,147 +7,115 @@ redirect_from:
   - /theme-setup/
 ---
 
-Minimal Mistakes has been developed as a [Jekyll theme gem](http://jekyllrb.com/docs/themes/) for easier use. It is also 100% compatible with GitHub Pages --- just with a more involved installation process.
+## Tangram命名的起源
 
-{% include toc %}
+Tangram，是七巧板的意思，寓意着我们的界面能够像七巧板一样在手中变出无限的可能。
 
-## Installing the Theme
+## Tangram能做什么
 
-If you're running Jekyll v3.3+ and self-hosting you can quickly install the theme as Ruby gem.
-If you're hosting with GitHub Pages you'll have to use the old "repo fork" method or directly copy all of the theme files[^structure] into your site.
+Tangram提供了流式布局、滚动布局，瀑布流布局，固定布局等数种布局样式，布局提供样式参数供调整，布局内部也可填充任意的视图(View)，使Native开发的页面具备一定的动态性，并提供极致的性能。
 
-[^structure]: See [**Structure** page]({{ "/docs/structure/" | absolute_url }}) for a list of theme files and what they do.
+## 核心原则
 
-**ProTip:** Be sure to remove `/docs` and `/test` if you forked Minimal Mistakes. These folders contain documentation and test pages for the theme and you probably don't littering up in your repo.
-{: .notice--info}
++ 性能。提供UI组件复用能力，抽象布局层，保障运行时内存和滑动效率。
++ 可配置化。布局和组件提供基本样式配置，并提供UI布局的抽象结构，使得布局能够通过后端接口下发/自解析等方式来操作，提供灵活性。组件提供反射/KVC的方式快速映射业务属性。
++ 组件化。强制组件封装，使得View层面能够复用。
++ 可扩展。开放的接口和分层，可以灵活和其他技术整合。
 
-### Ruby Gem Method
+## 核心概念
 
-Add this line to your Jekyll site's `Gemfile`:
+不论是要想使用 Tangram 加速业务开发，还是想熟知 Tangram sdk 内部的设计思路，首先要了解 Tangram 里涉及的几个概念。通过这些概念可以更好地明确它所解决的问题域。
 
-```ruby
-gem "minimal-mistakes-jekyll"
+在 Tangram 的领域里，我们将一个普通的列表页面结构化成三个层次：分别是页面 - 卡片 - 组件。一个页面下面挂载多个卡片，一个卡片下面挂载多个组件，整体是一个树状结构描述。每一层次都有各自的职责。
+
+```
+页面
+	|
+	- 卡片1
+	|	|
+	|	- 组件11
+	|	|
+	|	- 组件12
+	|	|
+	|	- 组件13
+	|
+	- 卡片2
+	|	|
+	|	- 组件21
+	|	|
+	|	- 组件22
+	|
+	- 卡片3
+	|	|
+	|	- 组件31
+	|	|
+	|	- 组件32
+	|
+	...
+	|
+	|
+	|
+	- 卡片 
+		|
+		- 组件n1
 ```
 
-Add this line to your Jekyll site's `_config.yml` file:
+## 页面
 
-```yaml
-theme: minimal-mistakes-jekyll
+在模型上，如上图所示，一个页面包含一个卡片列表，每个卡片持有一个组件列表，整个页面是一个页面 - 卡片 - 组件的树状结构。它要求整体可滚动，并且能按照组件的类型去回收复用。
+
+在实现上，在 Tangram-iOS 里，它是基于 [LazyScrollView](https://github.com/alibaba/LazyScrollView) 的页面容器，在 Tangram-Android 里，它是基于 [vlayout](https://github.com/alibaba/vlayout) 构建的 RecyclerView。运行 LazyScrollView 或者 RecyclerView 的页面实体（Controller, Activity）还得负责初始化 Tangram，绑定数据，响应业务事件等职责。
+
+## 卡片
+
+卡片的主要职责是负责对组件进行布局，它有四个组成：header、footer、body、style。最重要的是 body 部分，它包含了内嵌的组件，如果卡片没有 body，即没有组件，也就不在视觉上做渲染。卡片的布局也就是对 body 里包含的组件来进行布局。Tangram 内置了一系列布局能力对组件进行布局，包括流式布局、瀑布流布局、吸顶布局、悬浮布局、轮播布局等等，基本上常见的布局方式都可以覆盖到。header、footer 是卡片的标题和尾部，目前只有轮播卡片、通用流式卡片支持 header、footer。style 是对布局样式的描述，所有布局会有一些通用的样式属性比如边距、间距，也有一些特有的比如宽高比，通过样式的描述，可以让布局能力更加丰富。
+
+卡片的布局描述就是一种卡片类型的声明，因为框架已经内置了布局能力，只需要声明采用哪一种布局方式，因此卡片不需要布局模板。如果框架的内置布局能力满足不了需求，还可以自定义扩展新的卡片类型注册到 Tangram 里。
+
+以下是一个卡片的 json 描述示例（`type`, `style`, `header`, `footer`, `items`都是关键字）：
+
+```
+{
+"type": 1, ---> 描述卡片类型
+"style": { ---> 描述样式
+  ...
+},
+"header": { ---> 描述header
+},
+"items": [ ---> 描述组件列表
+  ...
+],
+"footer": { ---> 描述footer
+}
+}
 ```
 
-Then run Bundler to install the theme gem and dependencies:
+## 组件
 
-```bash
-bundle install
+组件的职责就是负责基本的 UI 展示和交互，它是按照业务划分的最小单元，不像通用的 UI 框架那样会设计文本、按钮、线条那样的基础元素。因此组件长什么样，框架是不知道的，框架内也不内置组件，都是由业务方接入的时候自行按需注册。
+
+同卡片一样，组件的描述也需要提供与 UI 相关的模板，包含3部分：类型、数据、样式。类型是必须的，业务方在 Tangram 里注册过这种类型，那么就能被框架解析处理。数据也是必须的，它包含了业务信息；样式是可选的，组件可以按照自己的需求定义样式，在实现的时候解读样式数据。
+
+以下是一个组件的 json 描述示例（`type`, `style`都是关键字）：
+
+```
+{
+"type": "2", ---> 描述组件类型
+"style": { ---> 描述组件样式
+  "margin": [
+    10,
+    10,
+    10,
+    10
+  ],
+  "height": 100,
+  "width": 100
+}
+"imgUrl": "[URL]", ---> 业务数据
+"title": "Sample"
+}
 ```
 
-### GitHub Pages Compatible Method
+## 样式
 
-Fork the [Minimal Mistakes theme](https://github.com/mmistakes/minimal-mistakes/fork), then rename the repo to **USERNAME.github.io** --- replacing **USERNAME** with your GitHub username.
-
-<figure>
-  <img src="{{ '/assets/images/mm-theme-fork-repo.png' | absolute_url }}" alt="fork Minimal Mistakes">
-</figure>
-
-**Note:** Your Jekyll site should be viewable immediately at <http://USERNAME.github.io>. If it's not, you can force a rebuild by **Customizing Your Site** (see below for more details).
-{: .notice--warning}
-
-If you're hosting several Jekyll based sites under the same GitHub username you will have to use Project Pages instead of User Pages. Essentially you rename the repo to something other than **USERNAME.github.io** and create a `gh-pages` branch off of `master`. For more details on how to set things up check [GitHub's documentation](https://help.github.com/articles/user-organization-and-project-pages/).
-
-<figure>
-  <img src="{{ '/assets/images/mm-gh-pages.gif' | absolute_url }}" alt="creating a new branch on GitHub">
-</figure>
-
-Replace the contents of `Gemfile` found in the root of your Jekyll site with the following:
-
-```ruby
-source "https://rubygems.org"
-
-gem "github-pages", group: :jekyll_plugins
-
-group :jekyll_plugins do
-  gem "jekyll-paginate"
-  gem "jekyll-sitemap"
-  gem "jekyll-gist"
-  gem "jekyll-feed"
-  gem "jemoji"
-end
-```
-
-Then run `bundle update` and verify that all gems install properly.
-
-### Remove the Unnecessary
-
-If you forked or downloaded the `minimal-mistakes-jekyll` repo you can safely remove the following folders and files:
-
-- `.editorconfig`
-- `.gitattributes`
-- `.github`
-- `/docs`
-- `/test`
-- `CHANGELOG.md`
-- `minimal-mistakes-jekyll.gemspec`
-- `README.md`
-- `screenshot-layouts.png`
-- `screenshot.png`
-
-## Setup Your Site
-
-Depending on the path you took installing Minimal Mistakes you'll setup things a little differently.
-
-### Starting Fresh
-
-Starting with an empty folder and `Gemfile` you'll need to copy or re-create this [default `_config.yml`](https://github.com/mmistakes/minimal-mistakes/blob/master/_config.yml) file. For a full explanation of every setting be sure to read the [**Configuration**]({{ "/docs/configuration/" | absolute_url }}) section.
-
-After taking care of Jekyll's configuration file, you'll need to create and edit the following data files.
-
-- [`_data/ui-text.yml`](https://github.com/mmistakes/minimal-mistakes/blob/master/_data/ui-text.yml) - UI text [documentation]({{ "/docs/ui-text/" | absolute_url }})
-- [`_data/navigation.yml`](https://github.com/mmistakes/minimal-mistakes/blob/master/_data/navigation.yml) - navigation [documentation]({{ "/docs/navigation/" | absolute_url }})
-
-### Starting from `jekyll new`
-
-Scaffolding out a site with the `jekyll new` command requires you to modify a few files that it creates.
-
-Edit `_config.yml` and create `_data/ui-text.yml` and `_data/navigation.yml` same as above. Then:
-
-- Replace `<site root>/index.md` with a modified [Minimal Mistakes `index.html`](https://github.com/mmistakes/minimal-mistakes/blob/master/index.html). Be sure to enable pagination if using the [`home` layout]({{ "/docs/layouts/#home-page" | absolute_url }}) by adding the necessary lines to **_config.yml**.
-- Change `layout: post` in `_posts/0000-00-00-welcome-to-jekyll.markdown` to `layout: single`.
-- Remove `about.md`, or at the very least change `layout: page` to `layout: single` and remove references to `icon-github.html` (or [copy to your `_includes`](https://github.com/jekyll/minima/tree/master/_includes) if using it).
-
-### Migrating to Gem Version
-
-If you're migrating a site already using Minimal Mistakes and haven't customized any of the theme files things upgrading will be easier for you.
-
-Start by removing `_includes`, `_layouts`, `_sass`, `assets` folders and all files within. You won't need these anymore as they're bundled with the theme gem.
-
-If you customized any of these files leave them alone, and only remove the untouched ones. If done correctly your modified versions should [override](http://jekyllrb.com/docs/themes/#overriding-theme-defaults) the versions bundled with the theme and be used by Jekyll instead.
-
-#### Update Gemfile
-
-Replace `gem "github-pages` or `gem "jekyll"` with `gem "jekyll", "~> 3.3.0"`. You'll need the latest version of Jekyll[^update-jekyll] for Minimal Mistakes to work and load all of the theme's assets properly, this line forces Bundler to do that.
-
-[^update-jekyll]: You could also run `bundle update jekyll` to update Jekyll.
-
-Add the Minimal Mistakes theme gem: 
-
-```ruby
-gem "minimal-mistakes-jekyll"
-```
-
-When finished your `Gemfile` should look something like this:
-
-```ruby
-source "https://rubygems.org"
-
-gem "jekyll", "~> 3.3.0"
-gem "minimal-mistakes-jekyll"
-```
-
-Then run `bundle update` and add `theme: minimal-mistakes-jekyll` to your `_config.yml`.
-
-**v4 Breaking Change:** Paths for image headers, overlays, teasers, [galleries]({{ "/docs/helpers/#gallery" | absolute_url }}), and [feature rows]({{ "/docs/helpers/#feature-row" | absolute_url }}) have changed and now require a full path. Instead of just `image: filename.jpg` you'll need to use the full path eg: `image: /assets/images/filename.jpg`. The preferred location is now `/assets/images/` but can be placed elsewhere or external hosted. This all applies for image references in `_config.yml` and `author.yml` as well.
-{: .notice--danger}
-
----
-
-That's it! If all goes well running `bundle exec jekyll serve` should spin-up your site.
+在卡片和组件的模型里，都提及了样式，样式包含除业务数据之外的、与 UI 相关的数据，让卡片或者组件更加具备可配置性，当然前提是卡片和组件实现了这些属性。比如卡片的 margin 和padding，组件的文字颜色、字号大小。Tangram 内置卡片的样式属性，请参考后续详细描述。
