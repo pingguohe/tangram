@@ -73,10 +73,24 @@ docs:
     children:
       - title: "接入Tangram代码"
         url: /docs/android/access-tangram
-      - title: "TangramView核心方法"
+      - title: "Tangram核心方法"
         url: /docs/android/tangram-core
       - title: "组件开发"
         url: /docs/android/develop-component
+      - title: "处理点击"
+        url: /docs/android/handle-click
+      - title: "处理曝光"
+        url: /docs/android/handle-exposure
+      - title: "异步加载数据"
+        url: /docs/android/load-data
+      - title: "使用定时器"
+        url: /docs/android/use-timer
+      - title: "使用组件辅助模块"
+        url: /docs/android/use-cell-support
+      - title: "使用卡片辅助模块"
+        url: /docs/android/use-card-support
+      - title: "使用自定义服务"
+        url: /docs/android/use-service-manager
       - title: "事件总线"
         url: /docs/android/eventbus
       - title: "使用布局"
