@@ -10,7 +10,7 @@ sidebar:
 
 ## 示意图
 
-![](https://gw.alicdn.com/tfs/TB1_e4hQXXXXXcSXVXXXXXXXXXX-444-510.png)
+![](https://gw.alicdn.com/tfs/TB1FBXHQpXXXXXPXpXXXXXXXXXX-449-412.png)
 
 
 | 字段 | 意义 | 类型 | 样例 |
@@ -20,3 +20,4 @@ sidebar:
 | hGap | 水平方向上，每个组件的间距 | String/Number | "9" |
 | bgColor | 背景色 | String | "#FFFFFF"|
 | column | 列数| String/Number| "3"或3 |
+

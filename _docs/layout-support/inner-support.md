@@ -8,11 +8,11 @@ sidebar:
   nav: docs
 ---
 
-使用布局时，请根据功能在以下布局中选择，（对照这里[Guide](http://work.tmall.net/projects/nativefly/wiki/GenericCardCell)）
+使用布局时，请根据功能在以下布局中选择
 
 ## 流式布局
 
-一排N，最常用的布局。[详细说明](singlecolumn.md)
+最常用的布局。[详细说明](flow-layout)
 
 |type|对应类型|
 |---|----|
@@ -26,7 +26,7 @@ sidebar:
 
 ## 一拖N(N=2/3/4)
 
-左边一个大的，右边N个小的，可调整比例。[详细说明](oneplusn.md)
+左边一个大的，右边N个小的，可调整比例。[详细说明](oneplusn-layout)
 
 有三种样式：
 
@@ -43,7 +43,7 @@ sidebar:
 ## 浮标
 
 
-可拖动，自动吸边。[详细说明](float.md)
+可拖动，自动吸边。[详细说明](float-layout)
 
 
 |type|对应类型|
@@ -52,7 +52,7 @@ sidebar:
 
 ## 固定
 
-固定在某个位置，不可拖动。[详细说明](pintop.md)
+固定在某个位置，不可拖动。[详细说明](fix-layout)
 
 |type|对应类型|
 |---|----|
@@ -62,7 +62,7 @@ sidebar:
 
 ## 吸顶/吸底
 
-碰到Tangram的顶端或底端就吸住。[详细说明](sticky.md)
+碰到Tangram的顶端或底端就吸住。[详细说明](sticky-layout)
 
 |type|对应类型|
 |---|----|
@@ -72,14 +72,14 @@ sidebar:
 
 ## 轮播
 
-适用于Banner的场景，可自动滚动，循环滚动，也可以做线性的滚动，而不是Banner一页一页的滚动。[详细说明](tabs.md)
+适用于Banner的场景，可自动滚动，循环滚动，也可以做线性的滚动，而不是Banner一页一页的滚动。[详细说明](pagescroll-layout)
 
 |type|对应类型|
 |---|----|
 |10|轮播|
 
 ## 瀑布流
-[详细说明](staggerred.md)
+[详细说明](waterflow-layout)
 
 |type|对应类型|
 |---|----|

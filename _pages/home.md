@@ -21,7 +21,7 @@ feature_row:
     excerpt: "流式布局，瀑布流布局，吸顶，浮标，轮播，内置布局可适应大多数场景，开放的API，易于拓展自己的布局和解析器"
   - image_path: /assets/images/mm-free-feature.png
     title: "高性能"
-    excerpt: "适应复杂布局的场景，为丝滑般顺畅提供基础"
+    excerpt: "高效的回收复用算法，可定制化的复用粒，适应复杂布局的场景，为丝滑般顺畅提供基础"
 quick-start:
   - image_path: https://img.alicdn.com/tfs/TB1lh0gQpXXXXaQaXXXXXXXXXXX-370-672.gif
     title: "iOS 快速开始"

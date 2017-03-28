@@ -84,6 +84,8 @@ android-docs:
         url: /docs/android/use-service-manager
       - title: "使用布局"
         url: /docs/android/use-card
+      - title: "Best Practice - 组件构建"
+        url: /docs/android/element-best_practice
 
 docs:
   - title: "介绍"
@@ -94,6 +96,7 @@ docs:
         url: /docs/basic-concept/structure
       - title: "设计原则"
         url: /docs/basic-concept/principle
+     
   - title: "布局详细说明"
     children:
       - title: "内置布局支持索引"
@@ -116,6 +119,8 @@ docs:
     children:
       - title: "License"
         url: /docs/license/
+
+
 
 # sidebar navigation list sample
 sidebar-sample:
