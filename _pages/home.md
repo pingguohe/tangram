@@ -24,11 +24,7 @@ feature_row:
   - image_path: /assets/images/mm-free-feature.png
     alt: "100% free"
     title: "高性能"
-    excerpt: "适应复杂布局的场景，为丝滑般顺畅提供基础"
-quick-start:
-  - image_path: /assets/images/mm-customizable-feature.png
-    title: "iOS 快速开始"
-    excerpt: "适应复杂布局的场景，为丝滑般顺畅提供基础\n git clone ...适应复杂布局的场景，为丝滑般顺畅提供基础\n git clone ...适应复杂布局的场景，为丝滑般顺畅提供基础\n git clone ...适应复杂布局的场景，为丝滑般顺畅提供基础\n git clone ...适应复杂布局的场景，为丝滑般顺畅提供基础\n git clone ..."
+    excerpt: "高效的回收复用算法，可定制化的复用粒度"
 github:
   - excerpt: '{::nomarkdown}<iframe style="display: inline-block;" src="https://ghbtns.com/github-btn.html?user=mmistakes&repo=minimal-mistakes&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe> <iframe style="display: inline-block;" src="https://ghbtns.com/github-btn.html?user=mmistakes&repo=minimal-mistakes&type=fork&count=true&size=large" frameborder="0" scrolling="0" width="158px" height="30px"></iframe>{:/nomarkdown}'
 ---
