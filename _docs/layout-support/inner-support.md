@@ -7,7 +7,7 @@ redirect_from:
   - /theme-setup/
 ---
 
-使用布局时，请根据功能在以下布局中选择，（对照这里[Guide](http://work.tmall.net/projects/nativefly/wiki/GenericCardCell)）
+使用布局时，请根据功能在以下布局中选择
 
 ## 流式布局
 
