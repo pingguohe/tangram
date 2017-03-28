@@ -3,8 +3,9 @@ title: "加载数据"
 permalink: /docs/android/load-data
 excerpt: "加载数据"
 modified: 2016-11-03T10:01:43-04:00
-redirect_from:
-  - /theme-setup/
+sidebar:
+  title: "Android 使用指南"
+  nav: android-docs
 ---
 
 Tangram 的页面的数据无法一次性返回，有些区块布局内的数据需要异步加载、甚至分页加载。Tangram 里内置了封装了异步加载的逻辑，需要各个层面配合完成，这里加以说明：

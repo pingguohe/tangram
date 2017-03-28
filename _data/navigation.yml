@@ -21,35 +21,21 @@ foo:
 # main links links
 main:
   - title: "介绍"
-    url: /docs/quick-start-guide/
-  - title: "详细用法"
-    url: /about/
+    url: /docs/basic-concept/concept
+  - title: "iOS"
+    url: /docs/ios/access-tangram
+  - title: "Android"
+    url: /docs/android/access-tangram
   - title: "Show Case"
     url: /year-archive/
-  - title: "Github"
-    url: /terms/
   - title: "关于我们"
     url: /collection-archive/
+  #- title: "Github"
+  #  url: /terms/
   
-
-
-# documentation links
-docs:
-  - title: "快速开始"
-    children:
-      - title: "iOS"
-        url: /docs/quick-start-guide/ios-quick-start-guide/
-      - title: "Android"
-        url: /docs/quick-start-guide/android-quick-start-guide/
-  - title: "介绍"
-    children:
-      - title: "基本概念"
-        url: /docs/basic-concept/concept
-      - title: "基础架构"
-        url: /docs/basic-concept/structure
-      - title: "设计原则"
-        url: /docs/basic-concept/principle
-  - title: "iOS 使用指南"
+# ios-documentation links
+ios-docs:
+  - title: "基本用法"
     children:
       - title: "接入Tangram代码"
         url: /docs/ios/access-tangram
@@ -65,12 +51,15 @@ docs:
         url: /docs/ios/tangramhelper_usage
       - title: "Tangram各类Factory说明"
         url: /docs/ios/tangramhelper_factory
-      - title: "Best Practice - 组件构建"
+  - title: "最佳实践"
+    children:   
+      - title: "WebView组件构建"
         url: /docs/ios/element-best_practice
-      - title: "Best Practice - 页面构建"
-        url: /docs/ios/page-best_practice
-  - title: "Android 使用指南"
-    children:
+
+# android-documentation links
+android-docs:
+   - title: "基本用法"
+     children:
       - title: "接入Tangram代码"
         url: /docs/android/access-tangram
       - title: "Tangram核心方法"
@@ -95,6 +84,16 @@ docs:
         url: /docs/android/use-service-manager
       - title: "使用布局"
         url: /docs/android/use-card
+
+docs:
+  - title: "介绍"
+    children:
+      - title: "基本概念"
+        url: /docs/basic-concept/concept
+      - title: "基础架构"
+        url: /docs/basic-concept/structure
+      - title: "设计原则"
+        url: /docs/basic-concept/principle
   - title: "布局详细说明"
     children:
       - title: "内置布局支持索引"
@@ -117,7 +116,6 @@ docs:
     children:
       - title: "License"
         url: /docs/license/
- #     - title: "关于我们"
 
 # sidebar navigation list sample
 sidebar-sample:

@@ -3,8 +3,9 @@ title: "自定义布局"
 permalink: /docs/ios/custom-card
 excerpt: "自定义布局"
 modified: 2016-11-03T10:01:43-04:00
-redirect_from:
-  - /theme-setup/
+sidebar:
+  title: "iOS 使用指南"
+  nav: ios-docs
 ---
 
 对于布局来说，需要实现`TangramLayoutProtocol`，包含以下几个方法

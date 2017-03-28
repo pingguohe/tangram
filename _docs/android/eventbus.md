@@ -3,8 +3,9 @@ title: "事件总线"
 permalink: /docs/android/eventbus
 excerpt: "事件总线"
 modified: 2016-11-03T10:01:43-04:00
-redirect_from:
-  - /theme-setup/
+sidebar:
+  title: "Android 使用指南"
+  nav: android-docs
 ---
 
 事件总线(TangramBus)用于组件和组件、组件和卡片、组件和页面之间的通信。它也是默认被注册到 Tangram 的 serviceManager 里，在组件和 TangramEngine 里都可以获取到，这里单独介绍它的使用。

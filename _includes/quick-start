@@ -20,18 +20,22 @@
             <h2 class="archive__item-title">{{ f.title }}</h2>
           {% endif %}
         </div>
-         <img src=
+            <div>
+               <img src=
               {% if f.image_path contains "://" %}
                 "{{ f.image_path }}"
               {% else %}
                 "{{ f.image_path | absolute_url }}"
               {% endif %}
-            alt="{% if f.alt %}{{ f.alt }}{% endif %}" class="align-left">
-             {% if f.excerpt %}
-            <div class="archive__item-excerpt">
+            alt="{% if f.alt %}{{ f.alt }}{% endif %}" class="align-left" width="400em">
+            <blockquote>
+              {% if f.excerpt %}
+
               {{ f.excerpt | markdownify }}
-            </div>
-          {% endif %}
+
+              {% endif %}
+            </blockquote>
+          
         </div>
         
       </div>

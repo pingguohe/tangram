@@ -3,8 +3,9 @@ title: "处理曝光"
 permalink: /docs/android/handle-exposure
 excerpt: "处理曝光"
 modified: 2016-11-03T10:01:43-04:00
-redirect_from:
-  - /theme-setup/
+sidebar:
+  title: "Android 使用指南"
+  nav: android-docs
 ---
 
 Tangram 认为的组件曝光的时机就是被 RecyclerView 的 Adapter 绑定数据的那个时候，也就是即将滑动到屏幕范围内。在这个时候业务上可能需要有一些处理，因此提供了接口定义并整合到框架里 —— ```ExposureSupport```。它定义了3个层面的曝光接口，一是曝光布局，二是曝光组件整体区域，三是曝光组件局部区域。业务方实现子类，并针对三个层面的曝光做分别的实现。同样有几点说明：

@@ -14,21 +14,21 @@ header:
 excerpt: '模块化UI开发模式'
 feature_row:
   - image_path: /assets/images/mm-customizable-feature.png
-    alt: "customizable"
     title: "跨平台支持"
     excerpt: "已有Android&iOS支持，一份数据，多端渲染一致"
   - image_path: /assets/images/mm-responsive-feature.png
-    alt: "fully responsive"
     title: "面向业务"
     excerpt: "流式布局，瀑布流布局，吸顶，浮标，轮播，内置布局可适应大多数场景，开放的API，易于拓展自己的布局和解析器"
   - image_path: /assets/images/mm-free-feature.png
-    alt: "100% free"
     title: "高性能"
     excerpt: "适应复杂布局的场景，为丝滑般顺畅提供基础"
 quick-start:
-  - image_path: /assets/images/mm-customizable-feature.png
+  - image_path: https://img.alicdn.com/tfs/TB1lh0gQpXXXXaQaXXXXXXXXXXX-370-672.gif
     title: "iOS 快速开始"
-    excerpt: "适应复杂布局的场景，为丝滑般顺畅提供基础\n git clone ...适应复杂布局的场景，为丝滑般顺畅提供基础\n git clone ...适应复杂布局的场景，为丝滑般顺畅提供基础\n git clone ...适应复杂布局的场景，为丝滑般顺畅提供基础\n git clone ...适应复杂布局的场景，为丝滑般顺畅提供基础\n git clone ..."
+    excerpt: "<br>在终端运行以下命令:<br>git clone https://github.com/alibaba/Tangram-iOS<br>  <br> cd Tangram-iOS/TangramDemo <br>  <br> pod install <br>  <br>  open TangramDemo.xcworkspace"
+  - image_path: https://img.alicdn.com/tfs/TB1v8lrQpXXXXcEXFXXXXXXXXXX-600-1067.gif
+    title: "Android 快速开始"
+    excerpt: "<br>git clone git@github.com:alibaba/Tangram-Android.git<br>打开 Android Studio -> Open... -> 选择 Tangram-Android 工程<br>Gradle 同步<br>运行 examples"
 github:
   - excerpt: '{::nomarkdown}<iframe style="display: inline-block;" src="https://ghbtns.com/github-btn.html?user=mmistakes&repo=minimal-mistakes&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe> <iframe style="display: inline-block;" src="https://ghbtns.com/github-btn.html?user=mmistakes&repo=minimal-mistakes&type=fork&count=true&size=large" frameborder="0" scrolling="0" width="158px" height="30px"></iframe>{:/nomarkdown}'
 ---

@@ -3,8 +3,9 @@ title: "TangramHelper的使用"
 permalink: /docs/ios/tangramhelper_usage
 excerpt: "TangramHelper的使用"
 modified: 2016-11-03T10:01:43-04:00
-redirect_from:
-  - /theme-setup/
+sidebar:
+  title: "iOS 使用指南"
+  nav: ios-docs
 ---
 
 ## 概述

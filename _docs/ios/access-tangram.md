@@ -3,8 +3,9 @@ title: "接入Tangram代码"
 permalink: /docs/ios/access-tangram
 excerpt: "接入Tangram代码"
 modified: 2016-11-03T10:01:43-04:00
-redirect_from:
-  - /theme-setup/
+sidebar:
+  title: "iOS 使用指南"
+  nav: ios-docs
 ---
 
 Tangram要求iOS系统版本在 6.0及以上即可

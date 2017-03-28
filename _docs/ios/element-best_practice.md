@@ -3,8 +3,9 @@ title: "Best Practice - 组件构建"
 permalink: /docs/ios/element-best_practice
 excerpt: "Best Practice - 组件构建"
 modified: 2016-11-03T10:01:43-04:00
-redirect_from:
-  - /theme-setup/
+sidebar:
+  title: "iOS 使用指南"
+  nav: ios-docs
 ---
 
 ## 组件样例 ： WebView 组件

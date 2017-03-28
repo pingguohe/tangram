@@ -3,8 +3,9 @@ title: "流式(网格)布局"
 permalink: /docs/layout-support/flow-layout
 excerpt: "流式(网格)布局"
 modified: 2016-11-03T10:01:43-04:00
-redirect_from:
-  - /theme-setup/
+sidebar:
+  title: "布局详细说明"
+  nav: docs
 ---
 
 支持属性列表\(单列、双列...到五列，支持的属性都是一样的\)

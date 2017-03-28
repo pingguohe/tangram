@@ -3,8 +3,9 @@ title: "一拖N布局"
 permalink: /docs/layout-support/oneplusn-layout
 excerpt: "一拖N布局"
 modified: 2016-11-03T10:01:43-04:00
-redirect_from:
-  - /theme-setup/
+sidebar:
+  title: "布局详细说明"
+  nav: docs
 ---
 
 ## 示意图

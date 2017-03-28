@@ -3,8 +3,9 @@ title: "内置布局支持"
 permalink: /docs/layout-support/inner-support
 excerpt: "How to quickly install and setup Minimal Mistakes for use with GitHub Pages."
 modified: 2016-11-03T10:01:43-04:00
-redirect_from:
-  - /theme-setup/
+sidebar:
+  title: "布局详细说明"
+  nav: docs
 ---
 
 使用布局时，请根据功能在以下布局中选择，（对照这里[Guide](http://work.tmall.net/projects/nativefly/wiki/GenericCardCell)）

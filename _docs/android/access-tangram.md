@@ -3,8 +3,9 @@ title: "接入Tangram代码"
 permalink: /docs/android/access-tangram
 excerpt: "接入Tangram代码"
 modified: 2016-11-03T10:01:43-04:00
-redirect_from:
-  - /theme-setup/
+sidebar:
+  title: "Android 使用指南"
+  nav: android-docs
 ---
 
 ## 1.引入依赖

@@ -3,8 +3,9 @@ title: "使用定时器"
 permalink: /docs/android/use-timer
 excerpt: "使用定时器"
 modified: 2016-11-03T10:01:43-04:00
-redirect_from:
-  - /theme-setup/
+sidebar:
+  title: "Android 使用指南"
+  nav: android-docs
 ---
 
 组件的业务逻辑里难免有涉及到定数触发的逻辑，比如倒计时、定时滚动。Tangram 内置了定时器模块，可以全局复用，防止重复开发。以在组件里使用定时器为例：

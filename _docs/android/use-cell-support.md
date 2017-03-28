@@ -3,8 +3,9 @@ title: "使用组件辅助模块"
 permalink: /docs/android/use-cell-support
 excerpt: "使用组件辅助模块"
 modified: 2016-11-03T10:01:43-04:00
-redirect_from:
-  - /theme-setup/
+sidebar:
+  title: "Android 使用指南"
+  nav: android-docs
 ---
 
 每个组件里可能会有一些重复逻辑，特别是采用通用 model 开发组件的时候，组件的 View 之间一般没有继承体系，为了解决这种问题，建议业务也像```SimpleClickSupport```或者```ExposureSupport```一样将逻辑模块化，通过 serviceManager 注册到框里提供给组件使用。框架里还提供了一个```CellSupport```，暴露了一些基本接口，业务方需要继承它并注册到 Tangram 里：

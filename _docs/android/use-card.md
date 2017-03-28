@@ -3,8 +3,9 @@ title: "使用布局"
 permalink: /docs/android/use-card
 excerpt: "使用布局"
 modified: 2016-11-03T10:01:43-04:00
-redirect_from:
-  - /theme-setup/
+sidebar:
+  title: "Android 使用指南"
+  nav: android-docs
 ---
 
 对于布局来说，内置布局一般满足大部分场景，如果有特殊需求，可自定义实现。需要实现`Card`和`LayoutHelper`。`Card`是自定义布局的 model，`LayoutHelper`是自定义布局的实现，基于[`vlayout`](https://github.com/alibaba/vlayout)框架。

@@ -3,8 +3,9 @@ title: "组件开发"
 permalink: /docs/android/develop-component
 excerpt: "组件开发"
 modified: 2016-11-03T10:01:43-04:00
-redirect_from:
-  - /theme-setup/
+sidebar:
+  title: "Android 使用指南"
+  nav: android-docs
 ---
 
 组件分为两层：model 和 View。Tangram 里提供了通用 model 类型`BaseCell`，因此开发组件有两个选择：

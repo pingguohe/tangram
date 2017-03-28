@@ -3,8 +3,9 @@ title: "处理点击"
 permalink: /docs/android/handle-click
 excerpt: "处理点击"
 modified: 2016-11-03T10:01:43-04:00
-redirect_from:
-  - /theme-setup/
+sidebar:
+  title: "Android 使用指南"
+  nav: android-docs
 ---
 
 组件 View 的点击处理，可以实现```SimpleClickSupport```，在组件 View 内部调用```setOnClickListener(cell);```，那么组件的点击行为会被回调到```SimpleClickSupport```里统一处理。组件 model 内部逻辑是这样调用的：

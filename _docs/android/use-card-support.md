@@ -3,8 +3,9 @@ title: "使用布局辅助模块"
 permalink: /docs/android/use-card-support
 excerpt: "使用布局辅助模块"
 modified: 2016-11-03T10:01:43-04:00
-redirect_from:
-  - /theme-setup/
+sidebar:
+  title: "Android 使用指南"
+  nav: android-docs
 ---
 
 ```CardSupport```，布局辅助模块，主要处里布局背景加载的回调，让业务方有能力去控制相关逻辑，业务方需要继承它并注册到 Tangram 里：

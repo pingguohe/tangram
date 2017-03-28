@@ -3,8 +3,9 @@ title: "浮动布局"
 permalink: /docs/layout-support/float-layout
 excerpt: "浮动布局"
 modified: 2016-11-03T10:01:43-04:00
-redirect_from:
-  - /theme-setup/
+sidebar:
+  title: "布局详细说明"
+  nav: docs
 ---
 
 可拖动，自动吸边。

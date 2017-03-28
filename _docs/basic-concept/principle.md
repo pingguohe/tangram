@@ -3,8 +3,9 @@ title: "设计原则"
 permalink: /docs/basic-concept/principle
 excerpt: "设计原则"
 modified: 2016-11-03T10:01:43-04:00
-redirect_from:
-  - /theme-setup/
+sidebar:
+  title: "基本概念"
+  nav: docs
 ---
 
 性能与灵活性，在计算资源一定的情况下一定是两个负相关的方面。怎么在当前的技术环境下实现符合我们业务需求的功能是我们真正需要关心的。灵活性，平台通用型，性能，现在的情况下一定是需要我们做trade-off，选择其中的一个点做切入。
