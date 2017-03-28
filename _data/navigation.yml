@@ -27,9 +27,9 @@ main:
   - title: "Android"
     url: /docs/android/access-tangram
   - title: "Show Case"
-    url: /year-archive/
+    url: /show-case/
   - title: "关于我们"
-    url: /collection-archive/
+    url: http://pingguohe.net/about/
   #- title: "Github"
   #  url: /terms/
   

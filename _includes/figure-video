@@ -1,0 +1,18 @@
+{% if include.id %}
+  {% assign gallery = page.[include.id] %}
+{% else %}
+  {% assign gallery = page.gallery %}
+{% endif %}
+
+<figure class="{{ include.class }}">
+  <video src=
+    {% if include.image_path contains "://" %}
+      "{{ include.video_path }}"
+    {% else %}
+      "{{ include.video_path | absolute_url }}"
+    {% endif %}
+   >
+  {% if include.caption %}
+    <figcaption>{{ include.caption | markdownify | remove: "<p>" | remove: "</p>" }}</figcaption>
+  {% endif %}
+</figure>

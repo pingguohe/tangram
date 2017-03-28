@@ -1,0 +1,34 @@
+{% if include.id %}
+  {% assign gallery = page.[include.id] %}
+{% else %}
+  {% assign gallery = page.gallery %}
+{% endif %}
+
+{% if gallery.size == 2 %}
+  {% assign gallery_layout = 'half' %}
+{% elsif gallery.size >= 3 %}
+  {% assign gallery_layout = 'third' %}
+{% else %}
+  {% assign gallery_layout = '' %}
+{% endif %}
+
+<figure class="{{ gallery_layout }} {{ include.class }}">
+  {% for video in gallery %}
+      <div style="width: 50%;">
+      <h2>
+        {{video.title}}
+      </h2>
+      <video src=
+        {% if video.video_path contains "://" %}
+          "{{ video.video_path }}"
+        {% else %}
+          "{{ video.video_path | absolute_url }}"
+        {% endif %}
+      controls autoplay preload loop muted width="320em">
+      </video>
+      </div>
+  {% endfor %}
+  {% if include.caption %}
+    <figcaption>{{ include.caption | markdownify | remove: "<p>" | remove: "</p>" }}</figcaption>
+  {% endif %}
+</figure>

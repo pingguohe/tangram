@@ -230,21 +230,6 @@
 
     a {
       position: relative;
-
-      &:before {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        height: 4px;
-        background: mix(#fff, $primary-color, 50%);
-        width: 100%;
-        -webkit-transition: $global-transition;
-        transition: $global-transition;
-        -webkit-transform: scaleX(0) translate3d(0, 0 , 0);
-                transform: scaleX(0) translate3d(0, 0 , 0); /* hide*/
-      }
-
       &:hover:before {
         -webkit-transform: scaleX(1);
                 -ms-transform: scaleX(1);
