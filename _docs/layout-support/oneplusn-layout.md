@@ -11,11 +11,11 @@ redirect_from:
 
 * 二个组件／三个组件
 
-![](https://gw.alicdn.com/tfs/TB1V_QSPVXXXXatapXXXXXXXXXX-441-401.png)
+![](https://gw.alicdn.com/tfs/TB16PZ9QXXXXXXAapXXXXXXXXXX-445-401.png)
 
 * 四个组件(通过rows属性调整了上下比例)／五个组件
 
-![](https://gw.alicdn.com/tfs/TB1njpvQXXXXXarXpXXXXXXXXXX-440-399.png)
+![](https://gw.alicdn.com/tfs/TB1RldNQpXXXXaTXXXXXXXXXXXX-443-406.png)
 
 
 <style type="text/css">
@@ -74,3 +74,5 @@ redirect_from:
     <td class="tg-yw4l">["30","30"] 或  [30,30]</td>
   </tr>
 </table>
+
+

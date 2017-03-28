@@ -35,7 +35,8 @@ TangramBuilder.init(context, new IInnerImageSetter() {
 	@Override
 	public <IMAGE extends ImageView> void doLoadImageUrl(@NonNull IMAGE view,
                     @Nullable String url) {
-		//假设你使用 Picasso 加载图片                		Picasso.with(context).load(url).into(view);
+		//假设你使用 Picasso 加载图片
+		Picasso.with(context).load(url).into(view);
 	}
 }, ImageView.class);
 ```
@@ -132,3 +133,4 @@ String json = new String(getAssertsFile(this, "data.json"));
 ```
 
 完整页面的数据结构可参考 [Demo]() 里。
+
