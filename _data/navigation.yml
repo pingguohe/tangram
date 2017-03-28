@@ -95,6 +95,8 @@ docs:
         url: /docs/android/use-service-manager
       - title: "使用布局"
         url: /docs/android/use-card
+      - title: "Best Practice - 组件构建"
+        url: /docs/android/element-best_practice
   - title: "布局详细说明"
     children:
       - title: "内置布局支持索引"
