@@ -7,7 +7,7 @@ redirect_from:
   - /theme-setup/
 ---
 
-可拖动，自动吸边。示意图
+可拖动，自动吸边。
 
 ## 示意图
 
@@ -19,3 +19,4 @@ redirect_from:
 | x | 相对原点的横向偏移量| String/Number| 9|
 | y | 相对原点的纵向偏移量| String/Number| 9|
 | bgColor | 背景色 | String | "#FFFFFF"|
+
