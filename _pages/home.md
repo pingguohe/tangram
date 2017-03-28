@@ -24,7 +24,7 @@ feature_row:
   - image_path: /assets/images/mm-free-feature.png
     alt: "100% free"
     title: "高性能"
-    excerpt: "适应复杂布局的场景，为丝滑般顺畅提供基础"
+    excerpt: "高效的回收复用算法，可定制化的复用粒，适应复杂布局的场景，为丝滑般顺畅提供基础"
 quick-start:
   - image_path: /assets/images/mm-customizable-feature.png
     title: "iOS 快速开始"
