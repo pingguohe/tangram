@@ -108,3 +108,13 @@ public JsonArray optJsonArrayParam(String key)
 	
 ## 对比两种开发方式
 主要区别在于前者开发自定义 View，后者开发自定义 model。
+
+## 组件复用粒度的控制
+
+默认情况下，Tangram 根据组件的 type 管理回收复用，同一种类型的组件共享一个recyclerPool。`RecyclerView`的复用池默认大小是5，如果一个页面有较多相同类型的组件，可以根据 type 修改默认值：
+
+```
+this.recyclerView.getRecycledViewPool().setMaxRecycledViews(i, 20);
+```
+
+业务方还可以控制组件的复用池，在 model 中配置一个`reuseId`字段（别名`typeKey`），Tangram 根据这个字段管理回收复用，相同`reuseId`的组件共享一个复用池。注意不同类型的组件不用共享一个`reuseId`。
