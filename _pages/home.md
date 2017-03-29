@@ -3,7 +3,7 @@ layout: splash
 permalink: /
 header:
   overlay_color: "#ffffff"
-  cta_label: "快速开始"
+  cta_label: "介绍"
   cta_url: "/docs/basic-concept/concept"
   cta_label_b: "Github-Android"
   cta_url_b: "https://github.com/alibaba/tangram-ios"
@@ -28,12 +28,10 @@ quick-start:
     excerpt: "<br>在终端运行以下命令:<br>git clone https://github.com/alibaba/Tangram-iOS<br>  <br> cd Tangram-iOS/TangramDemo <br>  <br> pod install <br>  <br>  open TangramDemo.xcworkspace"
   - image_path: https://img.alicdn.com/tfs/TB1v8lrQpXXXXcEXFXXXXXXXXXX-600-1067.gif
     title: "Android 快速开始"
-    excerpt: "<br>git clone git@github.com:alibaba/Tangram-Android.git<br>打开 Android Studio -> Open... -> 选择 Tangram-Android 工程<br>Gradle 同步<br>运行 examples"
+    excerpt: "<br>git clone git@github.com:alibaba/Tangram-Android.git <br> <br> 打开 Android Studio -> Open... -> 选择 Tangram-Android 工程<br> <br> Gradle 同步<br> <br>运行 examples"
 github:
   - excerpt: '{::nomarkdown}<iframe style="display: inline-block;" src="https://ghbtns.com/github-btn.html?user=mmistakes&repo=minimal-mistakes&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe> <iframe style="display: inline-block;" src="https://ghbtns.com/github-btn.html?user=mmistakes&repo=minimal-mistakes&type=fork&count=true&size=large" frameborder="0" scrolling="0" width="158px" height="30px"></iframe>{:/nomarkdown}'
 ---
-
-{% include feature_row id="intro" type="center" %}
 
 {% include feature_row %}
 
