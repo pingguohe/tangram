@@ -1,44 +1,50 @@
-{% if include.id %}
-  {% assign quick-start = page.[include.id] %}
-{% else %}
-  {% assign quick-start = page.quick-start %}
-{% endif %}
 
-<div class="feature__wrapper">
-   
-  {% for f in quick-start %}
+{% if include.id %}
+  {% assign feature_row = page.[include.id] %}
+{% else %}
+  {% assign feature_row = page.quick-start %}
+{% endif %}
+{% assign gallery_layout = 'half' %}
+
+
+<figure class="{{ gallery_layout }} {{ include.class }}" style="width: 92%;padding-left:5rem;padding-right:5rem;">
+ {% for f in feature_row %}
 
     {% if f.url contains "://" %}
       {% capture f_url %}{{ f.url }}{% endcapture %}
     {% else %}
       {% capture f_url %}{{ f.url | absolute_url }}{% endcapture %}
     {% endif %}
-    <div class="feature__item{% if include.type %}--{{ include.type }}{% endif %}">
+
+    <div title="" style="
+    width: 30rem;">
       <div class="archive__item">
         <div class="archive__item-body">
           {% if f.title %}
             <h2 class="archive__item-title">{{ f.title }}</h2>
           {% endif %}
+
+          {% if f.excerpt %}
+            <div class="archive__item-excerpt">
+              {{ f.excerpt | markdownify }}
+            </div>
+          {% endif %}
+
+          {% if f.url %}
+            <p><a href="{{ f_url }}" class="btn {{ f.btn_class }}">{{ f.btn_label | default: site.data.ui-text[site.locale].more_label | default: "Learn More" }}</a></p>
+          {% endif %}
         </div>
-            <div>
-               <img src=
+          <img src=
               {% if f.image_path contains "://" %}
                 "{{ f.image_path }}"
               {% else %}
                 "{{ f.image_path | absolute_url }}"
               {% endif %}
-            alt="{% if f.alt %}{{ f.alt }}{% endif %}" class="align-left" width="400em">
-            <blockquote>
-              {% if f.excerpt %}
-
-              {{ f.excerpt | markdownify }}
-
-              {% endif %}
-            </blockquote>
-          
-        </div>
-        
+            alt="{% if f.alt %}{{ f.alt }}{% endif %}" class="align-left" width="15rem">
       </div>
+    </div>
   {% endfor %}
-
-</div>
+  {% if include.caption %}
+    <figcaption>{{ include.caption | markdownify | remove: "<p>" | remove: "</p>" }}</figcaption>
+  {% endif %}
+</figure>

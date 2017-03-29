@@ -15,7 +15,7 @@ Tangram要求iOS系统版本在 6.0及以上即可
 
 ### 使用Cocoapods
 
-在Podfile里面增加Tangram依赖即可
+在Podfile里面增加Tangram依赖
 
 ````
 pod 'Tangram'
@@ -32,8 +32,8 @@ Tangram本身需要的依赖有：
 ```
  pod 'LazyScroll', ~>'0.0.2'
  pod 'RegexKitLite', ~>'4.0'
- pod 'JSONKit', ~>'2.1.0'
- pod 'SDWebImage', ~>'3.7.3.24'
+ pod 'JSONKit', ~>'1.4'
+ pod 'SDWebImage', ~>'3.7.3'
 ```
 
 ## 2. 注册Tangram组件
