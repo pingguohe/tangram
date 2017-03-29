@@ -25,15 +25,11 @@ pod 'Tangram'
 
 直接把Tangram中Source和Resource文件夹加入到工程中即可。
 
-需要注意的是，Tangram本身也有依赖，需要把依赖加到Podfile中或者自行依赖下面的这些模块
-
-Tangram本身需要的依赖有：
+Tangram本身也有依赖，需要把依赖加到Podfile中或者自行依赖下面的这些模块
 
 ```
  pod 'LazyScroll', ~>'0.0.2'
- pod 'RegexKitLite', ~>'4.0'
- pod 'JSONKit', ~>'1.4'
- pod 'SDWebImage', ~>'3.7.3'
+ pod 'SDWebImage', ~>'3.7'
 ```
 
 ## 2. 注册Tangram组件
