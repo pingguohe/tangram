@@ -12,9 +12,9 @@
   {% assign gallery_layout = '' %}
 {% endif %}
 
-<figure class="{{ gallery_layout }} {{ include.class }}">
+<figure class="{{ gallery_layout }} {{ include.class }}" style="width: 92%;">
   {% for video in gallery %}
-      <div style="width: 50%;">
+      <div style="width: 28rem;">
       <h2>
         {{video.title}}
       </h2>
@@ -24,8 +24,8 @@
         {% else %}
           "{{ video.video_path | absolute_url }}"
         {% endif %}
-      controls autoplay preload loop muted width="320em">
-      </video>
+      controls autoplay preload loop muted style="width: 28rem;">
+        </video>
       </div>
   {% endfor %}
   {% if include.caption %}
