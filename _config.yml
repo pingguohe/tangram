@@ -12,8 +12,8 @@ title_separator          : "-"
 name                     : "Tangram" # &name is a YAML anchor which can be *referenced later
 description              : "Tangram Docs"
 url                      : http://pingguohe.net # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl                  : "/tangram" # the subpath of your site, e.g. "/blog"
-repository               : "pingguohe/tangram"
+baseurl                  : "/" # the subpath of your site, e.g. "/blog"
+repository               : "tangram.pingguohe.net"
 #teaser                   : "/assets/images/500x300.png"
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
