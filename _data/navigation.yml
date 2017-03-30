@@ -20,7 +20,7 @@ foo:
 
 # main links links
 main:
-  - title: "介绍"
+  - title: "概览"
     url: /docs/basic-concept/concept
   - title: "iOS"
     url: /docs/ios/access-tangram
