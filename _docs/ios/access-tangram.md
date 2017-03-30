@@ -11,7 +11,7 @@ sidebar:
 
 ## 1. 增加Tangram依赖
 
-Tangram要求iOS系统版本在 6.0及以上即可
+Tangram要求iOS系统版本在 7.0及以上即可
 
 ### 使用Cocoapods
 
