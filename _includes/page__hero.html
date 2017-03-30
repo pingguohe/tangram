@@ -50,10 +50,10 @@
         <p>
           <a href="{{ page.header.cta_url }}" class="btn btn--light-outline btn--large">{{ page.header.cta_label | default: site.data.ui-text[site.locale].more_label | default: "Learn More" }}</a>
           {% if page.header.cta_url_b and page.header.cta_label_b %}
-          <a href="{{ page.header.cta_url_b }}" class="btn btn--large">{{ page.header.cta_label_b }}</a>
+          <a href="{{ page.header.cta_url_b }}" target="_blank" class="btn btn--large">{{ page.header.cta_label_b }}</a>
           {% endif %}
           {% if page.header.cta_url_c and page.header.cta_label_c %}
-          <a href="{{ page.header.cta_url_c }}" class="btn btn--large">{{ page.header.cta_label_c }}</a>
+          <a href="{{ page.header.cta_url_c }}" target="_blank" class="btn btn--large">{{ page.header.cta_label_c }}</a>
           {% endif %}
         </p>
       {% endif %}
