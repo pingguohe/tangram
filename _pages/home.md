@@ -4,7 +4,7 @@ permalink: /
 header:
   overlay_color: "#ffffff"
   cta_label: "概览"
-  cta_url: "docs/basic-concept/concept"
+  cta_url: "docs/basic-concept/history"
   cta_label_b: "Github-iOS"
   cta_url_b: "https://github.com/alibaba/tangram-ios"
   cta_label_c: "Github-Android"

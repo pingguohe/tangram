@@ -21,7 +21,7 @@ foo:
 # main links links
 main:
   - title: "概览"
-    url: /docs/basic-concept/concept
+    url: /docs/basic-concept/history
   - title: "iOS"
     url: /docs/ios/access-tangram
   - title: "Android"
@@ -90,13 +90,14 @@ android-docs:
 docs:
   - title: "介绍"
     children:
+      - title: "了解Tangram"
+        url: /docs/basic-concept/history
       - title: "基本概念"
         url: /docs/basic-concept/concept
       - title: "基础架构"
         url: /docs/basic-concept/structure
       - title: "设计原则"
         url: /docs/basic-concept/principle
-     
   - title: "布局详细说明"
     children:
       - title: "内置布局支持索引"

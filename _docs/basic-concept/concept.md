@@ -4,7 +4,7 @@ permalink: /docs/basic-concept/concept
 excerpt: "基本概念"
 modified: 2016-11-03T10:01:43-04:00
 sidebar:
-  title: "基本概念"
+  title: "概述"
   nav: docs
 ---
 
