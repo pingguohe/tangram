@@ -41,7 +41,7 @@
         {% endif %}
       </h1>
       {% if page.excerpt %}
-        <p class="page__lead">{{ page.excerpt | markdownify | remove: "<p>" | remove: "</p>" }}</p>
+        <p class="page__lead" style="width: 30rem;">{{ page.excerpt | markdownify | remove: "<p>" | remove: "</p>" }}</p>
       {% endif %}
       {% if site.read_time and page.read_time %}
         <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> {% include read-time.html %}</p>

@@ -7,7 +7,7 @@
 {% assign gallery_layout = 'half' %}
 
 
-<figure class="{{ gallery_layout }} {{ include.class }}" style="width: 92%;padding-left:5rem;padding-right:5rem;">
+<figure class="{{ gallery_layout }} {{ include.class }}" style="width: 95%;padding-left:3rem;padding-right:3rem;">
  {% for f in feature_row %}
 
     {% if f.url contains "://" %}
