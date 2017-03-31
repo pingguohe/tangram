@@ -25,7 +25,7 @@ feature_row:
 quick-start:
   - image_path: https://img.alicdn.com/tfs/TB1lh0gQpXXXXaQaXXXXXXXXXXX-370-672.gif
     title: "iOS 快速开始"
-    excerpt: "<br>在终端运行以下命令:<br><i> # git clone https://github.com/alibaba/Tangram-iOS<br>  <br> # cd Tangram-iOS/TangramDemo <br>  <br> # pod install <br>  <br># open TangramDemo.xcworkspace</i>"
+    excerpt: "<br>在终端运行以下命令:<br><i> # git clone https://github.com/alibaba/Tangram-iOS.git<br>  <br> # cd Tangram-iOS/TangramDemo <br>  <br> # pod install <br>  <br># open TangramDemo.xcworkspace</i>"
   - image_path: https://img.alicdn.com/tfs/TB1v8lrQpXXXXcEXFXXXXXXXXXX-600-1067.gif
     title: "Android 快速开始"
     excerpt: "<br><i># git clone git@github.com:alibaba/Tangram-Android.git</i> <br> <br> 打开 Android Studio -> Open... -> 选择 Tangram-Android 工程<br> <br> Gradle 同步<br> <br>运行 examples<br><br>"
