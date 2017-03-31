@@ -11,7 +11,7 @@ header:
   cta_url_c: "https://github.com/alibaba/tangram-android"
   logo_image: "https://gw.alicdn.com/tfs/TB1LKGRQXXXXXa0aXXXXXXXXXXX-2880-1402.png"
   caption:
-excerpt: '模块化UI开发模式'
+excerpt: 'Tangram，七巧板，几块简单的积木就能拼出大千世界。我们用Tangram来命名这套界面方案，也是希望他能像七巧板一样可以通过几块积木就搭出丰富多彩的界面。<br />>>> <a style="color: rgb(122, 130, 136);" href="http://pingguohe.net/2017/03/30/what-is-tangram.html">了解Tangram历史</a>'
 feature_row:
   - image_path: /assets/images/mm-customizable-feature.png
     title: "跨平台支持"

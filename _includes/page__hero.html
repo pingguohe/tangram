@@ -27,12 +27,12 @@
 >
   {% if page.header.overlay_color or page.header.overlay_image %}
     {% if page.header.logo_image %}
-    <div style="margin: 0 auto; max-width: 750px;">
+    <div style="margin: 0 auto;max-width: 50em;margin-bottom: -5em;">
     <div class="wrapper" style="display: inline-block;">
-        <img src="{{ page.header.logo_image }}" style="width: 22em;margin-bottom: 5em;"/>
+        <img src="{{ page.header.logo_image }}" style="width: 22em; margin-bottom: 10em;"/>
     </div>
       {% endif %}
-    <div class="wrapper" style="display: inline-block;">
+    <div class="wrapper" style="display: inline-block; max-width: 25em;">
       <h1 class="page__title" itemprop="headline">
         {% if paginator and site.paginate_show_page_num %}
           {{ site.title }}{% unless paginator.page == 1 %} {{ site.data.ui-text[site.locale].page | default: "Page" }} {{ paginator.page }}{% endunless %}
