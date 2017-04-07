@@ -12,7 +12,7 @@ sidebar:
 
 ```
 // gradle
-compile 'com.tmall.android:tangram:1.0.0@aar'
+compile 'com.alibaba.android:tangram:1.0.0@aar'
 ```
 
 或者
@@ -20,7 +20,7 @@ compile 'com.tmall.android:tangram:1.0.0@aar'
 ```
 // maven
 <dependency>
-  <groupId>com.tmall.android</groupId>
+  <groupId>com.alibaba.android</groupId>
   <artifactId>tangram</artifactId>
   <version>1.0.0</version>
   <type>aar</type>
