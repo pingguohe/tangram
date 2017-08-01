@@ -118,6 +118,8 @@ docs:
         url: /docs/layout-support/pagescroll-layout
   - title: "其他"
     children:
+      - title: "更新计划"
+        url: /docs/roadmap/
       - title: "License"
         url: /docs/license/
 
