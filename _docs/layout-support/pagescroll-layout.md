@@ -22,7 +22,7 @@ sidebar:
 </style>
 <table class="tg" style="undefined;table-layout: fixed; width: 770px">
 <colgroup>
-<col style="width: 96px">
+<col style="width: 120px">
 <col style="width: 302px">
 <col style="width: 170px">
 <col style="width: 202px">
@@ -47,9 +47,15 @@ sidebar:
   </tr>
   <tr>
     <td class="tg-yw4l">autoScroll</td>
-    <td class="tg-yw4l">自动滚动的间隔，单位毫秒，填写数字大于0就开始自动滚动</td>
+    <td class="tg-yw4l">自动滚动的间隔，单位毫秒，填写数字大于0就开始自动滚动，默认值</td>
     <td class="tg-yw4l">String/Number</td>
     <td class="tg-yw4l">"3000",3000</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">specialInterval</td>
+    <td class="tg-yw4l">单独指定每一帧的自动滚动的间隔，单位毫秒，与autoScroll配合使用，当未在此声明某一帧的停留时间的时候，使用autoScroll指定的间隔，否则使用此处声明的间隔时间</td>
+    <td class="tg-yw4l">Map</td>
+    <td class="tg-yw4l">{"1": "10000", "2": "5000"}</td>
   </tr>
   <tr>
     <td class="tg-yw4l">infinite</td>
