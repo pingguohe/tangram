@@ -53,7 +53,7 @@ sidebar:
   </tr>
   <tr>
     <td class="tg-yw4l">specialInterval</td>
-    <td class="tg-yw4l">单独指定每一帧的自动滚动的间隔，单位毫秒，与autoScroll配合使用，当未在此声明某一帧的停留时间的时候，使用autoScroll指定的间隔，否则使用此处声明的间隔时间</td>
+    <td class="tg-yw4l">单独指定每一帧的自动滚动的间隔，单位毫秒，key从0开始计数；与autoScroll配合使用，当未在此声明某一帧的停留时间的时候，使用autoScroll指定的间隔，否则使用此处声明的间隔时间</td>
     <td class="tg-yw4l">Map</td>
     <td class="tg-yw4l">{"1": "10000", "2": "5000"}</td>
   </tr>
