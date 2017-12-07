@@ -22,6 +22,8 @@ foo:
 main:
   - title: "概览"
     url: /docs/basic-concept/history
+  - title: "动态化组件"
+    url: /docs/virtualview/about-virtualview
   - title: "iOS"
     url: /docs/ios/access-tangram
   - title: "Android"
@@ -116,14 +118,84 @@ docs:
         url: /docs/layout-support/waterflow-layout
       - title: "轮播/横向滚动布局"
         url: /docs/layout-support/pagescroll-layout
+
   - title: "其他"
     children:
+      - title: "Tangram 2.0 更新说明"
+        url: /docs/tangram-2.0-feature/
       - title: "更新计划"
         url: /docs/roadmap/
       - title: "License"
         url: /docs/license/
 
+virtualview-docs:  
+  - title: "动态化组件"
+    children:
+      - title: "数据模板格式"
+        url: /docs/virtualview/bin-format
+      - title: "组件编译"
+        url: /docs/virtualview/compile-xml
+      - title: "组件解析"
+        url: /docs/virtualview/parse-bin
+      - title: "组件加载"
+        url: /docs/virtualview/create-view
+      - title: "数据绑定"
+        url: /docs/virtualview/bind-data
+      - title: "表达式使用"
+        url: /docs/virtualview/simple-expr
+      - title: "编译工具使用"
+        url: /docs/virtualview/tools
+  - title: "基础组件文档"
+    children:
+      - title: "公共属性"
+        url: "/docs/virtualview/elements"
+  - title: "原子组件"
+    url: "/docs/virtualview/atom-elements"
+    children:
+      - title: "NText"
+        url: "/docs/virtualview/ntext"
+      - title: "VText"
+        url: "/docs/virtualview/vtext"
+      - title: "NImage"
+        url: "/docs/virtualview/nimage"
+      - title: "VImage"
+        url: "/docs/virtualview/vimage"
+      - title: "NLine"
+        url: "/docs/virtualview/nline"
+      - title: "VLine"
+        url: "/docs/virtualview/vline"
+      - title: "VGraph"
+        url: "/docs/virtualview/vgraph"
+      - title: "Progress"
+        url: "/docs/virtualview/progress"
 
+  - title: "容器组件"
+    url: "/docs/virtualview/container-elements"
+    children:
+      - title: "Page"
+        url: "/docs/virtualview/page"
+      - title: "Scroller"
+        url: "/docs/virtualview/scroller"
+      - title: "Slider"
+        url: "/docs/virtualview/slider"
+      - title: "Container"
+        url: "/docs/virtualview/container"
+      - title: "FrameLayout"
+        url: "/docs/virtualview/framelayout"
+      - title: "RatioLayout"
+        url: "/docs/virtualview/ratiolayout"
+      - title: "Grid"
+        url: "/docs/virtualview/grid"
+      - title: "GridLayout"
+        url: "/docs/virtualview/gridlayout"
+      - title: "VH2Layout"
+        url: "/docs/virtualview/vh2layout"
+      - title: "VHLayout"
+        url: "/docs/virtualview/vhlayout"
+      - title: "VH"
+        url: "/docs/virtualview/vh"
+      - title: "FlexLayout"
+        url: "/docs/virtualview/flexlayout"
 
 # sidebar navigation list sample
 sidebar-sample:
