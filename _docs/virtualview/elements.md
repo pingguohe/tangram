@@ -47,7 +47,7 @@ sidebar:
 |gravity|enum(left/right/top/bottom/v_center/h_center)|left\|top|描述内容的对齐，比如文字在文本组件里的位置、原子组件在容器里的位置，left：靠左，right：靠右，top：靠上，bottom：靠底，v_center：垂直方向居中，h_center：水平方向居中，可用`或`组合描述|
 |dataTag|string|组件数据标识|待废弃|
 |action|
-|flag|enum(~~flag_draw~~/~~flag_event~~/flag_dynamic/flag_software/flag_exposure/flag_clickable/flag_longclickable/flag_touchable)|组件行为定义|flag_draw：组件需要绘制（待废弃），flag_event：组件需要响应事件，flag_dynamic：（未知），flag_software：关闭view的硬件加速，flag_exposure：需要触发曝光事件，flag_clickable：需要响应点击事件，flag_longclickable：需要响应长按事件，flag_touchable：需要响应触摸事件|
+|flag|enum(flag_dynamic/flag_software/flag_exposure/flag_clickable/flag_longclickable/flag_touchable)|组件行为定义|flag_draw：组件需要绘制（待废弃），flag_event：组件需要响应事件，flag_software：关闭view的硬件加速，flag_exposure：需要触发曝光事件，flag_clickable：需要响应点击事件，flag_longclickable：需要响应长按事件，flag_touchable：需要响应触摸事件|
 |uuid|
 |dataMode|
 |action|string|null|（不够友好，业务语义太强，表示点击事件触发之后跳转到数据中action字段定义的页面）|
