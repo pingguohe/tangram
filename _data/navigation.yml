@@ -60,8 +60,8 @@ ios-docs:
 
 # android-documentation links
 android-docs:
-   - title: "基本用法"
-     children:
+  - title: "基本用法"
+    children:
       - title: "接入Tangram代码"
         url: /docs/android/access-tangram
       - title: "Tangram核心方法"
@@ -88,6 +88,20 @@ android-docs:
         url: /docs/android/use-card
       - title: "Best Practice - 组件构建"
         url: /docs/android/element-best_practice
+  - title: "使用VirtualView"
+    children:
+      - title: "单独使用VirtualView"
+        url: /docs/android/use-virtualview
+      - title: "在Tangram中使用VirtualView"
+        url: /docs/android/use-virtualview-in-tangram
+      - title: "如何编写一个自定义基础组件"
+        url: /docs/android/add-a-custom-element
+      - title: "事件处理"
+        url: /docs/android/event-handler
+      - title: "增加自定义逻辑"
+        url: /docs/android/add-custom-logic
+      - title: "动态更新模板"
+        url: /docs/android/update-template
 
 docs:
   - title: "介绍"
@@ -143,6 +157,8 @@ virtualview-docs:
         url: /docs/virtualview/bind-data
       - title: "表达式使用"
         url: /docs/virtualview/simple-expr
+      - title: "事件"
+        url: /docs/virtualview/event
       - title: "编译工具使用"
         url: /docs/virtualview/tools
   - title: "基础组件文档"
