@@ -22,7 +22,7 @@ foo:
 main:
   - title: "概览"
     url: /docs/basic-concept/history
-  - title: "动态化组件"
+  - title: "动态组件"
     url: /docs/virtualview/about-virtualview
   - title: "iOS"
     url: /docs/ios/access-tangram
@@ -94,7 +94,7 @@ android-docs:
         url: /docs/android/use-virtualview
       - title: "在Tangram中使用VirtualView"
         url: /docs/android/use-virtualview-in-tangram
-      - title: "如何编写一个自定义基础组件"
+      - title: "如何编写一个自定义基础控件"
         url: /docs/android/add-a-custom-element
       - title: "事件处理"
         url: /docs/android/event-handler
@@ -143,7 +143,7 @@ docs:
         url: /docs/license/
 
 virtualview-docs:  
-  - title: "动态化组件"
+  - title: "动态组件"
     children:
       - title: "数据模板格式"
         url: /docs/virtualview/bin-format
@@ -161,11 +161,11 @@ virtualview-docs:
         url: /docs/virtualview/event
       - title: "编译工具使用"
         url: /docs/virtualview/tools
-  - title: "基础组件文档"
+  - title: "基础控件文档"
     children:
       - title: "公共属性"
         url: "/docs/virtualview/elements"
-  - title: "原子组件"
+  - title: "基础原子控件"
     url: "/docs/virtualview/atom-elements"
     children:
       - title: "NText"
@@ -185,7 +185,7 @@ virtualview-docs:
       - title: "Progress"
         url: "/docs/virtualview/progress"
 
-  - title: "容器组件"
+  - title: "基础容器控件"
     url: "/docs/virtualview/container-elements"
     children:
       - title: "Page"
