@@ -47,3 +47,7 @@ nimationStyle|enum(linear/decelerate/accelerate/accelerateDecelerate/spring)|lin
     layoutWidth="0"
     layoutHeight="33.5" />
 ``` 
+
+### 图示
+
+![](https://gw.alicdn.com/tfs/TB1p8vrfiqAXuNjy1XdXXaYcVXa-272-480.gif)

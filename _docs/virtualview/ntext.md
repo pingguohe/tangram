@@ -49,3 +49,7 @@ sidebar:
     flag="flag_event|flag_exposure|flag_clickable"
  />
 ``` 
+
+### 图示
+
+![](https://gw.alicdn.com/tfs/TB15tfofiqAXuNjy1XdXXaYcVXa-270-480.png)

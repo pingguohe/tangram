@@ -47,3 +47,8 @@ sidebar:
     layoutHeight="130" />
 ```
 
+### 图示
+
+![](https://gw.alicdn.com/tfs/TB1zRvrfiqAXuNjy1XdXXaYcVXa-272-480.gif)
+
+![](https://gw.alicdn.com/tfs/TB1zBvrfiqAXuNjy1XdXXaYcVXa-272-480.gif)

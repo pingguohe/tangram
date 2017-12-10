@@ -40,3 +40,7 @@ sidebar:
     layoutWidth="match_parent"
     layoutHeight="130" />
 ```  
+
+### 图示
+
+![](https://gw.alicdn.com/tfs/TB1HnmchLDH8KJjy1XcXXcpdXXa-272-480.gif)

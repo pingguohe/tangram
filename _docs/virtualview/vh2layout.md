@@ -57,3 +57,7 @@ sidebar:
         src="tm_homepage_shopping_cart"/>
 </VH2Layout>
 ```  
+
+### 图示
+
+![](https://gw.alicdn.com/tfs/TB1PVtkhRfH8KJjy1XbXXbLdXXa-270-480.png)
