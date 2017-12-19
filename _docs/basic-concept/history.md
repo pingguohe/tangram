@@ -8,6 +8,10 @@ sidebar:
   nav: docs
 ---
 
+## 高能图谱
+
+![](https://gw.alicdn.com/tfs/TB1R_L2i_nI8KJjy0FfXXcdoVXa-1801-1350.png)
+
 ## 什么是Tangram
 
 Tangram不仅仅是一个Native（iOS & Android）的界面开发框架，而是我们从日常工作中沉淀出的一套界面**解决方案**，涵盖了Native SDK，GUI操作台，后端逻辑容器，组件库机制的一整套方案。 
