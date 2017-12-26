@@ -16,12 +16,12 @@ sidebar:
 
 |type|对应类型|
 |---|----|
-|1|单列(一排一)|
-|2|双列|
-|3|三列|
-|4|四列|
-|9|五列|
-|27|N列|
+|container-oneColumn|单列(一排一)|
+|container-twoColumn|双列|
+|container-threeColumn|三列|
+|container-fourColumn|四列|
+|container-fiveColumn|五列|
+|container-flow|N列|
 
 
 ## 一拖N(N=2/3/4)
@@ -38,7 +38,7 @@ sidebar:
 
 |type|对应类型|
 |---|----|
-|5|一拖2/3/4|
+|container-onePlusN|一拖2/3/4|
 
 ## 浮标
 
@@ -48,7 +48,7 @@ sidebar:
 
 |type|对应类型|
 |---|----|
-|7|浮标|
+|container-float|浮标|
 
 ## 固定
 
@@ -56,9 +56,8 @@ sidebar:
 
 |type|对应类型|
 |---|----|
-|8|固定底部|
-|23|固定顶部|
-|28|滚动固定(滚动到某个布局的时候，出现并固定)|
+|container-fix|固定顶部或者底部，根据属性指定|
+|container-scrollFix|滚动固定(滚动到某个布局的时候，出现并固定)|
 
 ## 吸顶/吸底
 
@@ -66,24 +65,30 @@ sidebar:
 
 |type|对应类型|
 |---|----|
-|20|吸顶或吸底，根据属性指定|
-|21|吸顶|
-|22|吸底|
+|container-sticky|吸顶或吸底，根据属性指定|
 
 ## 轮播
 
-适用于Banner的场景，可自动滚动，循环滚动，也可以做线性的滚动，而不是Banner一页一页的滚动。[详细说明](pagescroll-layout)
+适用于Banner的场景，可自动滚动，循环滚动。[详细说明](pagescroll-layout)
 
 |type|对应类型|
 |---|----|
-|10|轮播|
+|container-banner|轮播|
+
+## 线性滚动
+
+不是Banner一页一页的滚动。[详细说明](linearscroll-layout)
+
+|type|对应类型|
+|---|----|
+|container-scroll|线性滚动，不像轮播一样具有一页一页的效果|
 
 ## 瀑布流
 [详细说明](waterflow-layout)
 
 |type|对应类型|
 |---|----|
-|25|瀑布流|
+|container-waterfall|瀑布流|
 
 
 
