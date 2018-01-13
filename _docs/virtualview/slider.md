@@ -21,6 +21,7 @@ sidebar:
 |---|---|---|---|
 |orientation|enum(H/V)|H|滚动方向，H：水平滚动，V：垂直滚动（暂不支持）|
 |itemWidth|int/float|0|容器内组件的宽度，必填|
+|span|int/float|0|item之间的间距|
 |onScroll|expr|无|表达式，滚动一次回调执行的逻辑|
 |dataTag|jsonArray|无|容器内组件数据，描述内部子组件的类型与数据|
 
