@@ -43,6 +43,11 @@ sidebar:
 |backgroundImage|string|null|背景图地址|
 |borderWidth|int|0|边框宽度|
 |borderColor|int|0|边框颜色|
+|borderRadius|int|0|边框四个角的圆角半径，与borderWidth配合使用，支持NText、VText、VHLayout、VH2Layout、FrameLayout、GridLayout|
+|borderTopLeftRadius|int|0|单独设置左上角圆角半径，使用同上|
+|borderTopRightRadius|int|0|单独设置右上角圆角半径，使用同上|
+|borderBottomLeftRadius|int|0|单独设置左下角圆角半径，使用同上|
+|borderBottomRightRadius|int|0|单独设置右下角圆角半径，使用同上|
 |visibility|enum(visible/invisible/gone)|visible|可见性，与Android里的概念类似，visible：可见，invisible：不可见，但占位，gone：不可见也不占位|
 |gravity|enum(left/right/top/bottom/v_center/h_center)|left\|top|描述内容的对齐，比如文字在文本组件里的位置、原子组件在容器里的位置，left：靠左，right：靠右，top：靠上，bottom：靠底，v_center：垂直方向居中，h_center：水平方向居中，可用`或`组合描述|
 |dataTag|string|组件数据标识||
