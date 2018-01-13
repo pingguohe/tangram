@@ -23,7 +23,7 @@ sidebar:
 |textColor|int|黑色|字体颜色|
 |textSize|int/float|20dp|字号大小|
 |textStyle|enum(normal/bold/italic/strike)|normal|normal：默认样式，bold：加粗，itlaic：斜体，strike：横线|
-|ellipsize|enum(start/marquee/middle/end)|无|截断方式|
+|ellipsize|enum(none/start/marquee/middle/end)|none|截断方式|
 |lines|int|1|行数|
 |maxLines|int|无|最大行数|
 |lineSpaceMultiplier|int/float|1|行高放大系数，每一行文本高度计算会乘以这个系数|
