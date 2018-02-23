@@ -57,6 +57,10 @@ ios-docs:
     children:   
       - title: "WebView组件构建"
         url: /docs/ios/element-best_practice
+  - title: "使用VirtualView"
+    children:
+      - title: "使用VirtualView"
+        url: /docs/ios/use-virtualview
 
 # android-documentation links
 android-docs:
