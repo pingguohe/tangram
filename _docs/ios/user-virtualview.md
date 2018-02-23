@@ -26,7 +26,7 @@ VirtualView 作为 Tangram 2.0 的一部分也会被正确的安装。
 
 ### 1. 加载 .out 文件读取模板
 
-```objective-c
+```
 if (![[VVTemplateManager sharedManager].loadedTypes containsObject:@"icon_type"]) {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"icon_file" ofType:@"out"];
     [[VVTemplateManager sharedManager] loadTemplateFile:path forType:@"type_alias"];
@@ -37,7 +37,7 @@ if (![[VVTemplateManager sharedManager].loadedTypes containsObject:@"icon_type"]
 
 ### 2. 创建模板对应的组件
 
-```objective-c
+```
 self.viewContainer = [VVViewContainer viewContainerWithTemplateType:@"icon_type"];
 [self.view addSubview:self.viewContainer];
 ```
@@ -46,7 +46,7 @@ self.viewContainer = [VVViewContainer viewContainerWithTemplateType:@"icon_type"
 
 ### 3. 绑定数据并计算布局（适用于已经确定尺寸的组件）
 
-```objective-c
+```
 self.viewContainer.frame = CGRectMake(0, 0, SCREEN_WIDTH, 1000);
 [self.viewContainer update:@{
     @"type" : @"icon-type",
@@ -58,7 +58,7 @@ self.viewContainer.frame = CGRectMake(0, 0, SCREEN_WIDTH, 1000);
 
 ### 4. 如果你想计算得出组件的尺寸
 
-```objective-c
+```
 [self.viewContainer updateData:@{
     @"type" : @"icon-type",
     @"imgUrl" : @"https://test.com/test.png"
