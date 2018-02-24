@@ -18,7 +18,7 @@ sidebar:
 </style>
 <table class="tg" style="undefined;table-layout: fixed; width: 770px">
 <colgroup>
-<col style="width: 120px">
+<col style="width: 140px">
 <col style="width: 302px">
 <col style="width: 170px">
 <col style="width: 202px">
