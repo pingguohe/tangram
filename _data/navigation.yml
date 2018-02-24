@@ -61,6 +61,8 @@ ios-docs:
     children:
       - title: "使用VirtualView"
         url: /docs/ios/use-virtualview
+      - title: "创建自定义widget"
+        url: /docs/ios/make-widget
 
 # android-documentation links
 android-docs:

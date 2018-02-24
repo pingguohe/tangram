@@ -24,7 +24,7 @@ VirtualView 作为 Tangram 2.0 的一部分也会被正确的安装。
 
 如果你想要直接下载源代码并添加到工程中，那么可以访问 [Releases 页面](https://github.com/alibaba/VirtualView-iOS/releases)，把最新版下载下来放到你的工程里。
 
-### 1. 加载 .out 文件读取模板
+## 1. 加载 .out 文件读取模板
 
 ```
 if (![[VVTemplateManager sharedManager].loadedTypes containsObject:@"icon_type"]) {
@@ -35,7 +35,7 @@ if (![[VVTemplateManager sharedManager].loadedTypes containsObject:@"icon_type"]
 
 先判断组件是否已经加载过了，没有的话则找到对应文件进行加载。
 
-### 2. 创建模板对应的组件
+## 2. 创建模板对应的组件
 
 ```
 self.viewContainer = [VVViewContainer viewContainerWithTemplateType:@"icon_type"];
@@ -44,7 +44,7 @@ self.viewContainer = [VVViewContainer viewContainerWithTemplateType:@"icon_type"
 
 创建出的组件是一个 UIView，直接像使用正常 UIView 一样把它添加进视图树即可。
 
-### 3. 绑定数据并计算布局（适用于已经确定尺寸的组件）
+## 3. 绑定数据并计算布局（适用于已经确定尺寸的组件）
 
 ```
 self.viewContainer.frame = CGRectMake(0, 0, SCREEN_WIDTH, 1000);
@@ -56,7 +56,7 @@ self.viewContainer.frame = CGRectMake(0, 0, SCREEN_WIDTH, 1000);
 
 先设定好尺寸，然后调用 `update` 方法进行更新，此方法会更新数据也会更新布局。
 
-### 4. 如果你想计算得出组件的尺寸
+## 4. 如果你想计算得出组件的尺寸
 
 ```
 [self.viewContainer updateData:@{
