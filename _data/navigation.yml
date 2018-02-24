@@ -63,6 +63,8 @@ ios-docs:
         url: /docs/ios/use-virtualview
       - title: "创建自定义widget"
         url: /docs/ios/make-widget
+      - title: "动态更新模板"
+        url: /docs/ios/update-template
 
 # android-documentation links
 android-docs:

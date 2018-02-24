@@ -1,6 +1,6 @@
 ---
 title: "创建自定义widget"
-permalink: /docs/ios/
+permalink: /docs/ios/make-widget
 excerpt: "创建自定义widget"
 modified: 2018-02-24T10:01:43-04:00
 sidebar:
