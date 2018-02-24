@@ -69,11 +69,12 @@ sidebar:
 
 ## 轮播
 
-适用于Banner的场景，可自动滚动，循环滚动。[详细说明](pagescroll-layout)
+适用于Banner的场景，按页可自动滚动，循环滚动。[详细说明](pagescroll-layout)
 
 |type|对应类型|
 |---|----|
 |container-banner|轮播|
+
 
 ## 线性滚动
 
