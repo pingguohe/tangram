@@ -67,6 +67,8 @@ ios-docs:
         url: /docs/ios/handle-event
       - title: "动态更新模板"
         url: /docs/ios/update-template
+      - title: "在Tangram中使用"
+        url: /docs/ios/use-in-tangram
 
 # android-documentation links
 android-docs:
@@ -184,15 +186,15 @@ virtualview-docs:
         url: "/docs/virtualview/vtext"
       - title: "NImage"
         url: "/docs/virtualview/nimage"
-      - title: "VImage"
+      - title: "VImage(仅安卓)"
         url: "/docs/virtualview/vimage"
       - title: "NLine"
         url: "/docs/virtualview/nline"
       - title: "VLine"
         url: "/docs/virtualview/vline"
-      - title: "VGraph"
+      - title: "VGraph(仅安卓)"
         url: "/docs/virtualview/vgraph"
-      - title: "Progress"
+      - title: "Progress(仅安卓)"
         url: "/docs/virtualview/progress"
 
   - title: "基础容器控件"
@@ -200,11 +202,11 @@ virtualview-docs:
     children:
       - title: "Page"
         url: "/docs/virtualview/page"
-      - title: "Scroller"
+      - title: "Scroller(仅安卓)"
         url: "/docs/virtualview/scroller"
-      - title: "Slider"
+      - title: "Slider(仅安卓)"
         url: "/docs/virtualview/slider"
-      - title: "Container"
+      - title: "Container(仅安卓)"
         url: "/docs/virtualview/container"
       - title: "FrameLayout"
         url: "/docs/virtualview/framelayout"
@@ -218,9 +220,9 @@ virtualview-docs:
         url: "/docs/virtualview/vh2layout"
       - title: "VHLayout"
         url: "/docs/virtualview/vhlayout"
-      - title: "VH"
+      - title: "VH(仅安卓)"
         url: "/docs/virtualview/vh"
-      - title: "FlexLayout"
+      - title: "FlexLayout(仅安卓)"
         url: "/docs/virtualview/flexlayout"
 
 # sidebar navigation list sample
