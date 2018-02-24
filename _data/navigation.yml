@@ -144,6 +144,8 @@ docs:
         url: /docs/layout-support/waterflow-layout
       - title: "轮播/横向滚动布局"
         url: /docs/layout-support/pagescroll-layout
+      - title: "横向线性滚动布局"
+        url: /docs/layout-support/linearscroll-layout
 
   - title: "其他"
     children:
