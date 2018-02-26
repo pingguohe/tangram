@@ -20,7 +20,7 @@ sidebar:
 |名称|类型|默认值|描述|
 |---|---|---|---|
 |orientation|enum(H/V)|H|水平方向布局，垂直方向布局|
-|layoutParam.layoutDirection|enum(left/top/right/bottom)|left|当oriention=H时，支持组件分布从left与right两个方向布局，这样可以实现靠左、靠右的效果；当orientation=V时，支持组件分布从top与bottom两个方向布局，这样可以实现靠上、靠下的效果；默认值是left，在orientation=V的情况下，必须显示指定top或者bottom|
+|layoutDirection|enum(left/top/right/bottom)|left|当oriention=H时，支持组件分布从left与right两个方向布局，这样可以实现靠左、靠右的效果；当orientation=V时，支持组件分布从top与bottom两个方向布局，这样可以实现靠上、靠下的效果；默认值是left，在orientation=V的情况下，必须显示指定top或者bottom。这是个基础组件就有的属性，但是只有VH2Layout会去使用它|
 
 ### 事件
 

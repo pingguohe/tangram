@@ -22,13 +22,14 @@ sidebar:
 |text|string|无|文本内容|
 |textColor|int|黑色|字体颜色|
 |textSize|int/float|20dp|字号大小|
-|textStyle|enum(normal/bold/italic/strike)|normal|normal：默认样式，bold：加粗，itlaic：斜体，strike：横线|
-|ellipsize|enum(none/start/marquee/middle/end)|none|截断方式|
-|lines|int|1|行数|
-|maxLines|int|无|最大行数|
-|lineSpaceMultiplier|int/float|1|行高放大系数，每一行文本高度计算会乘以这个系数|
-|lineSpaceExtra|int/float|0|行高额外空间，每一行文本高度计算会加上这个值|
-|supportHTMLStyle|boolean|false|true：采用富文本方式加载，false：按照普通文本加载|
+|textStyle|enum(normal/bold/italic/strike)|normal|normal：默认样式，bold：加粗，itlaic：斜体，strike：删除线|
+|ellipsize|enum(none/start/marquee/middle/end)|none|截断方式(iOS不支持走马灯)|
+|lines|int|1|固定行数，设为0表示不固定行数|
+|maxLines|int|无|最大行数，需要配合lines=0使用|
+|lineSpaceMultiplier(iOS暂不支持)|int/float|1|行高放大系数，每一行文本高度计算会乘以这个系数|
+|lineSpaceExtra(iOS暂不支持)|int/float|0|行高额外空间，每一行文本高度计算会加上这个值|
+|supportHTMLStyle(iOS不支持)|boolean|false|true：采用富文本方式加载，false：按照普通文本加载|
+|gravity|enum(left/right/top/bottom/v_center/h_center)|left\|top|描述内容的对齐，比如文字在文本组件里的位置、原子组件在容器里的位置，left：靠左，right：靠右，top：靠上，bottom：靠底，v_center：垂直方向居中，h_center：水平方向居中，可用`或`组合描述(iOS暂只支持水平方向)|
 
 ### 事件
 

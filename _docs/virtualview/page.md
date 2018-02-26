@@ -20,15 +20,15 @@ sidebar:
 |名称|类型|默认值|描述|
 |---|---|---|---|
 |orientation|enum(H/V)|V|滚动方向，H：水平滚动，V：垂直滚动|
-|onPageFlip|expr|无|表达式，翻页的时候触发加载的逻辑|
+|onPageFlip(iOS暂不支持)|expr|无|表达式，翻页的时候触发加载的逻辑|
 |autoSwitch|boolean|false|true：自动翻页滚动，false：不自动滚动|
 |canSlide|boolean|true|true：响应手势滑动，false：不响应手势滑动|
 |stayTime|int|2000|单位ms，自动滚动的间隔|
 |autoSwitchTime|int|500|单位ms，滚动时动画的持续时间|
-|animatorTime|int|100|单位ms，手势滑动时，松手后复位或者滚动到下一页的动画时间|
 |dataTag|jsonArray|无|容器内组件数据，描述内部子组件的类型与数据|
-|layoutOrientation|enum(normal/reverse)|normal|水平滚动：normal是从左往右布局，reverse是从右往左布局；垂直滚动:normal是从上往下布局，reverse是从下往上布局|
-nimationStyle|enum(linear/decelerate/accelerate/accelerateDecelerate/spring)|linear|线性、减速、加速、先加速后减速、弹簧|
+|animatorTime(iOS不支持)|int|100|单位ms，手势滑动时，松手后复位或者滚动到下一页的动画时间|
+|layoutOrientation(iOS不支持)|enum(normal/reverse)|normal|水平滚动：normal是从左往右布局，reverse是从右往左布局；垂直滚动:normal是从上往下布局，reverse是从下往上布局|
+|animationStyle(iOS不支持)|enum(linear/decelerate/accelerate/accelerateDecelerate/spring)|linear|线性、减速、加速、先加速后减速、弹簧|
 
 ### 事件
 

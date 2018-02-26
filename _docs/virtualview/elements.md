@@ -29,8 +29,8 @@ sidebar:
 |autoDimX|int/float|1|组件宽高比计算的横向值|
 |autoDimY|int/float|1|组件宽高比计算的竖向值|
 |autoDimDirection|enum(X/Y/NONE)|NONE|组件在布局中的基准方向，用于计算组件的宽高比，与autoDimX、autoDimY配合使用，设置了这三个属性时，在计算组件尺寸时具有更高的优先级。当autoDimDirection=X时，组件的宽度由layoutWidth和父容器决策决定，但高度 = width * (autoDimY / autoDimX)，当autoDimDirection=Y时，组件的高度由layoutHeight和父容器决策决定，但宽度 = height * (autoDimX / autoDimY)|
-|minWidth|int/float|0|最小宽度|
-|minHeight|int/float|0|最小高度|
+|minWidth(iOS暂未支持)|int/float|0|最小宽度|
+|minHeight(iOS暂未支持)|int/float|0|最小高度|
 |paddingLeft|int/float|0|左内边距|
 |paddingRight|int/float|0|右内边距|
 |paddingTop|int/float|0|上内边距|
@@ -40,16 +40,14 @@ sidebar:
 |layoutMarginTop|int/float|0|上外边距|
 |layoutMarginBottom|int/float|0|下外边距|
 |background|int|0|背景色|
-|backgroundImage|string|null|背景图地址|
 |borderWidth|int|0|边框宽度|
 |borderColor|int|0|边框颜色|
 |borderRadius|int|0|边框四个角的圆角半径，与borderWidth配合使用，支持NText、VText、VHLayout、VH2Layout、FrameLayout、GridLayout|
-|borderTopLeftRadius|int|0|单独设置左上角圆角半径，使用同上|
-|borderTopRightRadius|int|0|单独设置右上角圆角半径，使用同上|
-|borderBottomLeftRadius|int|0|单独设置左下角圆角半径，使用同上|
-|borderBottomRightRadius|int|0|单独设置右下角圆角半径，使用同上|
+|borderTopLeftRadius|int|0|单独设置左上角圆角半径，使用同上(iOS仅Layout支持单独设置)|
+|borderTopRightRadius|int|0|单独设置右上角圆角半径，使用同上(iOS仅Layout支持单独设置)|
+|borderBottomLeftRadius|int|0|单独设置左下角圆角半径，使用同上(iOS仅Layout支持单独设置)|
+|borderBottomRightRadius|int|0|单独设置右下角圆角半径，使用同上(iOS仅Layout支持单独设置)|
 |visibility|enum(visible/invisible/gone)|visible|可见性，与Android里的概念类似，visible：可见，invisible：不可见，但占位，gone：不可见也不占位|
-|gravity|enum(left/right/top/bottom/v_center/h_center)|left\|top|描述内容的对齐，比如文字在文本组件里的位置、原子组件在容器里的位置，left：靠左，right：靠右，top：靠上，bottom：靠底，v_center：垂直方向居中，h_center：水平方向居中，可用`或`组合描述|
 |dataTag|string|组件数据标识||
 |flag|enum(flag_software/flag_exposure/flag_clickable/flag_longclickable/flag_touchable)|组件行为定义|flag_software：关闭view的硬件加速，flag_exposure：需要触发曝光事件，flag_clickable：需要响应点击事件，flag_longclickable：需要响应长按事件，flag_touchable：需要响应触摸事件|
 |action|string|null|（表示点击事件触发之后跳转到数据中action字段定义的页面）|

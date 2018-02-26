@@ -20,7 +20,7 @@ sidebar:
 |名称|类型|默认值|描述|
 |---|---|---|---|
 |orientation|enum(H/V)|H|水平方向布局，垂直方向布局|
-|layoutParam.layoutRatio|int/float|0.0|在水平方向或者垂直方向的权重|
+|layoutRatio|int/float|0.0|在水平方向或者垂直方向的权重。这是个在基础元素上就有的属性，但是只有RatioLayout会使用它|
 
 ### 事件
 
