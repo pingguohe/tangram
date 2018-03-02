@@ -72,7 +72,14 @@ vafContext.getEventManager().register(EventManager.TYPE_Exposure, new IEventProc
 ```
 
 在处理函数里，可以获取到的资源有：
+
 + 触发事件的组件 model：`data.mVB`
 + 组件绑定的原始 JSON 数据：`(JSONObject)data.mVB.getViewCache().getComponentData();`
 
 如果消化了事件，就返回 `true`，否则返回 `false`。
+
+针对不同的控件，点击处理要做不同的逻辑，一般可以用以下方式来分发处理不同的点击事件：
+
+`String action = data.mVB.getAction()`
+
+获取所点击的控件的 action 字段，它是在 XML 目标里描述的，可以是一个常量值，也可从绑定的数据到数据。建议 actio 只是一个动作描述协议，比如跳转是一个 URL 格式的地址，其他的可以是自定义的协议；然后针对不同的协议地址，注册不同的处理模块，在自定义的 `IEventProcessor` 里分发处理。
