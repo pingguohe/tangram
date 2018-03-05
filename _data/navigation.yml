@@ -175,6 +175,8 @@ virtualview-docs:
         url: /docs/virtualview/event
       - title: "编译工具使用"
         url: /docs/virtualview/tools
+      - title: "预览工具使用"
+        url: /docs/virtualview/preview
   - title: "基础控件文档"
     children:
       - title: "公共属性"
