@@ -228,6 +228,16 @@ virtualview-docs:
         url: "/docs/virtualview/vh"
       - title: "FlexLayout(仅安卓)"
         url: "/docs/virtualview/flexlayout"
+      - title: "NFrameLayout"
+        url: "/docs/virtualview/nframelayout"
+      - title: "NRatioLayout"
+        url: "/docs/virtualview/nratiolayout"
+      - title: "NGridLayout"
+        url: "/docs/virtualview/ngridlayout"
+      - title: "NVH2Layout"
+        url: "/docs/virtualview/nvh2layout"
+      - title: "NVHLayout"
+        url: "/docs/virtualview/nvhlayout"
 
 # sidebar navigation list sample
 sidebar-sample:
