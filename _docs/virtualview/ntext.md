@@ -22,7 +22,7 @@ sidebar:
 |text|string|无|文本内容|
 |textColor|int|黑色|字体颜色|
 |textSize|int/float|20dp|字号大小|
-|textStyle|enum(normal/bold/italic/strike)|normal|normal：默认样式，bold：加粗，itlaic：斜体，strike：删除线|
+|textStyle|enum(normal/bold/italic/strike/underline)|normal|normal：默认样式，bold：加粗，itlaic：斜体，strike：删除线，underline：下划线|
 |ellipsize|enum(none/start/marquee/middle/end)|none|截断方式(iOS不支持走马灯)|
 |lines|int|1|固定行数，设为0表示不固定行数|
 |maxLines|int|无|最大行数，需要配合lines=0使用|
