@@ -14,7 +14,7 @@
       {% capture f_url %}{{ f.url | absolute_url }}{% endcapture %}
     {% endif %}
 
-    <div class="tangram__feature__item{% if include.type %}--{{ include.type }}{% endif %}" onclick="window.open('{% if f.url %}{{ f_url }}{% endif %}')">
+    <div class="tangram__feature__item{% if include.type %}--{{ include.type }}{% endif %}" {% if f.url %}onclick="window.open('{{ f_url }}')"{% endif %}>
       <div class="archive__item">
         
         {% if f.image_path %}
