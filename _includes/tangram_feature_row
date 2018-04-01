@@ -15,10 +15,10 @@
     {% endif %}
 
     <div class="tangram__feature__item{% if include.type %}--{{ include.type }}{% endif %}" {% if f.url %}onclick="window.open('{{ f_url }}')"{% endif %}>
-      <div class="archive__item">
+      <div class="tangram__archive__item">
         
         {% if f.image_path %}
-          <div class="archive__item-teaser">
+          <div class="tangram__archive__item-teaser">
             <img src=
               {% if f.image_path contains "://" %}
                 "{{ f.image_path }}"
@@ -31,7 +31,7 @@
 
         <div class="archive__item-body">
           {% if f.title %}
-            <h2 class="archive__item-title">{{ f.title }}</h2>
+            <h2 class="tangram__archive__item-title">{{ f.title }}</h2>
           {% endif %}
 
           {% if f.excerpt %}

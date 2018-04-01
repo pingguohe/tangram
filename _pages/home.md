@@ -38,7 +38,7 @@ tangram_partner:
     excerpt: ""
   - image_path: https://img.alicdn.com/tfs/TB1yahchVGWBuNjy0FbXXb4sXXa-180-180.webp
     alt: "Alibaba.com B2B Trade App"
-    title: "Alibaba.com B2B Trade App"
+    title: "Alibaba.com"
     excerpt: ""
   - image_path: https://img.alicdn.com/tfs/TB1llJYh49YBuNjy0FfXXXIsVXa-180-180.webp
     alt: "AliExpress"
@@ -82,7 +82,7 @@ tangram_partner:
     excerpt: ""
   - image_path: https://gw.alicdn.com/tfs/TB1Lkx2h7yWBuNjy0FpXXassXXa-96-96.png
     alt: "到此登记"
-    title: "没有你的应用？来这里登记"
+    title: "参与展示"
     excerpt: ""
     url: https://github.com/pingguohe/tangram/issues/1
 github:
