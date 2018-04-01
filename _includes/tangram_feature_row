@@ -14,7 +14,7 @@
       {% capture f_url %}{{ f.url | absolute_url }}{% endcapture %}
     {% endif %}
 
-    <div class="feature__item{% if include.type %}--{{ include.type }}{% endif %}">
+    <div class="tangram__feature__item{% if include.type %}--{{ include.type }}{% endif %}" onclick="window.open('{% if f.url %}{{ f_url }}{% endif %}')">
       <div class="archive__item">
         
         {% if f.image_path %}
@@ -38,10 +38,6 @@
             <div class="archive__item-excerpt">
               {{ f.excerpt | markdownify }}
             </div>
-          {% endif %}
-
-          {% if f.url %}
-            <p><a href="{{ f_url }}" class="btn {{ f.btn_class }}">{{ f.btn_label | default: site.data.ui-text[site.locale].more_label | default: "Learn More" }}</a></p>
           {% endif %}
         </div>
       </div>

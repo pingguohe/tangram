@@ -237,3 +237,14 @@
     }
   }
 }
+
+.tangram__feature__item {
+  margin-bottom: 2em;
+  font-size: 1.25rem;
+
+  @include breakpoint($small) {
+    margin-bottom: 0;
+    @include gallery(2 of 12);
+  }
+
+}
