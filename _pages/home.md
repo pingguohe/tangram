@@ -93,6 +93,6 @@ github:
 
 {% include quick-start %}
 
-<h1>Apps built in Tangram System</h1>
+<h2>Apps built in Tangram System</h2>
 <br />
 {% include tangram_feature_row id="tangram_partner" %}
