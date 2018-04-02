@@ -236,13 +236,15 @@
     }
   }
 }
-
-.tangram__archive__item-title {
-  margin-bottom: 0.25em;
-  font-family: $sans-serif-narrow;
-  text-align: center;
-  a + a {
-    opacity: 0.5;
+.page__content{
+  .tangram__archive__item-title {
+    margin-bottom: 0.25em;
+    font-family: $sans-serif-narrow;
+    text-align: center;
+    border:none;
+    a + a {
+      opacity: 0.5;
+    }
   }
 }
 
@@ -268,6 +270,7 @@
 .tangram__feature__item {
   margin-bottom: 2em;
   font-size: 1.25rem;
+  @include gallery(1 of 2);
 
   @include breakpoint($small) {
     margin-bottom: 0;
