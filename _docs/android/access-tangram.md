@@ -135,3 +135,10 @@ String json = new String(getAssertsFile(this, "data.json"));
 
 完整页面的数据结构可参考 [Demo]() 里。
 
+# 12.退出的时候销毁 engine
+
+```
+engine.destroy();
+```
+
+通过主动调用 `destroy` 方法，可以释放内部的资源，比如清理 adapter、清理事件总线缓存的未处理消息、注销广播等。注意调用 `destroy` 方法之后就不需要调用 `unbind` 方法了。
