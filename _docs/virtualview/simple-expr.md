@@ -63,17 +63,17 @@ data.put("logo", "https://gw.alicdn.com/tps/TB1wwiKKV.png");
 
 当`条件表达式`成立的时候，使用`结果表达式[1]`，否则使用`结果表达式[2]`。三个表达式均支持 EL 解析。
 
-其中：
-
-条件表达式支持布尔类型、字符串类型、JSONObject、JSONArray。
-
-以下场景均为 false：
+安卓 SDK 中以下场景均为 false：
 + 布尔类型值为 false
 + 字符串为 null 或者 "" 或者 "null"
 + 字符串 "false" 或者 "FALSE"
 + JSONObject 为空或 JSONObject.NULL
 + JSONArray 长度为 0
 + 字段不存在
+
+iOS SDK 中以下场景均为 false:
+- key 对应的值为字串，且字串为 "false"
+- key 对应的值不存在
 
 示例：
 
