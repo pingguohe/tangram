@@ -36,18 +36,6 @@ engine.setSupportRx(true);
 
 这样内部内部流程和相应的接口才能切换到响应式逻辑。
 
-## 输入数据的响应式接入
-
-Tangram 是由数据驱动页面展示，它提供了一系列接口用来接收数据从而展示页面，包括整体刷新，局部更新等，这个环节可以作为一个数据流的终点来消费响应式流，因此设计了一系列 `Consumer` 接口来作为最终的观察者，响应数据变化。
-
-### 整体页面刷新
-
-### 插入卡片布局
-
-### 插入组件
-
-### 局部刷新
-
 ## 输出事件的响应式接入
 
 像点击、滚动、倒计时、异步加载数据等，都是在 Tangram 页面的使用过程中由用户或者框架产生，传统的响应这些事件的方式是提供异步回调，而响应式改造之后提供了 `Observable` 接口，使用方可以获取到一个 `Observable`，并以此为一个事件流的起点，执行自己的业务逻辑。当然，在实现上，这些 `Observable` 本质上还是封装了传统的回调接口，然后触发事件的发送。
@@ -230,3 +218,76 @@ Disposable dsp7 = loadMoreObservable.observeOn(Schedulers.io())
     }).observeOn(AndroidSchedulers.mainThread()).subscribe(cardLoadSupport.asDoLoadMoreFinishConsumer());
 mCompositeDisposable.add(dsp7);
 ```
+
+## 输入数据的响应式接入
+
+Tangram 是由数据驱动页面展示，它提供了一系列接口用来接收数据从而展示页面，包括整体刷新，局部更新等，这个环节可以作为一个数据流的终点来消费响应式流，因此设计了一系列 `Consumer` 接口来作为最终的观察者，响应数据变化。
+
+### 整体页面刷新
+
+### 插入卡片布局
+
+### 插入组件
+
+### 局部刷新
+
+## 解析数据的支持
+
+解析数据的过程就是从 json 数据到 `List<Card>` 或者 `List<BaseCell>` 的过程，这其实就是对应与响应式流程里的一个 map 过程。这里重构了解析逻辑，除了原来的解析成一个列表的接口，`TangramEngine` 新增了解析单个组件或者布局的接口。具体如下：
+
++ `public List<Card> parseData(@Nullable JSONArray data)`：解析出一个布局列表；
++ `public List<BaseCell> parseComponent(@Nullable JSONArray data)`：解析出一个组件列表；
++ `public List<BaseCell> parseComponent(@Nullable Card parent, @Nullable JSONArray data)`：解析出一个组件列表，提供父节点布局，支持嵌套布局地解析；
++ `public Card parseSingleData(@Nullable JSONObject data)`：解析出一个布局；
++ `public L parseSingleComponent(@Nullable C parent, @Nullable O data)`：解析出一个组件对象，提供父节点布局，支持嵌套布局地解析；
+
+因此可以直接在 map 操作符里调用上述接口来转换；
+
+也可以使用 compose 方法，调用 `TangramEngine` 里的 `ObservableTransformer` 相关接口：
+
++ `public ObservableTransformer<ParseGroupsOp, List<Card>> getGroupTransformer()`：解析出一个布局列表，`ParseGroupsOp` 封装了解析需要的原始数据和资源；
++ `public ObservableTransformer<ParseComponentsOp, List<BaseCell>> getComponentTransformer()`：解析出一个组件列表，`ParseComponentsOp ` 封装了解析需要的原始数据和资源；
++ `public ObservableTransformer<ParseSingleGroupOp, Card> getSingleGroupTransformer()`：解析出一个布局，`ParseSingleGroupOp ` 封装了解析需要的原始数据和资源；
++ `public ObservableTransformer<ParseSingleComponentOp, BaseCell> getSingleComponentTransformer()`：解析出一个组件对象，`ParseSingleComponentOp` 封装了解析需要的原始数据和资源；
+
+## 组件绑定数据的支持
+
+组件绑定数据的支持主要在于对 native 组件生命周期的管理，native 组件绑定数据有一个 `public void postBindView(BaseCell cell)` 和 `public void postUnBindView(BaseCell cell)` 时机，分别对应于组件进度屏幕绑定数据和，滑出屏幕待回收的时机。
+
+当开启响应式特性的时候，Tangram 内部会维护每个组件的这两个生命周期事件，并根据这个生命周期来辅助支持组件里的绑定数据的时候，响应式流自动取消订阅的能力。如果你用过 RxLifeCycle，就知道这个功能的作用了，其工作原理就是参考自 RxLifeCycle 的设计思路。
+
+关键使用方法就是：
+
+1. 获取组件的 lifeCycleProvider  对象：`LifeCycleProviderImpl<BDE> lifeCycleProvider = cell.getLifeCycleProvider();`；
+2. 在响应式流里绑定流到组件滑出屏幕的时机：`compose(lifeCycleProvider.<String>bindUntil(BDE.UNBIND))`；
+
+举个例子：
+
+```
+public void postBindView(BaseCell cell) {
+    if (cell.serviceManager != null && cell.serviceManager.supportRx()) {
+        LifeCycleProviderImpl<BDE> lifeCycleProvider = cell.getLifeCycleProvider();
+        Observable.just(cell).map(new Function<BaseCell, String>() {
+            @Override
+            public String apply(BaseCell cell) throws Exception {
+            	//模拟绑定数据过程中耗时的任务，可以异步处理；
+                Thread.sleep(500L);
+                int pos = cell.pos;
+                return cell.id + " pos: " + pos + " " + cell.parent.getClass().getSimpleName() + " " + cell
+                    .optStringParam("title");
+            }
+        }).subscribeOn(Schedulers.computation())
+        .observeOn(AndroidSchedulers.mainThread())
+        //绑定该流到组件滑出屏幕为止，也就是组件内部触发了 BDE.UNBIND 事件；这样可以自动取消订阅，防止内存泄露；
+        .compose(lifeCycleProvider.<String>bindUntil(BDE.UNBIND))
+        .subscribe(new Consumer<String>() {
+            @Override
+            public void accept(String s) throws Exception {
+                titleTextView.setText(s);
+            }
+        });
+    }
+}
+```
+
+## 页面加载案例
