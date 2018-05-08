@@ -36,7 +36,17 @@ engine.setSupportRx(true);
 
 这样内部内部流程和相应的接口才能切换到响应式逻辑。
 
-## 消化数据
+## 输入数据的响应式接入
+
+Tangram 是由数据驱动页面展示，它提供了一系列接口用来接收数据从而展示页面，包括整体刷新，局部更新等，这个环节可以作为一个数据流的终点来消费响应式流，因此设计了一系列 `Consumer` 接口来作为最终的观察者，响应数据变化。
+
+### 整体页面刷新
+
+### 插入卡片布局
+
+### 插入组件
+
+### 局部刷新
 
 ## 输出事件的响应式接入
 
@@ -143,7 +153,7 @@ mCompositeDisposable.add(dsp4);
 在 `CardLoadSupport` 里，原本有触发 Card 异步加载数据，或者加载更多的接口，新增了两对响应式的接口：
 
 + `public Observable<Card> observeCardLoading()`：Card 内容的异步加载 `Observable`，业务方拿到它之后可以对接网络加载、数据解析等一系列流程，然后将结果封装成一个 `LoadGroupOp`，提供到下面的接口使用；
-+ `public Consumer<LoadGroupOp> asDoLoadFinishConsumer()`：异步加载的结果 `Consumer`，当然你也可以选择不使用它，自己定义一个 `Consumer`；参数 `LoadGroupOp` 里封装了原始的 `Card` 对象，以及一个 `List<BaseCell>` 结果，`List<BaseCell>` 不为空代表成功，否则代表失败；
++ `public Consumer<LoadGroupOp> asDoLoadFinishConsumer()`：异步加载的 `Consumer`，当然你也可以选择不使用它，自己定义一个 `Consumer`；参数 `LoadGroupOp` 里封装了原始的 `Card` 对象，以及一个 `List<BaseCell>` 结果，`List<BaseCell>` 不为空代表成功，否则代表失败；
 
 举个例子：
 
@@ -184,5 +194,39 @@ Disposable dsp6 = loadCardObservable
 mCompositeDisposable.add(dsp6);
 ```
 
-+ `public Observable<Card> observeCardLoadingMore()`：
-+ `public Consumer<LoadMoreOp> asDoLoadMoreFinishConsumer()`：
++ `public Observable<Card> observeCardLoadingMore()`：Card 加载更多的 `Observable`，业务方拿到它之后可以对接网络加载、数据解析等一系列流程，然后将结果封装成一个 `LoadMoreOp `，提供到下面的接口使用；
++ `public Consumer<LoadMoreOp> asDoLoadMoreFinishConsumer()`：异步加载更多的 `Consumer`，当然你也可以选择不使用它，自己定义一个 `Consumer`；参数 `LoadMoreOp ` 里封装了原始的 `Card` 对象，一个 `List<BaseCell>` 结果，一个是否还有下一页的参数，true 代表还有下一页，否则代表结束；
+
+举个例子：
+
+```
+Observable<Card> loadMoreObservable = cardLoadSupport.observeCardLoadingMore();
+Disposable dsp7 = loadMoreObservable.observeOn(Schedulers.io())
+    .map(new Function<Card, LoadMoreOp>() {
+        @Override
+        public LoadMoreOp apply(Card card) throws Exception {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            Log.w("TangramActivity", "loadMoreObservable " + card.load + " page " + card.page);
+            JSONArray cells = new JSONArray();
+            for (int i = 0; i < 9; i++) {
+                try {
+                    JSONObject obj = new JSONObject();
+                    obj.put("type", 1);
+                    obj.put("msg", "async page loaded, params: " + card.getParams().toString());
+                    cells.put(obj);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            List<BaseCell> cs = engine.parseComponent(cells);
+            //mock loading 6 pages
+            LoadMoreOp loadMoreOp = new LoadMoreOp(card, cs, card.page != 6);
+            return loadMoreOp;
+        }
+    }).observeOn(AndroidSchedulers.mainThread()).subscribe(cardLoadSupport.asDoLoadMoreFinishConsumer());
+mCompositeDisposable.add(dsp7);
+```
