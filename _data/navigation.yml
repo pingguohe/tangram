@@ -100,6 +100,8 @@ android-docs:
         url: /docs/android/use-card
       - title: "Best Practice - 组件构建"
         url: /docs/android/element-best_practice
+      - title: "响应式 Tangram 的使用介绍"
+        url: /docs/android/reactive-tangram
   - title: "使用VirtualView"
     children:
       - title: "单独使用VirtualView"

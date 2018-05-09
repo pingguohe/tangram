@@ -36,6 +36,31 @@ engine.setSupportRx(true);
 
 这样内部内部流程和相应的接口才能切换到响应式逻辑。
 
+## 响应式流中数据结构的定义
+
+在响应式流中，传递的都是数据单个对象，而传统的命令式接口里，一个操作往往有多个类型的参数，JAVA 里没有像元组那样的结构用来组合一系列对象，用 `Object[]` 类型的对象也难以理解维护，因此，针对这种情况，Tangram 将相关接口的参数封装成一系列 `TangramOp1`、`TangramOp2`、`TangramOp3` 对象，分别包含一个、两个、三个参数，用来在响应式流中传递信息，也方便原有接口的对接。具体的定义在包 `com.tmall.wireless.tangram.op` 下，包含了插入、更新、异步加载等接口的操作定义。下文中碰到的接口里包含的 `ClickExposureCellOp`、`LoadGroupOp` 等都是在这个背景下定义的结构。
+
+举个例子：
+
+在页面里插入一个卡片布局：
+
+`public void insertBatchWith(int insertIdx, List<Card> groups)`；
+
+有两个参数；
+
+在响应式接口里，是这么封装的：
+
+```
+public Consumer<InsertGroupsOp> asInsertGroupsConsumer() {
+    return new Consumer<InsertGroupsOp>() {
+        @Override
+        public void accept(InsertGroupsOp op) throws Exception {
+            insertBatchWith(op.getArg1(), op.getArg2());
+        }
+    };
+}
+```
+
 ## 输出事件的响应式接入
 
 像点击、滚动、倒计时、异步加载数据等，都是在 Tangram 页面的使用过程中由用户或者框架产生，传统的响应这些事件的方式是提供异步回调，而响应式改造之后提供了 `Observable` 接口，使用方可以获取到一个 `Observable`，并以此为一个事件流的起点，执行自己的业务逻辑。当然，在实现上，这些 `Observable` 本质上还是封装了传统的回调接口，然后触发事件的发送。
@@ -225,11 +250,42 @@ Tangram 是由数据驱动页面展示，它提供了一系列接口用来接收
 
 ### 整体页面刷新
 
++ `public Consumer<JSONArray> asOriginalDataConsumer()`：整体刷新；
++ `public Consumer<List<Card>> asParsedDataConsumer()`：整体刷新，提前解析了数据；
+
 ### 插入卡片布局
+
++ `public Consumer<InsertGroupOp> asInsertGroupConsumer()`：插入一个卡片布局，插入位置是卡片的索引，局部刷新；
++ `public Consumer<InsertGroupsOp> asInsertGroupsConsumer()`：插入一个卡片布局列表，插入位置是卡片的索引，局部刷新；
++ `public Consumer<AppendGroupOp> asAppendGroupConsumer()`：在末尾插入一个卡片布局，局部刷新；
++ `public Consumer<AppendGroupsOp> asAppendGroupsConsumer()`：在模板插入一个卡片布局列表，局部刷新；
 
 ### 插入组件
 
++ `public Consumer<InsertCellOp> asInsertCellConsumer()`：插入一个组件，插入位置是所有组件的索引，局部刷新；
++ `public Consumer<InsertCellsOp> asInsertCellsConsumer()`：插入一个组件列表，插入位置是所有组件的索引，局部刷新；
+ 
 ### 局部刷新
+
++ `public Consumer<ReplaceCellOp> asReplaceCellConsumer()`：替换一个组件，局部刷新；
++ `public Consumer<ReplaceGroupContentOp> asReplaceGroupContentConsumer()`：替换一个布局里的所有组件，新替换的组件列表大小要与原来的相同，局部刷新；
++ `public Consumer<ReplaceGroupOp> asReplaceGroupConsumer()`：替换整个布局，新替换的布局包含的组件列表大小要与原来的相同，局部刷新；
++ `public Consumer<UpdateCellOp> asUpdateCellConsumer()`：更新组件内容，即组件数据刷新变化之后刷新 UI，局部刷新；
+
+举个例子：
+
+响应一个点击事件，更新标题数据。
+
+```
+ViewClickObservable.from(findViewById(R.id.first)).map(new Function<Object, UpdateCellOp>() {
+    @Override
+    public UpdateCellOp apply(Object o) throws Exception {
+        BaseCell cell = (BaseCell)engine.getGroupBasicAdapter().getComponents().get(0);
+        cell.extras.put("title", "Rx标题1");
+        return new UpdateCellOp(cell);
+    }
+}).subscribe(engine.asUpdateCellConsumer())
+```
 
 ## 解析数据的支持
 
@@ -291,3 +347,51 @@ public void postBindView(BaseCell cell) {
 ```
 
 ## 页面加载案例
+
+下面代码模拟了 Card 逐块返回数据，客户端上逐块解析数据并加载到页面上，这里使用了数据解析、数据过滤、页面局部刷新等接口，详细代码在 demo 有展示；
+
+```
+Disposable dsp8 = Observable.create(new ObservableOnSubscribe<JSONArray>() {
+    @Override
+    public void subscribe(ObservableEmitter<JSONArray> emitter) throws Exception {
+        String json = new String(getAssertsFile(getApplicationContext(), "data.json"));
+        JSONArray data = null;
+        try {
+            data = new JSONArray(json);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        emitter.onNext(data);
+        emitter.onComplete();
+    }
+}).flatMap(new Function<JSONArray, ObservableSource<JSONObject>>() {
+    @Override
+    public ObservableSource<JSONObject> apply(JSONArray jsonArray) throws Exception {
+    	//JSONArrayObservable 是一个自定义的 Observable，遍历 JSONArray， 在 demo 里可以看到该类的定义；将整个 json 列表拆成一项一项发送；
+        return JSONArrayObservable.fromJsonArray(jsonArray);
+    }
+}).map(new Function<JSONObject, ParseSingleGroupOp>() {
+    @Override
+    public ParseSingleGroupOp apply(JSONObject jsonObject) throws Exception {
+        return new ParseSingleGroupOp(jsonObject, engine);
+    }
+}).compose(engine.getSingleGroupTransformer())
+.filter(new Predicate<Card>() {
+    @Override
+    public boolean test(Card card) throws Exception {
+        return card.isValid();
+    }
+}).map(new Function<Card, AppendGroupOp>() {
+    @Override
+    public AppendGroupOp apply(Card card) throws Exception {
+        Thread.sleep(300);
+        return new AppendGroupOp(card);
+    }
+}).subscribeOn(Schedulers.io())
+.observeOn(AndroidSchedulers.mainThread())
+.subscribe(engine.asAppendGroupConsumer());
+```
+
+加载效果如下：
+
+![](https://gw.alicdn.com/tfs/TB1_xXbqGmWBuNjy1XaXXXCbXXa-480-800.gif)
