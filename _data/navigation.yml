@@ -22,6 +22,8 @@ foo:
 main:
   - title: "概览"
     url: /docs/basic-concept/history
+  - title: "TAC"
+    url: /docs/tac/about-tac
   - title: "动态组件"
     url: /docs/virtualview/about-virtualview
   - title: "iOS"
@@ -157,7 +159,9 @@ docs:
         url: /docs/roadmap/
       - title: "License"
         url: /docs/license/
-
+tac-docs:
+  - title: "TAC"
+  
 virtualview-docs:  
   - title: "动态组件"
     children:
