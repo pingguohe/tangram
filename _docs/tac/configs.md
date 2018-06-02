@@ -8,7 +8,7 @@ sidebar:
   nav: tac-docs
 ---
 
-# TAC 配置
+## TAC 配置
 
 * TAC 使用 springboot 构建，可是用 springboot 的标准配置文件来替换其默认配置；
 * 如 启动参数 --spring.config.location=file:/override.properties

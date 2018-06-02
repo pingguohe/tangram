@@ -8,7 +8,7 @@ sidebar:
   nav: tac-docs
 ---
 
-# 源码启动详细步骤
+## 源码启动详细步骤
 
 * 以下以 idea 为例，描述 tac 源码从 idea 启动步骤
 

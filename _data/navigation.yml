@@ -159,17 +159,18 @@ docs:
         url: /docs/roadmap/
       - title: "License"
         url: /docs/license/
-tac-docs:
-  - title: "TAC"
-    url: /docs/tac/about-TAC
-  - title: "IDE源码启动-quickstart"
-    url: /docs/tac/ide_source_start    
-  - title: "启动参数"
-    url: /docs/tac/configs
-  - title: "添加自定义数据源"
-    url: /docs/tac/custom_data_source    
-  - title: "与gitlab集成"
-    url: /docs/tac/gitlab
+
+tac-docs: 
+  - title: "TAC 使用介绍"
+    children:
+      - title: "IDE源码启动-quickstart"
+        url: /docs/tac/ide_source_start    
+      - title: "启动参数"
+        url: /docs/tac/configs
+      - title: "添加自定义数据源"
+        url: /docs/tac/custom_data_source    
+      - title: "与gitlab集成"
+        url: /docs/tac/gitlab
  
   
 virtualview-docs:  
