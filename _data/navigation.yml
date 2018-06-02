@@ -161,6 +161,16 @@ docs:
         url: /docs/license/
 tac-docs:
   - title: "TAC"
+    url: /docs/tac/about-TAC
+  - title: "IDE源码启动-quickstart"
+    url: /docs/tac/ide_source_start    
+  - title: "启动参数"
+    url: /docs/tac/configs
+  - title: "添加自定义数据源"
+    url: /docs/tac/custom_data_source    
+  - title: "与gitlab集成"
+    url: /docs/tac/gitlab
+ 
   
 virtualview-docs:  
   - title: "动态组件"
