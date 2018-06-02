@@ -1,6 +1,6 @@
 ---
 title: "TAC"
-permalink: /docs/TAC/about-TAC
+permalink: /docs/tac/about-tac
 excerpt: "About TAC."
 modified: 2017-12-07T20:05:12-04:00
 sidebar:
