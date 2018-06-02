@@ -8,7 +8,7 @@ sidebar:
   nav: tac-docs
 ---
 
-# 与 gitlab 集成
+## 与 gitlab 集成
 
 * 用户可以将 gitlab 与 tac 集成，方便管理微服务；
 
