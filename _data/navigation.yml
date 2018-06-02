@@ -163,8 +163,6 @@ docs:
 tac-docs: 
   - title: "TAC 使用介绍"
     children:
-      - title: "什么是 TAC"
-        url: /docs/tac/about-TAC
       - title: "IDE源码启动-quickstart"
         url: /docs/tac/ide_source_start    
       - title: "启动参数"
