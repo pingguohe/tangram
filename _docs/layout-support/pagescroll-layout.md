@@ -34,6 +34,12 @@ sidebar:
     <th class="tg-yw4l">样例</th>
   </tr>
   <tr>
+    <td class="tg-yw4l">itemRatio</td>
+    <td class="tg-yw4l">内部 View 的宽高比，宽度按满屏幕根据ratio计算高度，建议设置此属性，可预先占位，避免 Banner 有一个高度撑开的过程</td>
+    <td class="tg-yw4l">Number或者String</td>
+    <td class="tg-yw4l">2.4</td>
+  </tr>
+  <tr>
     <td class="tg-yw4l">margin</td>
     <td class="tg-yw4l">卡片的外间距，顺序是上右下左</td>
     <td class="tg-yw4l">Array(内部是Number或者String)/String</td>
