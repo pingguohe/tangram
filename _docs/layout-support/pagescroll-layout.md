@@ -40,6 +40,12 @@ sidebar:
     <td class="tg-yw4l">2.4</td>
   </tr>
   <tr>
+    <td class="tg-yw4l">pageRatio</td>
+    <td class="tg-yw4l">内部 View 宽度占总屏幕宽度的比例，如内部 View 宽度为 120，屏幕宽为750，则此值是 120/750=0.16</td>
+    <td class="tg-yw4l">Number或者String</td>
+    <td class="tg-yw4l">0.16</td>
+  </tr>
+  <tr>
     <td class="tg-yw4l">margin</td>
     <td class="tg-yw4l">卡片的外间距，顺序是上右下左</td>
     <td class="tg-yw4l">Array(内部是Number或者String)/String</td>
