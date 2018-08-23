@@ -11,7 +11,7 @@ sidebar:
 ## Android
 
 ### 下载工具：
-地址及演示：[github](https://github.com/alibaba/virtualview_tools/tree/master/compiler-tools/TemplateWorkSpace/android-tool)
+地址及演示：[github](https://github.com/alibaba/virtualview_tools/tree/master/compiler-tools/RealtimePreview)
 
 ### 简介
 本脚本基于 `buildTemplate.sh` 脚本，整合了『编译』-『上传』-『刷新』的流程。目的在于让模板编写之后自动刷新预览。
