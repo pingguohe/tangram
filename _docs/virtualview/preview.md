@@ -1,51 +1,78 @@
 ---
-title: "编译工具使用"
+title: "预览工具使用"
 permalink: /docs/virtualview/preview
-excerpt: "编译工具使用"
+excerpt: "预览工具使用"
 modified: 2018-03-05T20:05:12-04:00
 sidebar:
   title: "VirtualView预览工具"
   nav: virtualview-docs
 ---
 
-## Android
+这是一个加速开发 Virtual View 模版的小脚本，让你能脱离繁重的开发环境 Xcode 和 Android Studio，只需一个轻量级的文本编辑器如 VSCode/Atom/SublimeText 即可开始进入开发，并且提供热加载能力，大大加速提高开发调试效率。
 
-### 下载工具：
-地址及演示：[github](https://github.com/alibaba/virtualview_tools/tree/master/compiler-tools/RealtimePreview)
+![screen_record.gif](https://raw.githubusercontent.com/alibaba/virtualview_tools/master/compiler-tools/RealtimePreview/screenshot.gif) 
 
-### 简介
-本脚本基于 `buildTemplate.sh` 脚本，整合了『编译』-『上传』-『刷新』的流程。目的在于让模板编写之后自动刷新预览。
 
-### 依赖环境
-+ python
-+ adb
-+ Java
+## 依赖
 
-### 使用方法
+- java *编译 VV*
+- python 2 *跑 WebServer*
+- fswatch *监听文件修改* `brew install fswatch`
+- qrencode *生成二维码* `brew install qrencode`
 
-`python buildAndPreview.py VH2Layout`
+若需要脱离 iOS/Android 开发环境开发 VV，则需要安装对应客户端到真机进行预览、调试、开发。
 
-参数是模板名称，也就是当前要修改、预览的模板，与 `templatelist.properties` 里的名称一致。
+- [iOS Playground](https://github.com/alibaba/VirtualView-iOS)
+- [Android Playground](https://github.com/alibaba/Virtualview-Android)
 
-### `previewconfig.conf` 配置参数
-
-+ 推送编译后的 .out 文件到手机存储目录下：
-
-#模板推送到手机存储的路径
+## 目录结构
 
 ```
-[path]
-target = /sdcard/com.tmall.wireless.virtualviewdemo/virtualview/
+.
+├── compiler.jar   (VV 的编译工具)
+├── config.properties   (VV 编译模版需要的描述文件)
+├── run.sh    (主运行脚本)
+├── .dir (目录配置，json数组格式，新增模板目录需要在此配置，并重新运行脚本)
+└── templates (按文件夹分割存放模版)
+    └── helloworld
+        ├── helloworld.json   (该模版所需参数)
+        ├── helloworld.out    (该模版编译后的二进制)
+        ├── helloworld.xml    (该模版源文件)
+        └── helloworld_QR.png (该模版 URL 供于扫码加载)
 ```
 
-+ 预览app的预览界面
+> 参上，模版相关文件名必须和目录名一致！
+
+模版统一存放在 templates 目录中，其中包含所有将会展示在 Playground 的 VV 模版。
+
+> 为了方便模版开发和管理，你可以将这里的 `templates` 目录软链到你自己的额模版 Git 仓库。
+
+## 使用
+
+一、 首先确保上述依赖都安装完毕，然后将本项目拉到本地：
+
+
+二、 然后切到 `/compiler-tools/realtime-preview` 目录执行 `run.sh` 即可开启服务，启动服务后正常情况会有如下输出：
 
 ```
-[preview]
-activity = com.tmall.wireless.virtualviewdemo.debug/com.tmall.wireless.virtualviewdemo.PreviewActivity
+➜  VVTool git:(master) ✗ ./run.sh
+############# Begin Scripts #############
+############# Copy All .xml files #############
+############# Prebuild : templatelist.properties #############
+############# Build: out files #############
+compile name: helloworld path: /realtime-preview/template/helloworld.xml
+############# Run HTTP Server #############
+Start HTTP Server : http://127.0.0.1:7788
 ```
 
-以上默认值都是基于 VirtualView-Android 的 [demo](https://github.com/alibaba/Virtualview-Android/) 里配置的，可以自行迁移 demo 代码到自己的 app 环境中进行预览。
+三、Android 需要修改 Playground 下的
+https://github.com/alibaba/Virtualview-Android/blob/master/app/src/main/java/com/tmall/wireless/virtualviewdemo/preview/util/HttpUtil.java#L16     
+将ip改为你的PC ip地址。
 
-### 预览客户端
-默认基于 VirtualView-Android 的 [demo](https://github.com/alibaba/Virtualview-Android/)，当有自定义控件的时候，需要修改预览 app 里，添加自定义组件注册逻辑，因此建议参考 demo 配置自己的预览环境。(注意确保手机有读SD卡权限)
+四、 这时候打开 iOS/Android Playground 即可看到所有 template 目录下的模版。
+
+**二维码扫描**
+
+每个模版目录下会生成类似 `xx_QR.png` 的二维码图片，当前模版对应的 HTTP 地址，如 *http://127.0.0.1:7788/helloworld/data.json* ，对应 iOS/Android Playground 应用可通过二维码扫描读取该路径中的模版和数据，然后在客户端加载。
+
+> 实时预览要求 Playground 应用和本服务在同一网络环境
