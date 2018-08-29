@@ -22,7 +22,7 @@ Tangram 的页面的数据无法一次性返回，有些区块布局内的数据
 	"id": "Shop",
 	"load": "queryShop",
 	"loadType": "-1",
-	"type": "2"
+	"type": "container-oneColumn"
 }
 ```
 
