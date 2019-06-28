@@ -49,7 +49,7 @@ sidebar:
 	    - 如配置 `flexDirection=Enum<row:0,row-reverse:1,column:2,column-reverse:3>`
 	    - 在解析属性是配置 `row` 直接转化成 `int:0`，`row-reverse` 转成 `int:1`
 - `DEFAULT_PROPERTY_XXXX`
-  - 为了兼容就模板的编译，写的强制在二进制中写入一些属性类型定义，可以忽略
+  - 为了兼容旧模板的编译，新用户可以忽略
 
 ##### 配置 templatelist.properties
 
