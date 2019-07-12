@@ -27,7 +27,7 @@ sidebar:
 | lineSpace | int | 0 | 暂时未使用 | 否 |
 | firstSpace | int | 0 | 第一个组件前的间距 | 否 |
 | lastSpace | int | 0 | 最后一个组件后间距 | 否 |
-| dataTag | jsonArray | 无 | 容器内组件数据，描述内部子组件的类型与数据 | 否 |
+| dataTag | jsonArray | 无 | 容器内组件数据，描述内部子组件的类型与数据 | 是 |
 
 
 ### 事件

@@ -17,13 +17,13 @@ sidebar:
 
 ### 属性
 
-|名称|类型|默认值|描述|
-|---|---|---|---|
-|orientation|enum(H/V)|H|滚动方向，H：水平滚动，V：垂直滚动（暂不支持）|
-|itemWidth|int/float|0|容器内组件的宽度，必填|
-|span|int/float|0|item之间的间距|
-|onScroll|expr|无|表达式，滚动一次回调执行的逻辑|
-|dataTag|jsonArray|无|容器内组件数据，描述内部子组件的类型与数据|
+|名称|类型|默认值|描述|支持表达式|
+|---|---|---|---|---|
+|orientation|enum(H/V)|H|滚动方向，H：水平滚动，V：垂直滚动（暂不支持）|否|
+|itemWidth|int/float|0|容器内组件的宽度，必填|否|
+|span|int/float|0|item之间的间距|否|
+|onScroll|expr|无|表达式，滚动一次回调执行的逻辑|否|
+|dataTag|jsonArray|无|容器内组件数据，描述内部子组件的类型与数据|是|
 
 ### 事件
 
@@ -40,7 +40,7 @@ sidebar:
     orientation="H"
     layoutWidth="match_parent"
     layoutHeight="130" />
-```  
+```
 
 ### 图示
 
