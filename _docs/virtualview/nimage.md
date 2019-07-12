@@ -19,10 +19,10 @@ sidebar:
 
 ### 属性
 
-|名称|类型|默认值|描述|
-|---|---|---|---|
-|src|string|无|图片资源，本地资源名或远程图片地址|
-|scaleType|enum(fit_start/fit_xy/matrix/center/center_crop/center_inside/fit_center/fit_end)|fit_xy|缩放模式(iOS仅支持部分模式，详见代码)|
+|名称|类型|默认值|描述|支持表达式|
+|---|---|---|---|---|
+|src|string|无|图片资源，本地资源名或远程图片地址|是|
+|scaleType|enum(fit_start/fit_xy/matrix/center/center_crop/center_inside/fit_center/fit_end)|fit_xy|缩放模式(iOS仅支持部分模式，详见代码)|否|
 
 ### 事件
 
@@ -37,7 +37,7 @@ sidebar:
     scaleType="fit_xy"
     src="tk_shadow_bg"
     />
-```  
+```
 
 ### 图示
 
