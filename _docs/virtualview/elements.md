@@ -20,10 +20,10 @@ sidebar:
 
 ### 属性
 
-|名称|类型|默认值|描述|是否支持表达式|
+|名称|类型|默认值|描述|支持表达式|
 |---|---|---|---|---|
 |id|int|0|组件id|否|
-|layoutWidth|int<br>float<br>enum:<br>    match_parent<br/>    wrap_content|0|组件的布局宽度，与Android里的概念类似，写绝对值的时候表示绝对宽高，match_parent表示尽可能撑满父容器提供的宽高，wrap_content表示根据自身内容的宽高来布局|是|
+|layoutWidth|int<br>float<br>enum:<br>&ensp;&ensp;match_parent<br/>&ensp;&ensp;wrap_content|0|组件的布局宽度，与Android里的概念类似，写绝对值的时候表示绝对宽高，match_parent表示尽可能撑满父容器提供的宽高，wrap_content表示根据自身内容的宽高来布局|是|
 |layoutHeight|int<br>float<br>enum:<br/>    match_parent<br/>    wrap_content|0|组件的布局宽度，与Android里的概念类似，写绝对值的时候表示绝对宽高，match_parent表示尽可能撑满父容器提供的宽高，wrap_content表示根据自身内容的宽高来布局|是|
 |layoutGravity|enum:<br>    left<br/>    right<br/>    top<br/>    bottom<br/>    v_center<br/>    h_center|left\|top|描述组件在容器中的对齐方式，left：靠左，right：靠右，top：靠上，bottom：靠底，v_center：垂直方向居中，h_center：水平方向居中，可用`或`组合描述|否|
 |autoDimX|int<br/>float|1|组件宽高比计算的横向值|是|
