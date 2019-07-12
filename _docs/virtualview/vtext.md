@@ -17,13 +17,13 @@ sidebar:
 
 ### 属性
 
-|名称|类型|默认值|描述|
-|---|---|---|---|
-|text|string|无|文本内容|
-|textColor|int|黑色|字体颜色|
-|textSize|int/float|20dp|字号大小|
-|textStyle|enum(norma/bold/italic/strike)|normal|normal：默认样式，bold：加粗，itlaic：斜体，strike：删除线|
-|gravity|enum(left/right/top/bottom/v_center/h_center)|left\|top|描述内容的对齐，比如文字在文本组件里的位置、原子组件在容器里的位置，left：靠左，right：靠右，top：靠上，bottom：靠底，v_center：垂直方向居中，h_center：水平方向居中，可用`或`组合描述(iOS暂只支持水平方向)|
+|名称|类型|默认值|描述|支持表达式|
+|---|---|---|---|---|
+|text|string|无|文本内容|是|
+|textColor|int|黑色|字体颜色|是|
+|textSize|int/float|20dp|字号大小|是|
+|textStyle|enum(norma/bold/italic/strike)|normal|normal：默认样式，bold：加粗，itlaic：斜体，strike：删除线|是|
+|gravity|enum(left/right/top/bottom/v_center/h_center)|left\|top|描述内容的对齐，比如文字在文本组件里的位置、原子组件在容器里的位置，left：靠左，right：靠右，top：靠上，bottom：靠底，v_center：垂直方向居中，h_center：水平方向居中，可用`或`组合描述(iOS暂只支持水平方向)|否|
 
 ### 事件
 
@@ -39,7 +39,7 @@ sidebar:
     textColor="#333333"
     layoutWidth="wrap_content"
     layoutHeight="wrap_content" />
-``` 
+```
 
 ### 图示
 
