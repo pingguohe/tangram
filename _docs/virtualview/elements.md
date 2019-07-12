@@ -35,12 +35,12 @@ sidebar:
 |paddingLeft|int<br/>float|0|左内边距，优先级高于 padding|是|
 |paddingRight|int<br/>float|0|右内边距，优先级高于 padding|是|
 |paddingTop|int<br/>float|0|上内边距，优先级高于 padding|是|
-|paddingBottom|int/float|0|下内边距，优先级高于 padding|是|
-|layoutMargin|int/float|0|同时设置 4 个外边距|是|
-|layoutMarginLeft|int/float|0|左外边距，优先级高于 layoutMargin|是|
-|layoutMarginRight|int/float|0|右外边距，优先级高于 layoutMargin|是|
-|layoutMarginTop|int/float|0|上外边距，优先级高于 layoutMargin|是|
-|layoutMarginBottom|int/float|0|下外边距，优先级高于 layoutMargin|是|
+|paddingBottom|int<br/>float|0|下内边距，优先级高于 padding|是|
+|layoutMargin|int<br/>float|0|同时设置 4 个外边距|是|
+|layoutMarginLeft|int<br/>float|0|左外边距，优先级高于 layoutMargin|是|
+|layoutMarginRight|int<br/>float|0|右外边距，优先级高于 layoutMargin|是|
+|layoutMarginTop|int<br/>float|0|上外边距，优先级高于 layoutMargin|是|
+|layoutMarginBottom|int<br/>float|0|下外边距，优先级高于 layoutMargin|是|
 |background|int|0|背景色|是|
 |borderWidth|int<br/>float|0|边框宽度|是|
 |borderColor|int|0|边框颜色|是|
@@ -51,7 +51,7 @@ sidebar:
 |borderBottomRightRadius|int<br/>float|0|单独设置右下角圆角半径，使用同上(iOS仅Layout支持单独设置)，优先级高于 borderRadius|是|
 |visibility|enum:<br/>&ensp;&ensp;visible<br/>&ensp;&ensp;invisible<br/>&ensp;&ensp;gone|visible|可见性，与Android里的概念类似，visible：可见，invisible：不可见，但占位，gone：不可见也不占位|是|
 |dataTag|string|组件数据标识||是|
-|flag|enum:<br/>&ensp;&ensp;flag_software<br>&ensp;&ensp;flag_exposure<br>&ensp;&ensp;flag_clickable<br> &ensp;&ensp;flag_longclickable<br>&ensp;&ensp;flag_touchable|组件行为定义|flag_software：关闭view的硬件加速，flag_exposure：需要触发曝光事件，flag_clickable：需要响应点击事件，flag_longclickable：需要响应长按事件，flag_touchable：需要响应触摸事件|否|
+|flag|enum:<br/>&ensp;&ensp;flag_software<br>&ensp;&ensp;flag_exposure<br>&ensp;&ensp;flag_clickable<br>&ensp;&ensp;flag_longclickable<br>&ensp;&ensp;flag_touchable|组件行为定义|flag_software：关闭view的硬件加速，flag_exposure：需要触发曝光事件，flag_clickable：需要响应点击事件，flag_longclickable：需要响应长按事件，flag_touchable：需要响应触摸事件|否|
 |action|string|null|（表示点击事件触发之后跳转到数据中action字段定义的页面）|是|
 |class|string|null|跟组件绑定的逻辑处理对象名称|是|
 
