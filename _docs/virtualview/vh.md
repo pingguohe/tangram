@@ -17,13 +17,13 @@ sidebar:
 
 ### 属性
 
-|名称|类型|默认值|描述|
-|---|---|---|---|
-|orientation|enum(H/V)|H|水平方向布局，垂直方向布局|
-|itemWidth|int/float|0|组件的宽度，当itemWidth=0时，采用wrap_content的方式计算组件宽度|
-|itemHeight|int/float|0|组件的高度，当itemHeight =0时，采用wrap_content的方式计算组件高度|
-|itemMargin|int/float|0|组件间距|
-|dataTag|jsonArray|无|容器内组件数据，描述内部子组件的类型与数据|
+|名称|类型|默认值|描述|支持表达式|
+|---|---|---|---|---|
+|orientation|enum(H/V)|H|水平方向布局，垂直方向布局|否|
+|itemWidth|int/float|0|组件的宽度，当itemWidth=0时，采用wrap_content的方式计算组件宽度|是|
+|itemHeight|int/float|0|组件的高度，当itemHeight =0时，采用wrap_content的方式计算组件高度|是|
+|itemMargin|int/float|0|组件间距|是|
+|dataTag|jsonArray|无|容器内组件数据，描述内部子组件的类型与数据|是|
 
 ### 事件
 
@@ -37,7 +37,7 @@ sidebar:
     orientation="V"
     layoutWidth="match_parent"
     layoutHeight="wrap_content"/>
-``` 
+```
 
 ### 图示
 
