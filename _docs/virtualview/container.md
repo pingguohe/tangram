@@ -17,14 +17,13 @@ sidebar:
 
 ### 属性
 
-|名称|类型|默认值|描述|
-|---|---|---|---|
-|order|int|0|与dataTag配合使用|
-|dataTag|jsonArray|无|容器内组件数据，描述内部子组件的类型与数据，取jsonArray的第order个数据来实例化组件加到容器里|
+|名称|类型|默认值|描述||
+|---|---|---|---|---|
+|order|int|0|与dataTag配合使用|否|
+|dataTag|jsonArray|无|容器内组件数据，描述内部子组件的类型与数据，取jsonArray的第order个数据来实例化组件加到容器里|是|
 
 ### 事件
 
 支持子组件exposure
 
 ### 代码示例
- 
