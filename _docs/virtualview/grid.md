@@ -17,13 +17,13 @@ sidebar:
 
 ### 属性
 
-|名称|类型|默认值|描述|
-|---|---|---|---|
-|colCount|int|2|列数|
-|itemHeight|int/float|0|组件的高度，当itemHeight =0时，采用wrap_content的方式计算组件高度|
-|itemVerticalMargin|int/float|false|垂直间距，即行之间的间距|
-|itemHorizontalMargin|int/float|0|水平间距，即列之间的间距|
-|dataTag|jsonArray|无|容器内组件数据，描述内部子组件的类型与数据|
+|名称|类型|默认值|描述|支持表达式|
+|---|---|---|---|---|
+|colCount|int|2|列数|否|
+|itemHeight|int/float|0|组件的高度，当itemHeight =0时，采用wrap_content的方式计算组件高度|否|
+|itemVerticalMargin|int/float|false|垂直间距，即行之间的间距|是|
+|itemHorizontalMargin|int/float|0|水平间距，即列之间的间距|是|
+|dataTag|jsonArray|无|容器内组件数据，描述内部子组件的类型与数据|是|
 
 ### 事件
 
@@ -37,7 +37,7 @@ sidebar:
     colCount="2"
     layoutWidth="match_parent"
     layoutHeight="wrap_content"/>
-``` 
+```
 
 ### 图示
 

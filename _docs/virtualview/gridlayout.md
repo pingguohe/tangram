@@ -17,12 +17,12 @@ sidebar:
 
 ### 属性
 
-|名称|类型|默认值|描述|
-|---|---|---|---|
-|colCount|int|2|列数|
-|itemHeight|int|0|组件的高度|
-|itemVerticalMargin|int/float|0|垂直间距，即行之间的间距|
-|itemHorizontalMargin|int/float|0|水平间距，即列之间的间距|
+|名称|类型|默认值|描述|支持表达式|
+|---|---|---|---|---|
+|colCount|int|2|列数|否|
+|itemHeight|int|0|组件的高度|否|
+|itemVerticalMargin|int/float|0|垂直间距，即行之间的间距|是|
+|itemHorizontalMargin|int/float|0|水平间距，即列之间的间距|是|
 
 ### 事件
 
@@ -79,7 +79,7 @@ sidebar:
 	scaleType="center_crop"
 	src="${data[5]}"/>
   </GridLayout>
-```  
+```
 
 ### 图示
 
