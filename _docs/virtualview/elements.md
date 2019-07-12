@@ -59,7 +59,7 @@ sidebar:
 
 在组件属性里，跟尺寸相关的属性，其值的单位默认是dp，比如layoutWidth=10，表示宽度是10dp；实际值 = dp * density；
 
-为了更精准地适配视觉，支持rp单位，表示适配屏幕大小的值，比如layoutWidth=10rp，实际值 = 10 * 屏幕宽度 / 750；
+为了更精准地适配视觉，支持rp单位，表示适配屏幕大小的值，比如layoutWidth=10rp，实际值 = 10 * 屏幕宽度 / 750；这里 750 指的是设计稿里的屏幕宽度，默认值是 750，可以通过 `com.libra.Utils.setUedScreenWidth()` 方法修改默认值。
 
 ### 颜色值
 
