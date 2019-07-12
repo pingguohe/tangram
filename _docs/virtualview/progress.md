@@ -17,10 +17,10 @@ sidebar:
 
 ### 属性
 
-|名称|类型|默认值|描述|
-|---|---|---|---|
-|initValue|int|0|当前进度，取值范围：[0, 组件宽度]|
-|color|string|blue|进度条前景图颜色|
+|名称|类型|默认值|描述|支持表达式|
+|---|---|---|---|---|
+|initValue|int|0|当前进度，取值范围：[0, 组件宽度]|否|
+|color|string|blue|进度条前景图颜色|否|
 
 ### 事件
 
@@ -35,7 +35,7 @@ sidebar:
     color="#986532"
     layoutWidth="match_parent"
     layoutHeight="20"/>
-``` 
+```
 
 ### 图示
 
