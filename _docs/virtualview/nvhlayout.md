@@ -17,9 +17,9 @@ sidebar:
 
 ### 属性
 
-|名称|类型|默认值|描述|
-|---|---|---|---|
-|orientation|enum(H/V)|H|水平方向布局，垂直方向布局|
+|名称|类型|默认值|描述|支持表达式|
+|---|---|---|---|---|
+|orientation|enum(H/V)|H|水平方向布局，垂直方向布局|否|
 
 ### 事件
 
@@ -47,7 +47,7 @@ sidebar:
 	    layoutWidth="wrap_content"
 	    layoutHeight="wrap_content" />
 </NVHLayout>
-```  
+```
 
 ### 图示
 
