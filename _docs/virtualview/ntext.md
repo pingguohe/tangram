@@ -42,7 +42,7 @@ sidebar:
     id="1"
     text="title"
     textSize="12"
-    textColor="#333333"
+    textColor="#444444"
     layoutWidth="wrap_content"
     layoutHeight="wrap_content"
     lineSpaceMultiplier="1.1"
